@@ -1,5 +1,5 @@
 // USER REGISTER FUNCTION //
-const formUserRegister = document.querySelector("#user-register-form");
+const formConsumerRegister = document.querySelector("#consumer-register-form");
 
 formUserRegister.addEventListener("submit", (event) => {
     event.preventDefault()
@@ -8,7 +8,7 @@ formUserRegister.addEventListener("submit", (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    fetch("http://localhost:8080/user", {
+    fetch("http://localhost:8080/consumer", {
         mode: "cors",
         method: "POST",
         headers: {
