@@ -67,3 +67,9 @@ input.submit{
 input.submit:hover{
     background-color: white;
 }
+
+p.alert{
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+}

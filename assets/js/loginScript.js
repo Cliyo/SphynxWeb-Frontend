@@ -46,7 +46,7 @@ form.addEventListener("submit", (event) => {
 
     .then(response => {
         if(!response.ok){
-            message.innerHTML = "Erro no login...";
+            message.innerHTML = "Login error...";
             message.style.color = "#FF0000";
 
             throw new Error("HTTP Status " + response.status);
@@ -55,7 +55,7 @@ form.addEventListener("submit", (event) => {
         return response.json()
     })
     .then(data => {
-        message.innerHTML = "Login feito com sucesso!";
+        message.innerHTML = "Logged!";
         message.style.color = "#00FF00";
         localStorage.setItem("token", data["token"]);
         window.location = "dashboardPage.html";

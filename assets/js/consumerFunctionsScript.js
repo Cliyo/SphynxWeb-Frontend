@@ -1,10 +1,11 @@
 // USER REGISTER FUNCTION //
 const formConsumerRegister = document.querySelector("#consumer-register-form");
+const message = document.querySelector("#alert");
 
-formUserRegister.addEventListener("submit", (event) => {
+formConsumerRegister.addEventListener("submit", (event) => {
     event.preventDefault()
 
-    var formData =  new FormData(formUserRegister);
+    var formData =  new FormData(formConsumerRegister);
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
@@ -18,7 +19,20 @@ formUserRegister.addEventListener("submit", (event) => {
         },
         body: jsonData
     })
-    .then(response => response.json())
-    .then(data => console.log(data))
+    .then(response => {
+        if(!response.ok){
+            message.innerHTML = "Error...";
+            message.style.color = "#FF0000";
+
+            throw new Error("HTTP Status " + response.status);
+        }
+        
+        return response
+    })
+    .then(data => {
+        message.innerHTML = "Consumer created!";
+        message.style.color = "#00FF00";
+        window.location = "dashboardPage.html";
+    })
     .catch(err => console.log(err))
 })
