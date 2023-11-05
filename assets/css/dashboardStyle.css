@@ -64,8 +64,11 @@ section{
 /* RIGHT SCREEN */
 div.screen{
     position: relative;
+    display: flex;
     width: 70%;
     height: 90%;
     background-color: var(--color-gray);
     border-radius: 15px;
+    align-items: center;
+    justify-content: center;
 }

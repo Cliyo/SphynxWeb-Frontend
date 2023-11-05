@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/default.css">
     <link rel="stylesheet" href="../assets/css/dashboardStyle.css">
+    <link rel="stylesheet" href="../assets/css/userFunctionsStyle.css">
     <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="UTF-8"></script>
 
@@ -28,7 +29,7 @@
                 <div class="item"> 
                     <a class="sub-btn"> <i class="fa-solid fa-chevron-down dropdown"></i> Users </a> 
                     <div class="sub-menu">
-                        <a href="#" class="sub-item"> Register </a>
+                        <a href="#" id="sub-item-user-register" class="sub-item"> Register </a>
                         <a href="#" class="sub-item"> Edit </a>
                         <a href="#" class="sub-item"> View all </a>
                         <a href="#" class="sub-item"> Delete </a>
@@ -56,7 +57,22 @@
             </div>
         </div>
         <div class="screen">
-            
+            <div id="user-register-div" class="user-register-div">
+                
+                <h1> Register </h1>
+
+                <form id="user-register-form" method="POST">
+
+                    <div class="adjust-user-register-inputs">
+                        <input type="text" class="ra-input" id="ra-input" name="ra" placeholder="RA" minlength="13" required>
+                        <input type="text" class="tag-input" id="tag-input" name="tag" placeholder="Mifare TAG" required>
+                    </div>
+
+                    <input type="submit" class="submit" id="submit" value="Finalize">
+                
+                </form>
+
+            </div>
         </div>
     </section>
 </body>

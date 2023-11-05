@@ -1,0 +1,69 @@
+/* REGISTER */
+div.user-register-div{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 95%;
+    border-radius: 15px;
+    background-color: var(--color-submenu);
+}
+
+div.user-register-div h1{
+    color: white;
+    font-size: 3.5rem;
+}
+
+div.user-register-div form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+div.user-register-div form div{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 110px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.user-register-div form div input{
+    position: relative;
+    width: 80%;
+    height: 50px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 0;
+    font-size: 1.5rem;
+    background-color: var(--color-gray);
+    transition: .5s;
+}
+
+div.user-register-div form div input:focus-visible{
+    background-color: white;
+    outline: none;
+}
+
+input.submit{
+    position: relative;
+    width: 35%;
+    height: 50px;
+    border: 0;
+    border-radius: 20px;
+    margin-top: 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: var(--color-gray);
+    transition: .5s;
+}
+
+input.submit:hover{
+    background-color: white;
+}
