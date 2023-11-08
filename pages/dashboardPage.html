@@ -17,7 +17,7 @@
             <div class="menu">
 
                 <div class="item"> 
-                    <a class="sub-btn"> <i class="fa-solid fa-chevron-down dropdown"></i> Access Registers </a> 
+                    <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Access Registers </a> 
                     <div class="sub-menu">
                         <a href="#" class="sub-item"> View all </a>
                         <a href="#" class="sub-item"> View daily </a>
@@ -27,17 +27,17 @@
                 </div>
 
                 <div class="item"> 
-                    <a class="sub-btn"> <i class="fa-solid fa-chevron-down dropdown"></i> Users </a> 
+                    <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Users </a> 
                     <div class="sub-menu">
-                        <a href="#" id="sub-item-user-register" class="sub-item"> Register </a>
-                        <a href="#" class="sub-item"> Edit </a>
+                        <a id="sub-item-user-register" class="sub-item"> Register </a>
+                        <a id="sub-item-user-update" class="sub-item"> Edit </a>
                         <a href="#" class="sub-item"> View all </a>
-                        <a href="#" class="sub-item"> Delete </a>
+                        <a id="sub-item-user-delete" class="sub-item"> Delete </a>
                     </div>
                 </div>
 
                 <div class="item"> 
-                    <a class="sub-btn"> <i class="fa-solid fa-chevron-down dropdown"></i> Locals </a> 
+                    <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Locals </a> 
                     <div class="sub-menu">
                         <a href="#" class="sub-item"> Register </a>
                         <a href="#" class="sub-item"> Edit </a>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="item"> 
-                    <a class="sub-btn"> <i class="fa-solid fa-chevron-down dropdown"></i> Wifi Connection </a> 
+                    <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Wifi Connection </a> 
                     <div class="sub-menu">
                         <a href="#" class="sub-item"> Connect </a>
                         <a href="#" class="sub-item"> Disconnect </a>
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="screen">
-            <div id="consumer-register-div" class="consumer-register-div">
+            <div id="consumer-register-div" class="consumer-register-div subscreen">
                 
                 <h1> Register </h1>
 
@@ -68,6 +68,41 @@
                     <div class="adjust-consumer-register-inputs">
                         <input type="text" class="ra-input" id="ra-input" name="ra" placeholder="RA" minlength="13" required>
                         <input type="text" class="tag-input" id="tag-input" name="tag" placeholder="Mifare TAG" required>
+                    </div>
+
+                    <input type="submit" class="submit" id="submit" value="Finalize">
+                
+                </form>
+
+            </div>
+
+            <div id="consumer-update-div" class="consumer-update-div subscreen">
+                <h1> Update </h1>
+
+                <p id="alert" class="alert"></p>
+
+                <form id="consumer-update-form" method="POST">
+
+                    <div class="adjust-consumer-update-inputs">
+                        <input type="text" class="ra-input" id="ra-input" name="ra" placeholder="RA" minlength="13" required>
+                        <input type="text" class="tag-input" id="tag-input" name="tag" placeholder="Mifare TAG" required>
+                    </div>
+
+                    <input type="submit" class="submit" id="submit" value="Finalize">
+                
+                </form>
+
+            </div>
+
+            <div id="consumer-delete-div" class="consumer-update-div subscreen">
+                <h1> Delete </h1>
+
+                <p id="alert" class="alert"></p>
+
+                <form id="consumer-delete-form" method="POST">
+
+                    <div class="adjust-consumer-delete-inputs">
+                        <input type="text" class="ra-input" id="ra-input" name="ra" placeholder="RA" minlength="13" required>
                     </div>
 
                     <input type="submit" class="submit" id="submit" value="Finalize">
