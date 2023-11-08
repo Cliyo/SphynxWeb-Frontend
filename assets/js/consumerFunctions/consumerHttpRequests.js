@@ -3,6 +3,9 @@ const formConsumerRegister = document.querySelector("#consumer-register-form");
 const formConsumerUpdate = document.querySelector("#consumer-update-form");
 const formConsumerDelete = document.querySelector("#consumer-delete-form");
 
+// TABLE //
+const consumersTableData = consumerGetDiv.querySelector(".content-table");
+
 // HTTP REQUESTS TO THE API //
 formConsumerRegister.addEventListener("submit", (event) => {
     event.preventDefault()
@@ -149,7 +152,32 @@ subItemUserGet.addEventListener("click", (event) => {
         return response.json();
     })
     .then(data => {
-        console.log(data);
+        let array = Object.keys(data);
+
+        let tbody = document.createElement("tbody");
+        array.forEach(index => {
+            let tr = document.createElement("tr");
+
+            let tdId = document.createElement("td");
+            tdId.innerHTML = data[index]["id"];
+
+            let tdRa = document.createElement("td");
+            tdRa.innerHTML = data[index]["ra"];
+
+            let tdNome = document.createElement("td");
+            tdNome.innerHTML = "teste"; //po sla ainda nn ta pronto
+
+            let tdTag = document.createElement("td");
+            tdTag.innerHTML = data[index]["tag"];
+            
+            tr.appendChild(tdId);
+            tr.appendChild(tdRa);
+            tr.appendChild(tdNome);
+            tr.appendChild(tdTag);
+
+            tbody.appendChild(tr)
+        })
+        consumersTableData.appendChild(tbody);
     })
     .catch(err => {
         console.log(err)
