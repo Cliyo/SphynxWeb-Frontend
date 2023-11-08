@@ -129,3 +129,29 @@ formConsumerDelete.addEventListener("submit", (event) => {
         console.log(err)
     })
 })
+
+subItemUserGet.addEventListener("click", (event) => {
+    event.preventDefault()
+    fetch(`http://localhost:8080/consumer`, {
+        mode: "cors",
+        method: "GET",
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            'Access-Control-Allow-Origin': 'http://localhost:8080',
+            'Access-Control-Allow-Credentials': 'true',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if(!response.ok){
+            throw new Error("HTTP Status " + response.status);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})

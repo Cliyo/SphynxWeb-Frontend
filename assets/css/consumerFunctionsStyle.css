@@ -1,4 +1,3 @@
-/* REGISTER */
 div.consumer-register-div, div.consumer-update-div{
     position: relative;
     display:none;
@@ -73,3 +72,16 @@ p.alert{
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+div.consumer-get-div{
+    position: relative;
+    display:none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 95%;
+    border-radius: 15px;
+    background-color: var(--color-background-bright);
+}
+

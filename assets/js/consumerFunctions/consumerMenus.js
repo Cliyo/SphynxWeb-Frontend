@@ -16,7 +16,6 @@ const subItemUserGet = document.querySelector("#sub-item-user-get")
 subItemUserRegister.addEventListener("click", (event) => {
     allScreens.forEach(screen => {
         screen.style.display = "none";
-        console.log(screen)
     })
     consumerRegisterDiv.style.display = "flex";
 })
