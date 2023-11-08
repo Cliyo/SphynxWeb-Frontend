@@ -4,7 +4,7 @@ const formConsumerUpdate = document.querySelector("#consumer-update-form");
 const formConsumerDelete = document.querySelector("#consumer-delete-form");
 
 // TABLE //
-const consumersTableData = consumerGetDiv.querySelector(".content-table");
+const consumersTableData = consumerGetDiv.querySelector(".content-table").querySelector("tbody");
 
 // HTTP REQUESTS TO THE API //
 formConsumerRegister.addEventListener("submit", (event) => {
@@ -152,9 +152,9 @@ subItemUserGet.addEventListener("click", (event) => {
         return response.json();
     })
     .then(data => {
+        consumersTableData.innerHTML = "";
         let array = Object.keys(data);
 
-        let tbody = document.createElement("tbody");
         array.forEach(index => {
             let tr = document.createElement("tr");
 
@@ -174,10 +174,10 @@ subItemUserGet.addEventListener("click", (event) => {
             tr.appendChild(tdRa);
             tr.appendChild(tdNome);
             tr.appendChild(tdTag);
-
-            tbody.appendChild(tr)
+            
+            consumersTableData.appendChild(tr);
         })
-        consumersTableData.appendChild(tbody);
+        
     })
     .catch(err => {
         console.log(err)
