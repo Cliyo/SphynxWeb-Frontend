@@ -1,43 +1,6 @@
-// CONSUMER REGISTER FUNCTION //
-// CONSUMER SCREENS DIVS //
-const consumerRegisterDiv = document.querySelector("#consumer-register-div");
-const consumerUpdateDiv = document.querySelector("#consumer-update-div");
-const consumerDeleteDiv = document.querySelector("#consumer-delete-div");
-const consumerGetDiv = document.querySelector("#consumer-get-div");
-
-const allScreens = document.querySelectorAll(".subscreen")
-
 // CONSUMER FORMS //
 const formConsumerRegister = document.querySelector("#consumer-register-form");
 const formConsumerUpdate = document.querySelector("#consumer-update-form");
-
-// CONSUMER SUB BUTTONS TO SHOW THE SCREENS //
-const subItemUserRegister = document.querySelector("#sub-item-user-register");
-const subItemUserUpdate = document.querySelector("#sub-item-user-update");
-const subItemUserDelete = document.querySelector("#sub-item-user-delete");
-
-// FUNCTIONS TO SHOW AND HID THE SCREENS //
-subItemUserRegister.addEventListener("click", (event) => {
-    allScreens.forEach(screen => {
-        screen.style.display = "none";
-        console.log(screen)
-    })
-    consumerRegisterDiv.style.display = "flex";
-})
-
-subItemUserUpdate.addEventListener("click", (event) => {
-    allScreens.forEach(screen => {
-        screen.style.display = "none";
-    })
-    consumerUpdateDiv.style.display = "flex";
-})
-
-subItemUserDelete.addEventListener("click", (event) => {
-    allScreens.forEach(screen => {
-        screen.style.display = "none";
-    })
-    consumerDeleteDiv.style.display = "flex";
-})
 
 // HTTP REQUESTS TO THE API //
 formConsumerRegister.addEventListener("submit", (event) => {
@@ -77,7 +40,7 @@ formConsumerRegister.addEventListener("submit", (event) => {
     })
     .catch(err => {
         let message = formConsumerRegister.parentNode.querySelector("#alert");
-        message.innerHTML = "Auth Error...";
+        message.innerHTML = "Error...";
         message.style.color = "#FF0000";
     })
 })
@@ -118,7 +81,7 @@ formConsumerUpdate.addEventListener("submit", (event) => {
     })
     .catch(err => {
         let message = formConsumerUpdate.parentNode.querySelector("#alert");
-        message.innerHTML = "Auth Error...";
+        message.innerHTML = "Error...";
         message.style.color = "#FF0000";
     })
 })
