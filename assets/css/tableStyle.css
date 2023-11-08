@@ -1,7 +1,7 @@
 table.content-table{
     border-collapse: collapse;
     font-size: 2rem;
-    min-width: 95%;
+    min-width: 90%;
 }
 
 table.content-table thead tr{
