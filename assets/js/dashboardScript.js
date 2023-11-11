@@ -14,7 +14,16 @@ if(localStorage.getItem("token")){
         })
     })
 
-    .then(response => response.json())
+    .then(response => {
+        if(response.status == 403){
+            window.location = "loginPage.html";
+            
+            throw new Error("HTTP Status " + response.status);
+
+        } else{
+            return response.json();
+        }
+    })
     .then(data => {
         if(data["result"] == false){
             window.location = "loginPage.html";
