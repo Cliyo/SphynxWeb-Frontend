@@ -165,7 +165,7 @@ subItemUserGet.addEventListener("click", (event) => {
             tdRa.innerHTML = data[index]["ra"];
 
             let tdNome = document.createElement("td");
-            tdNome.innerHTML = "teste"; //po sla ainda nn ta pronto
+            tdNome.innerHTML = data[index]["name"];
 
             let tdTag = document.createElement("td");
             tdTag.innerHTML = data[index]["tag"];
