@@ -133,7 +133,7 @@ formConsumerDelete.addEventListener("submit", (event) => {
     })
 })
 
-subItemUserGet.addEventListener("click", (event) => {
+subItemConsumerGet.addEventListener("click", (event) => {
     event.preventDefault()
     fetch(`http://localhost:8080/consumer`, {
         mode: "cors",
