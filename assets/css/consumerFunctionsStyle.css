@@ -87,6 +87,14 @@ div.consumer-get-div{
     scrollbar-gutter: stable;
 }
 
+div.consumer-get-div table thead tr th{
+    font-size: 2rem;   
+}
+
+div.consumer-get-div table tbody tr td{
+    font-size: 1.5rem;   
+}
+
 div.consumer-get-div::-webkit-scrollbar{
     width: 10px;
 }
