@@ -7,34 +7,34 @@ const consumerGetDiv = document.querySelector("#consumer-get-div");
 const allScreens = document.querySelectorAll(".subscreen")
 
 // CONSUMER SUB BUTTONS TO SHOW THE SCREENS //
-const subItemUserRegister = document.querySelector("#sub-item-user-register");
-const subItemUserUpdate = document.querySelector("#sub-item-user-update");
-const subItemUserDelete = document.querySelector("#sub-item-user-delete");
-const subItemUserGet = document.querySelector("#sub-item-user-get")
+const subItemConsumerRegister = document.querySelector("#sub-item-consumer-register");
+const subItemConsumerUpdate = document.querySelector("#sub-item-consumer-update");
+const subItemConsumerDelete = document.querySelector("#sub-item-consumer-delete");
+const subItemConsumerGet = document.querySelector("#sub-item-consumer-get")
 
 // FUNCTIONS TO SHOW AND HID THE SCREENS //
-subItemUserRegister.addEventListener("click", (event) => {
+subItemConsumerRegister.addEventListener("click", (event) => {
     allScreens.forEach(screen => {
         screen.style.display = "none";
     })
     consumerRegisterDiv.style.display = "flex";
 })
 
-subItemUserUpdate.addEventListener("click", (event) => {
+subItemConsumerUpdate.addEventListener("click", (event) => {
     allScreens.forEach(screen => {
         screen.style.display = "none";
     })
     consumerUpdateDiv.style.display = "flex";
 })
 
-subItemUserDelete.addEventListener("click", (event) => {
+subItemConsumerDelete.addEventListener("click", (event) => {
     allScreens.forEach(screen => {
         screen.style.display = "none";
     })
     consumerDeleteDiv.style.display = "flex";
 })
 
-subItemUserGet.addEventListener("click", (event) => {
+subItemConsumerGet.addEventListener("click", (event) => {
     allScreens.forEach(screen => {
         screen.style.display = "none";
     })
