@@ -1,14 +1,55 @@
 // ACCESS SCREENS DIVS //
-const accessGetAllDiv = document.querySelector("#access-get-all");
-
+const accessGetDiv = document.querySelector("#access-get");
 
 // ACCESS SUB BUTTONS TO SHOW THE SCREENS //
-const subItemAccessGetAll = document.querySelector("#sub-item-access-all")
+const subItemAccessGetAllButton = document.querySelector("#sub-item-access-all")
+const subItemAccessGetRaButton = document.querySelector("#sub-item-access-consumer")
+const subItemAccessGetLocalButton = document.querySelector("#sub-item-access-local")
+const subItemAccessGetDateButton = document.querySelector("#sub-item-access-date")
+
+// INPUTS //
+const inputs = accessGetDiv.querySelectorAll("input");
+const raInput = accessGetDiv.querySelector("#ra-input");
+const localInput = accessGetDiv.querySelector("#local-input");
+const dateInput = accessGetDiv.querySelector("#date-input");
 
 // FUNCTIONS TO SHOW AND HID THE SCREENS //
-subItemAccessGetAll.addEventListener("click", (event) => {
+subItemAccessGetAllButton.addEventListener("click", () => {
+    showAndHide();
+
+    accessGetDiv.style.display = "flex";
+})
+
+subItemAccessGetRaButton.addEventListener("click", () => {
+    showAndHide();
+
+    accessGetDiv.style.display = "flex";
+    raInput.style.display = "flex";
+
+})
+
+subItemAccessGetLocalButton.addEventListener("click", () => {
+    showAndHide();
+
+    accessGetDiv.style.display = "flex";
+    localInput.style.display = "flex";
+
+})
+
+subItemAccessGetDateButton.addEventListener("click", () => {
+    showAndHide();
+
+    accessGetDiv.style.display = "flex";
+    dateInput.style.display = "flex";
+
+})
+
+function showAndHide(){
     allScreens.forEach(screen => {
         screen.style.display = "none";
     })
-    accessGetAllDiv.style.display = "flex";
-})
+
+    inputs.forEach(input => {
+        input.style.display = "none";
+    });
+}
