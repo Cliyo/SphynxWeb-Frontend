@@ -21,10 +21,10 @@
                 <div class="item"> 
                     <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Access Registers </a> 
                     <div class="sub-menu">
-                        <a id="sub-item-access-all"class="sub-item"> View all </a>
-                        <a href="#" class="sub-item"> View daily </a>
-                        <a href="#" class="sub-item"> View by local </a>
-                        <a href="#" class="sub-item"> View by user </a>
+                        <a id="sub-item-access-all" class="sub-item"> View all </a>
+                        <a id="sub-item-access-date" class="sub-item"> View daily </a>
+                        <a id="sub-item-access-local" class="sub-item"> View by local </a>
+                        <a id="sub-item-access-consumer" class="sub-item"> View by consumer </a>
                     </div>
                 </div>
 
@@ -60,7 +60,13 @@
         </div>
         <div class="screen">
 
-            <div id="access-get-all" class="access-get-all-div subscreen">
+            <div id="access-get" class="access-get-div subscreen">
+
+                <input type="text" class="ra-input" id="ra-input" name="ra" placeholder="RA" minlength="13" required>
+                <input type="text" class="local-input" id="local-input" name="local" placeholder="Local" minlength="13" required>
+                <input type="date" class="date-input" id="date-input" name="date" placeholder="Date" required>
+
+
                 <table class="content-table">
                     <thead>
                         <tr>
