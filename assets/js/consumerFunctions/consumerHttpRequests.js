@@ -162,10 +162,10 @@ subItemConsumerGet.addEventListener("click", (event) => {
             tdId.innerHTML = data[index]["id"];
 
             let tdRa = document.createElement("td");
-            tdRa.innerHTML = data[index]["ra"];
+            tdRa.innerHTML = data[index]["person"]["ra"];
 
             let tdNome = document.createElement("td");
-            tdNome.innerHTML = data[index]["name"];
+            tdNome.innerHTML = data[index]["person"]["name"];
 
             let tdTag = document.createElement("td");
             tdTag.innerHTML = data[index]["tag"];
