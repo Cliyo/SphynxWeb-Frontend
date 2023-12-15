@@ -1,0 +1,109 @@
+div.local-register-div, div.local-update-div{
+    position: relative;
+    display:none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 95%;
+    border-radius: 15px;
+    background-color: var(--color-submenu);
+}
+
+div.local-register-div h1, div.local-update-div h1{
+    color: white;
+    font-size: 3.5rem;
+}
+
+div.local-register-div form, div.local-update-div form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+div.local-register-div form div, div.local-update-div form div{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 110px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.local-register-div form div input, div.local-update-div form div input{
+    position: relative;
+    width: 80%;
+    height: 50px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 0;
+    font-size: 1.5rem;
+    background-color: var(--color-gray);
+    transition: .5s;
+}
+
+div.local-register-div form div input:focus-visible, div.local-update-div form div input:focus-visible{
+    background-color: white;
+    outline: none;
+}
+
+input.submit{
+    position: relative;
+    width: 35%;
+    height: 50px;
+    border: 0;
+    border-radius: 20px;
+    margin-top: 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: var(--color-gray);
+    transition: .5s;
+}
+
+input.submit:hover{
+    background-color: white;
+}
+
+p.alert{
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+div.local-get-div{
+    position: relative;
+    display:none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 95%;
+    height: 95%;
+    border-radius: 15px;
+    background-color: var(--color-background-bright);
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+}
+
+div.local-get-div table thead tr th{
+    font-size: 2rem;   
+}
+
+div.local-get-div table tbody tr td{
+    font-size: 1.5rem;   
+}
+
+div.local-get-div::-webkit-scrollbar{
+    width: 10px;
+}
+
+div.local-get-div::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+   
+div.local-get-div::-webkit-scrollbar-thumb {
+    background: var(--color-background); 
+    border-radius: 10px;
+}
