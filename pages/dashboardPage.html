@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../assets/css/consumerFunctionsStyle.css">
     <link rel="stylesheet" href="../assets/css/tableStyle.css">
     <link rel="stylesheet" href="../assets/css/accessFunctionsStyle.css">
+    <link rel="stylesheet" href="../assets/css/localFunctionsStyle.css">
     <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="UTF-8"></script>
 
@@ -41,10 +42,10 @@
                 <div class="item"> 
                     <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Locals </a> 
                     <div class="sub-menu">
-                        <a href="#" class="sub-item"> Register </a>
-                        <a href="#" class="sub-item"> Edit </a>
-                        <a href="#" class="sub-item"> View all </a>
-                        <a href="#" class="sub-item"> Delete </a>
+                        <a id="sub-item-local-register" class="sub-item"> Register </a>
+                        <a id="sub-item-local-update" class="sub-item"> Edit </a>
+                        <a id="sub-item-local-get" class="sub-item"> View all </a>
+                        <a id="sub-item-local-delete" class="sub-item"> Delete </a>
                     </div>
                 </div>
 
@@ -155,6 +156,76 @@
                 </table>
 
             </div>
+
+            <div id="local-register-div" class="local-register-div subscreen">
+                
+                <h1> Register </h1>
+
+                <p id="alert" class="alert"></p>
+
+                <form id="local-register-form" method="POST">
+
+                    <div class="adjust-local-register-inputs">
+                        <input type="text" class="name-input" id="name-input" name="name" placeholder="Name" minlength="3" required>
+                        <input type="text" class="mac-input" id="mac-input" name="mac" placeholder="Mac" required>
+                    </div>
+
+                    <input type="submit" class="submit" id="submit" value="Finalize">
+                
+                </form>
+
+            </div>
+
+            <div id="local-update-div" class="local-update-div subscreen">
+                <h1> Update </h1>
+
+                <p id="alert" class="alert"></p>
+
+                <form id="local-update-form" method="POST">
+
+                    <div class="adjust-local-update-inputs">
+                        <input type="text" class="name-input" id="name-input" name="name" placeholder="Name" minlength="3" required>
+                        <input type="text" class="mac-input" id="mac-input" name="mac" placeholder="Mac" required>
+                    </div>
+
+                    <input type="submit" class="submit" id="submit" value="Finalize">
+                
+                </form>
+
+            </div>
+
+            <div id="local-delete-div" class="local-update-div subscreen">
+                <h1> Delete </h1>
+
+                <p id="alert" class="alert"></p>
+
+                <form id="local-delete-form" method="POST">
+
+                    <div class="adjust-local-delete-inputs">
+                        <input type="text" class="name-input" id="name-input" name="name" placeholder="Name" minlength="3" required>
+                    </div>
+
+                    <input type="submit" class="submit" id="submit" value="Finalize">
+                
+                </form>
+
+            </div>
+
+            <div id="local-get-div" class="local-get-div subscreen">
+                <table class="content-table">
+                    <thead>
+                        <tr>
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Mac </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </section>
 </body>
@@ -165,4 +236,8 @@
 
 <script src="../assets/js/accessFunctions/accessMenus.js"></script>
 <script src="../assets/js/accessFunctions/accessHttpRequests.js"></script>
+
+<script src="../assets/js/localFunctions/localMenus.js"></script>
+<script src="../assets/js/localFunctions/localHttpRequests.js"></script>
+
 </html>
