@@ -47,7 +47,7 @@ input.ra-access-input, input.local-access-input, input.date-access-input{
     transition: .5s;
 }
 
-input.ra-input:focus-visible, input.local-input:focus-visible, input.date-input:focus-visible{
+input.ra-access-input:focus-visible, input.local-access-input:focus-visible, input.date-access-input:focus-visible{
     outline: none;
     background-color: white;
 }
