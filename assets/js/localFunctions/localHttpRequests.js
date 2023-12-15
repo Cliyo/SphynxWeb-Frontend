@@ -37,13 +37,13 @@ formLocalRegister.addEventListener("submit", (event) => {
         return response.json();
     })
     .then(data => {
-        let message = formConsumerRegister.parentNode.querySelector("#alert");
-        message.innerHTML = "Consumer created!";
+        let message = formLocalRegister.parentNode.querySelector("#alert");
+        message.innerHTML = "Local created!";
         message.style.color = "#00FF00";
         window.location = "dashboardPage.html";
     })
     .catch(err => {
-        let message = formConsumerRegister.parentNode.querySelector("#alert");
+        let message = formLocalRegister.parentNode.querySelector("#alert");
         message.innerHTML = "Error...";
         message.style.color = "#FF0000";
     })
