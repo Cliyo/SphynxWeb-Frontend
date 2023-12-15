@@ -33,7 +33,7 @@ div.access-get-div::-webkit-scrollbar-thumb {
     border-radius: 10px;
 }
 
-input.ra-input, input.local-input, input.date-input{
+input.ra-access-input, input.local-access-input, input.date-access-input{
     position: relative;
     width: 60%;
     height: 50px;

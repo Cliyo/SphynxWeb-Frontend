@@ -99,16 +99,16 @@ raInput.addEventListener("focusout", (event) => {
             tdId.innerHTML = data[index]["id"];
 
             let tdRa = document.createElement("td");
-            tdRa.innerHTML = data[index]["ra"];
+            tdRa.innerHTML = data[index]["consumer"]["person"]["ra"];
 
             let tdNome = document.createElement("td");
-            tdNome.innerHTML = data[index]["name"];
+            tdNome.innerHTML = data[index]["consumer"]["person"]["name"];
 
             let tdTag = document.createElement("td");
-            tdTag.innerHTML = data[index]["tag"];
+            tdTag.innerHTML = data[index]["consumer"]["tag"];
 
             let tdLocal = document.createElement("td");
-            tdLocal.innerHTML = data[index]["local"];
+            tdLocal.innerHTML = data[index]["local"]["name"];
 
             let tdDate = document.createElement("td");
             tdDate.innerHTML = data[index]["date"];
@@ -161,16 +161,16 @@ localInput.addEventListener("focusout", (event) => {
             tdId.innerHTML = data[index]["id"];
 
             let tdRa = document.createElement("td");
-            tdRa.innerHTML = data[index]["ra"];
+            tdRa.innerHTML = data[index]["consumer"]["person"]["ra"];
 
             let tdNome = document.createElement("td");
-            tdNome.innerHTML = data[index]["name"];
+            tdNome.innerHTML = data[index]["consumer"]["person"]["name"];
 
             let tdTag = document.createElement("td");
-            tdTag.innerHTML = data[index]["tag"];
+            tdTag.innerHTML = data[index]["consumer"]["tag"];
 
             let tdLocal = document.createElement("td");
-            tdLocal.innerHTML = data[index]["local"];
+            tdLocal.innerHTML = data[index]["local"]["name"];
 
             let tdDate = document.createElement("td");
             tdDate.innerHTML = data[index]["date"];
@@ -228,16 +228,16 @@ dateInput.addEventListener("focusout", (event) => {
             tdId.innerHTML = data[index]["id"];
 
             let tdRa = document.createElement("td");
-            tdRa.innerHTML = data[index]["ra"];
+            tdRa.innerHTML = data[index]["consumer"]["person"]["ra"];
 
             let tdNome = document.createElement("td");
-            tdNome.innerHTML = data[index]["name"];
+            tdNome.innerHTML = data[index]["consumer"]["person"]["name"];
 
             let tdTag = document.createElement("td");
-            tdTag.innerHTML = data[index]["tag"];
+            tdTag.innerHTML = data[index]["consumer"]["tag"];
 
             let tdLocal = document.createElement("td");
-            tdLocal.innerHTML = data[index]["local"];
+            tdLocal.innerHTML = data[index]["local"]["name"];
 
             let tdDate = document.createElement("td");
             tdDate.innerHTML = data[index]["date"];
