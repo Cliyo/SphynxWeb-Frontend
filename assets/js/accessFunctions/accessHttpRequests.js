@@ -7,6 +7,36 @@ const accessDailyButton = document.querySelector("#sub-item-access-daily");
 const accessLocalButton = document.querySelector("#sub-item-access-local");
 const accessConsumerButton = document.querySelector("#sub-item-access-consumer");
 
+// WEBSOCKET //
+const ws = new WebSocket("ws://192.168.15.6/ws")
+
+ws.onmessage = (data) => {
+    fetch(`http://localhost:8080/accessRegister`, {
+        mode: "cors",
+        method: "POST",
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
+            'Access-Control-Allow-Origin': 'http://localhost:8080',
+            'Access-Control-Allow-Credentials': 'true',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            tag: data.data,
+            local: "Sala10"
+        })
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        ws.send("true");
+    })
+    .catch(err => {
+        console.log(err);
+        ws.send("false");
+    })
+}
+
 // HTTP REQUESTS TO THE API //
 accessAllButton.addEventListener("click", (event) => {
     event.preventDefault()
