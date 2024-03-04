@@ -1,0 +1,19 @@
+{
+    "access": "Access Registers",
+    "access-all": "View all",
+    "access-date": "By date",
+    "access-local": "By local",
+    "access-consumer": "By consumer",
+    
+    "consumer": "Consumer",
+    "consumer-register": "Register",
+    "consumer-update": "Edit",
+    "consumer-get": "View all",
+    "consumer-delete": "Delete",
+
+    "local": "Local",
+    "local-register": "Register",
+    "local-update": "Edit",
+    "local-get": "View all",
+    "local-delete": "Delete"
+}

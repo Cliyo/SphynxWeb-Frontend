@@ -1,0 +1,19 @@
+{
+    "access": "Registros de Acesso",
+    "access-all": "Ver tudo",
+    "access-date": "Por data",
+    "access-local": "Por local",
+    "access-consumer": "Por usuário",
+    
+    "consumer": "Usuários",
+    "consumer-register": "Registrar",
+    "consumer-update": "Editar",
+    "consumer-get": "Ver tudo",
+    "consumer-delete": "Deletar",
+
+    "local": "Locais",
+    "local-register": "Registrar",
+    "local-update": "Editar",
+    "local-get": "Ver tudo",
+    "local-delete": "Deletar"
+}
