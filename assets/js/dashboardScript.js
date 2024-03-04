@@ -1,40 +1,5 @@
 $('.sub-btn').next('.sub-menu').slideToggle();
 
-if(localStorage.getItem("token")){
-    fetch("http://localhost:8080/login/verify",{
-        mode: 'cors',
-        method: "POST",
-        headers: {
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "token": localStorage.getItem("token")
-        })
-    })
-
-    .then(response => {
-        if(response.status == 403){
-            window.location = "loginPage.html";
-            
-            throw new Error("HTTP Status " + response.status);
-
-        } else{
-            return response.json();
-        }
-    })
-    .then(data => {
-        if(data["result"] == false){
-            window.location = "loginPage.html";
-        }
-    })
-    .catch(err => {
-        console.log(err);
-    })
-} else{
-    window.location = "loginPage.html";
-}
 
 
 $(document).ready(function(){

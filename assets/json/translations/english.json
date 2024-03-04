@@ -15,5 +15,8 @@
     "local-register": "Register",
     "local-update": "Edit",
     "local-get": "View all",
-    "local-delete": "Delete"
+    "local-delete": "Delete",
+
+    "name": "Name",
+    "date": "Date"
 }

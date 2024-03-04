@@ -13,8 +13,11 @@ check.addEventListener("change", (event) => {
     }
 })
 
+const titles = document.querySelectorAll("h1");
 const subitem = document.querySelectorAll(".sub-item");
 const menus = document.querySelectorAll(".sub-btn");
+const columns = document.querySelectorAll("th");
+const buttons = document.querySelectorAll(".submit");
 
 function changeToPortuguese(){
     subitem.forEach(item => {
@@ -40,7 +43,33 @@ function changeToPortuguese(){
         }
     });
 
+    columns.forEach(column => {
+        if("name" in column.dataset){
+            column.innerHTML = translateBr.name;
+        }
 
+        if("date" in column.dataset){
+            column.innerHTML = translateBr.date;
+        }
+    });
+
+    titles.forEach(title => {
+        if("register" in title.dataset){
+            title.innerHTML = translateBr["consumer-register"]
+        }
+
+        if("update" in title.dataset){
+            title.innerHTML = translateBr["consumer-update"];
+        }
+
+        if("delete" in title.dataset){
+            title.innerHTML = translateBr["consumer-delete"];
+        }
+    });
+
+    buttons.forEach(button => {
+        button.value = "Finalizar";
+    });
 }
 
 function changeToEnglish(){
@@ -66,7 +95,35 @@ function changeToEnglish(){
         if("local" in menu.dataset){
             menu.innerHTML = '<i class="fa-solid fa-chevron-right dropdown"></i> ' + translateEn.local;
         }
-    })
+    });
+    
+    columns.forEach(column => {
+        if("name" in column.dataset){
+            column.innerHTML = translateEn.name;
+        }
+
+        if("date" in column.dataset){
+            column.innerHTML = translateEn.date;
+        }
+    });
+
+    titles.forEach(title => {
+        if("register" in title.dataset){
+            title.innerHTML = translateEn["consumer-register"]
+        }
+
+        if("update" in title.dataset){
+            title.innerHTML = translateEn["consumer-update"];
+        }
+
+        if("delete" in title.dataset){
+            title.innerHTML = translateEn["consumer-delete"];
+        }
+    });
+
+    buttons.forEach(button => {
+        button.value = "Finalize";
+    });
 }
 
 

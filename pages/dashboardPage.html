@@ -16,11 +16,14 @@
 </head>
 <body>
     <section>
+
+        <input class="checkbox" type="checkbox">
+
         <div class="side-bar">
             <div class="menu">
 
                 <div class="item"> 
-                    <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Access Registers </a> 
+                    <a class="sub-btn" data-access> <i class="fa-solid fa-chevron-right dropdown"></i> Access Registers </a> 
                     <div class="sub-menu">
                         <a id="sub-item-access-all" class="sub-item"> View all </a>
                         <a id="sub-item-access-date" class="sub-item"> By date </a>
@@ -30,7 +33,7 @@
                 </div>
 
                 <div class="item"> 
-                    <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Consumers </a> 
+                    <a class="sub-btn" data-consumer> <i class="fa-solid fa-chevron-right dropdown"></i> Consumers </a> 
                     <div class="sub-menu">
                         <a id="sub-item-consumer-register" class="sub-item"> Register </a>
                         <a id="sub-item-consumer-update" class="sub-item"> Edit </a>
@@ -40,20 +43,12 @@
                 </div>
 
                 <div class="item"> 
-                    <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Locals </a> 
+                    <a class="sub-btn" data-local> <i class="fa-solid fa-chevron-right dropdown"></i> Locals </a> 
                     <div class="sub-menu">
                         <a id="sub-item-local-register" class="sub-item"> Register </a>
                         <a id="sub-item-local-update" class="sub-item"> Edit </a>
                         <a id="sub-item-local-get" class="sub-item"> View all </a>
                         <a id="sub-item-local-delete" class="sub-item"> Delete </a>
-                    </div>
-                </div>
-
-                <div class="item"> 
-                    <a class="sub-btn"> <i class="fa-solid fa-chevron-right dropdown"></i> Wifi Connection </a> 
-                    <div class="sub-menu">
-                        <a href="#" class="sub-item"> Connect </a>
-                        <a href="#" class="sub-item"> Disconnect </a>
                     </div>
                 </div>
             
@@ -73,10 +68,10 @@
                         <tr>
                             <th> ID </th>
                             <th> RA </th>
-                            <th> Name </th>
+                            <th data-name> Name </th>
                             <th> Tag </th>
                             <th> Local </th>
-                            <th> Date </th>
+                            <th data-date> Date </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,7 +83,7 @@
 
             <div id="consumer-register-div" class="consumer-register-div subscreen">
                 
-                <h1> Register </h1>
+                <h1 data-register> Register </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -106,7 +101,7 @@
             </div>
 
             <div id="consumer-update-div" class="consumer-update-div subscreen">
-                <h1> Update </h1>
+                <h1 data-update> Update </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -124,7 +119,7 @@
             </div>
 
             <div id="consumer-delete-div" class="consumer-update-div subscreen">
-                <h1> Delete </h1>
+                <h1 data-delete> Delete </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -146,7 +141,7 @@
                         <tr>
                             <th> ID </th>
                             <th> RA </th>
-                            <th> Nome </th>
+                            <th data-name> Name </th>
                             <th> Tag </th>
                         </tr>
                     </thead>
@@ -159,7 +154,7 @@
 
             <div id="local-register-div" class="local-register-div subscreen">
                 
-                <h1> Register </h1>
+                <h1 data-register> Register </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -177,7 +172,7 @@
             </div>
 
             <div id="local-update-div" class="local-update-div subscreen">
-                <h1> Update </h1>
+                <h1 data-update> Update </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -195,7 +190,7 @@
             </div>
 
             <div id="local-delete-div" class="local-update-div subscreen">
-                <h1> Delete </h1>
+                <h1 data-delete> Delete </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -216,8 +211,8 @@
                     <thead>
                         <tr>
                             <th> ID </th>
-                            <th> Name </th>
-                            <th> Mac </th>
+                            <th data-name> Name </th>
+                            <th> Ipv4 </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -229,6 +224,7 @@
         </div>
     </section>
 </body>
+
 <script src="../assets/js/dashboardScript.js"></script>
 
 <script src="../assets/js/consumerFunctions/consumerMenus.js"></script>
@@ -239,5 +235,7 @@
 
 <script src="../assets/js/localFunctions/localMenus.js"></script>
 <script src="../assets/js/localFunctions/localHttpRequests.js"></script>
+
+<script type="module" src="../assets/js/translate.js"></script>
 
 </html>
