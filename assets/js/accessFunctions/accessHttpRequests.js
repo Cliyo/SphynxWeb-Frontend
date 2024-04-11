@@ -10,7 +10,7 @@ const accessLocalButton = document.querySelector("#sub-item-access-local");
 const accessConsumerButton = document.querySelector("#sub-item-access-consumer");
 
 // WEBSOCKET //
-finder.forEach(esp => {
+await finder.forEach(esp => {
     esp.onmessage = (data) => {
         fetch(`http://localhost:8080/accessRegister`, {
             mode: "cors",
