@@ -26,25 +26,23 @@ formConsumerRegister.addEventListener("submit", (event) => {
         body: jsonData
     })
     .then(response => {
-        if(!response.ok){
-            let message = formConsumerRegister.parentNode.querySelector("#alert");
-            message.innerHTML = "Error...";
-            message.style.color = "#FF0000";
-
-            throw new Error("HTTP Status " + response.status);
-        }
-        
         return response.json();
     })
     .then(data => {
-        let message = formConsumerRegister.parentNode.querySelector("#alert");
-        message.innerHTML = "Consumer created!";
-        message.style.color = "#00FF00";
-        window.location = "dashboardPage.html";
+        if(data.message){
+            let message = formConsumerRegister.parentNode.querySelector("#alert");
+            message.innerHTML = data.message;
+            message.style.color = "#FF0000";
+        } else{
+            let message = formConsumerRegister.parentNode.querySelector("#alert");
+            message.innerHTML = "Consumer created!";
+            message.style.color = "#00FF00";
+            window.location = "dashboardPage.html";
+        } 
     })
     .catch(err => {
         let message = formConsumerRegister.parentNode.querySelector("#alert");
-        message.innerHTML = "Error...";
+        message.innerHTML = "Intern Error...";
         message.style.color = "#FF0000";
     })
 })
@@ -67,21 +65,20 @@ formConsumerUpdate.addEventListener("submit", (event) => {
         body: JSON.stringify({"tag": data["tag"]})
     })
     .then(response => {
-        if(!response.ok){
-            let message = formConsumerUpdate.parentNode.querySelector("#alert");
-            message.innerHTML = "Error..."
-            message.style.color = "#FF0000";
-
-            throw new Error("HTTP Status " + response.status);
-        }
-        
         return response.json();
     })
     .then(data => {
-        let message = formConsumerUpdate.parentNode.querySelector("#alert");
-        message.innerHTML = "Consumer edited!";
-        message.style.color = "#00FF00";
-        window.location = "dashboardPage.html";
+        if(data.message){
+            let message = formConsumerUpdate.parentNode.querySelector("#alert");
+            message.innerHTML = data.message;
+            message.style.color = "#FF0000";
+        } else{
+            let message = formConsumerUpdate.parentNode.querySelector("#alert");
+            message.innerHTML = "Consumer edited!";
+            message.style.color = "#00FF00";
+            window.location = "dashboardPage.html";
+        }
+        
     })
     .catch(err => {
         let message = formConsumerUpdate.parentNode.querySelector("#alert");

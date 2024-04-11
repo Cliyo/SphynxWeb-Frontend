@@ -26,21 +26,20 @@ formLocalRegister.addEventListener("submit", (event) => {
         body: jsonData
     })
     .then(response => {
-        if(!response.ok){
-            let message = formLocalRegister.parentNode.querySelector("#alert");
-            message.innerHTML = "Error...";
-            message.style.color = "#FF0000";
-
-            throw new Error("HTTP Status " + response.status);
-        }
-        
         return response.json();
     })
     .then(data => {
-        let message = formLocalRegister.parentNode.querySelector("#alert");
-        message.innerHTML = "Local created!";
-        message.style.color = "#00FF00";
-        window.location = "dashboardPage.html";
+        if(data.message){
+            let message = formLocalRegister.parentNode.querySelector("#alert");
+            message.innerHTML = data.message;
+            message.style.color = "#FF0000";
+        } else{
+            let message = formLocalRegister.parentNode.querySelector("#alert");
+            message.innerHTML = "Local created!";
+            message.style.color = "#00FF00";
+            window.location = "dashboardPage.html";
+        }
+        
     })
     .catch(err => {
         let message = formLocalRegister.parentNode.querySelector("#alert");
@@ -67,21 +66,20 @@ formLocalUpdate.addEventListener("submit", (event) => {
         body: JSON.stringify({"mac": data["mac"]})
     })
     .then(response => {
-        if(!response.ok){
-            let message = formLocalUpdate.parentNode.querySelector("#alert");
-            message.innerHTML = "Error..."
-            message.style.color = "#FF0000";
-
-            throw new Error("HTTP Status " + response.status);
-        }
-        
         return response.json();
     })
     .then(data => {
-        let message = formLocalUpdate.parentNode.querySelector("#alert");
-        message.innerHTML = "Local edited!";
-        message.style.color = "#00FF00";
-        window.location = "dashboardPage.html";
+        if(data.message){
+            let message = formLocalUpdate.parentNode.querySelector("#alert");
+            message.innerHTML = data.message;
+            message.style.color = "#FF0000";
+        } else{
+            let message = formLocalUpdate.parentNode.querySelector("#alert");
+            message.innerHTML = "Local edited!";
+            message.style.color = "#00FF00";
+            window.location = "dashboardPage.html";
+        }
+
     })
     .catch(err => {
         let message = formLocalUpdate.parentNode.querySelector("#alert");
