@@ -22,9 +22,9 @@ async function finder(){
                 }
             })
         });
+
+        return arrayEsp;
     })
 }
 
-await finder();
-
-export default arrayEsp;
+export default finder;

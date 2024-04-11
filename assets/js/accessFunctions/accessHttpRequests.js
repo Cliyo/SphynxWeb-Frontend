@@ -1,4 +1,4 @@
-import arrayEsp from "../sphynxFinder";
+import finder from "../sphynxFinder";
 
 // TABLE //
 const accessGetTableData = accessGetDiv.querySelector(".content-table").querySelector("tbody");
@@ -10,7 +10,7 @@ const accessLocalButton = document.querySelector("#sub-item-access-local");
 const accessConsumerButton = document.querySelector("#sub-item-access-consumer");
 
 // WEBSOCKET //
-arrayEsp.forEach(esp => {
+finder.forEach(esp => {
     esp.onmessage = (data) => {
         fetch(`http://localhost:8080/accessRegister`, {
             mode: "cors",
