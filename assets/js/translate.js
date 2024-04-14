@@ -1,13 +1,11 @@
 import translateBr from "../json/translations/portuguese.json" assert { type: "json" };
+import { language } from "./dashboardScript";
 
 const titles = document.querySelectorAll("h1");
 const subitem = document.querySelectorAll(".sub-item");
 const menus = document.querySelectorAll(".sub-btn");
 const columns = document.querySelectorAll("th");
 const buttons = document.querySelectorAll(".submit");
-
-const urlParams = new URLSearchParams(window.location.search);
-const language = urlParams.get("language");
 
 if(language == "pt"){
     subitem.forEach(item => {

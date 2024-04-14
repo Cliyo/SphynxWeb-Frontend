@@ -1,3 +1,5 @@
+import { header, language } from "../dashboardScript.js";
+
 // CONSUMER FORMS //
 const formConsumerRegister = document.querySelector("#consumer-register-form");
 const formConsumerUpdate = document.querySelector("#consumer-update-form");
@@ -8,7 +10,7 @@ const consumersTableData = consumerGetDiv.querySelector(".content-table").queryS
 
 // HTTP REQUESTS TO THE API //
 formConsumerRegister.addEventListener("submit", (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     var formData =  new FormData(formConsumerRegister);
     var data = Object.fromEntries(formData);
@@ -17,12 +19,7 @@ formConsumerRegister.addEventListener("submit", (event) => {
     fetch("http://localhost:8080/consumer", {
         mode: "cors",
         method: "POST",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        },
+        headers: header,
         body: jsonData
     })
     .then(response => {
@@ -56,12 +53,7 @@ formConsumerUpdate.addEventListener("submit", (event) => {
     fetch(`http://localhost:8080/consumer/${data["ra"]}`, {
         mode: "cors",
         method: "PUT",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        },
+        headers: header,
         body: JSON.stringify({"tag": data["tag"]})
     })
     .then(response => {
@@ -96,12 +88,7 @@ formConsumerDelete.addEventListener("submit", (event) => {
     fetch(`http://localhost:8080/consumer/${data["ra"]}`, {
         mode: "cors",
         method: "DELETE",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        },
+        headers: header,
         body: JSON.stringify({})
     })
     .then(response => {
@@ -135,12 +122,7 @@ subItemConsumerGet.addEventListener("click", (event) => {
     fetch(`http://localhost:8080/consumer`, {
         mode: "cors",
         method: "GET",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        }
+        headers: header
     })
     .then(response => {
         if(!response.ok){

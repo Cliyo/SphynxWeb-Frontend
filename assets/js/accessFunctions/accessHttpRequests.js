@@ -15,12 +15,7 @@ arrayEsp.forEach(esp => {
         fetch(`http://localhost:8080/accessRegister`, {
             mode: "cors",
             method: "POST",
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem("token")}`,
-                'Access-Control-Allow-Origin': 'http://localhost:8080',
-                'Access-Control-Allow-Credentials': 'true',
-                'Content-Type': 'application/json'
-            },
+            headers: header,
             body: JSON.stringify({
                 tag: data.data,
                 local: "sala apenas teste"
@@ -45,12 +40,7 @@ accessAllButton.addEventListener("click", (event) => {
     fetch(`http://localhost:8080/accessRegister`, {
         mode: "cors",
         method: "GET",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        }
+        headers: header
     })
     .then(response => {
         if(!response.ok){
@@ -107,12 +97,7 @@ raInput.addEventListener("focusout", (event) => {
     fetch(`http://localhost:8080/accessRegister/byRa/${ra}`, {
         mode: "cors",
         method: "GET",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        }
+        headers: header
     })
     .then(response => {
         if(!response.ok){
@@ -169,12 +154,7 @@ localInput.addEventListener("focusout", (event) => {
     fetch(`http://localhost:8080/accessRegister/byLocal/${local}`, {
         mode: "cors",
         method: "GET",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        }
+        headers: header
     })
     .then(response => {
         if(!response.ok){
@@ -236,12 +216,7 @@ dateInput.addEventListener("focusout", (event) => {
     fetch(`http://localhost:8080/accessRegister/byDate/${dateComplete}`, {
         mode: "cors",
         method: "GET",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        }
+        headers: header
     })
     .then(response => {
         if(!response.ok){

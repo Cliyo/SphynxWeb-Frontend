@@ -1,3 +1,5 @@
+import { header } from "../dashboardScript.js";
+
 // CONSUMER FORMS //
 const formLocalRegister = document.querySelector("#local-register-form");
 const formLocalUpdate = document.querySelector("#local-update-form");
@@ -17,12 +19,7 @@ formLocalRegister.addEventListener("submit", (event) => {
     fetch("http://localhost:8080/local", {
         mode: "cors",
         method: "POST",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        },
+        headers: header,
         body: jsonData
     })
     .then(response => {
@@ -57,12 +54,7 @@ formLocalUpdate.addEventListener("submit", (event) => {
     fetch(`http://localhost:8080/local/${data["name"]}`, {
         mode: "cors",
         method: "PUT",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        },
+        headers: header,
         body: JSON.stringify({"mac": data["mac"]})
     })
     .then(response => {
@@ -97,12 +89,7 @@ formLocalDelete.addEventListener("submit", (event) => {
     fetch(`http://localhost:8080/local/${data["name"]}`, {
         mode: "cors",
         method: "DELETE",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        },
+        headers: header,
         body: JSON.stringify({})
     })
     .then(response => {
@@ -136,12 +123,7 @@ subItemLocalGet.addEventListener("click", (event) => {
     fetch(`http://localhost:8080/local`, {
         mode: "cors",
         method: "GET",
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem("token")}`,
-            'Access-Control-Allow-Origin': 'http://localhost:8080',
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        }
+        headers: header
     })
     .then(response => {
         if(!response.ok){
