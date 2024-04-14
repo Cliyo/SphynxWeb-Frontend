@@ -1,0 +1,13 @@
+.translate-div{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    width: 50px;
+    justify-content: space-between;
+}
+
+.translate-div p,a{
+    color: white;
+    font-weight: bold;
+}
