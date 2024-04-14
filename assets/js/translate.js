@@ -1,5 +1,5 @@
 import translateBr from "../json/translations/portuguese.json" assert { type: "json" };
-import { language } from "./dashboardScript";
+import { language } from "./dashboardScript.js";
 
 const titles = document.querySelectorAll("h1");
 const subitem = document.querySelectorAll(".sub-item");
