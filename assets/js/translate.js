@@ -20,18 +20,20 @@ fetch('../assets/i18n/' + userLanguage + '.json')
                         element.textContent = data[key];
                     }
                 })
-            }
-
-            var element = document.getElementById(key);
-            if (element) {
-                if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'password')) {
-                    element.placeholder = data[key];
-                } else if (element.tagName === 'INPUT' && element.type === 'submit') {
-                    element.value = data[key];
-                } else {
-                    element.textContent = data[key];
+            } else{
+                var element = document.getElementById(key);
+                if (element) {
+                    if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'password')) {
+                        element.placeholder = data[key];
+                    } else if (element.tagName === 'INPUT' && element.type === 'submit') {
+                        element.value = data[key];
+                    } else {
+                        element.textContent = data[key];
+                    }
                 }
             }
+
+            
         });
     })
     .catch(error => {
