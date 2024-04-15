@@ -1,0 +1,49 @@
+{
+    "login-title": "Sphynx - Entrar",
+    "input-user": "Usuário",
+    "password-user": "Senha",
+    "submit-login": "Entrar",
+    "submit": "Enviar",
+
+    "dashboard-title": "Sphynx - Dashboard",
+
+    "access-menu": "Registros de Acesso",
+    "sub-item-access-all": "Ver tudo",
+    "sub-item-access-date": "Por data",
+    "sub-item-access-local": "Por local",
+    "sub-item-access-consumer": "Por usuário",
+    
+    "consumers-menu": "Usuários",
+    "sub-item-consumer-register": "Registrar",
+    "sub-item-consumer-update": "Editar",
+    "sub-item-consumer-get": "Ver tudo",
+    "sub-item-consumer-delete": "Deletar",
+
+    "register":"Registrar",
+    "update": "Atualizar",
+    "delete": "Deletar",
+
+    "locals-menu": "Locais",
+    "sub-item-local-register": "Registrar",
+    "sub-item-local-update": "Editar",
+    "sub-item-local-get": "Ver tudo",
+    "sub-item-local-delete": "Deletar",
+    
+    "ra-input": "RA",
+    "local-input": "Local",
+    "date-input": "Data",
+    "tag-input": "Tag Mifare",
+    "name-input": "Nome",
+    "mac-input": "Endereço MAC",
+    
+    "id-table": "ID",
+    "ra-table": "RA",
+    "name-table": "Nome",
+    "tag-table": "Tag",
+    "local-table": "Local",
+    "date-table": "Data",
+    "ipv4-table": "IP",
+
+    "name": "Nome",
+    "date": "Data"
+}

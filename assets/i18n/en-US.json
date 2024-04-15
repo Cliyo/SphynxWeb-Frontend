@@ -1,0 +1,29 @@
+{
+    "login-title": "Sphynx - Login",
+    "input-user": "User",
+    "password-user": "Password",
+    "submit-login": "Login",
+
+    "dashboard-title": "Sphynx - Dashboard",
+
+    "access-menu": "Acess registers",
+    "sub-item-access-all": "View all",
+    "sub-item-access-date": "View by date",
+    "sub-item-access-local": "View by local",
+    "sub-item-access-consumer": "View by user",
+    
+    "consumers-menu": "Consumers",
+    "sub-item-consumer-register": "Register",
+    "sub-item-consumer-update": "Edit",
+    "sub-item-consumer-get": "View all",
+    "sub-item-consumer-delete": "Delete",
+
+    "locals-menu": "Locals",
+    "sub-item-local-register": "Register",
+    "sub-item-local-update": "Edit",
+    "sub-item-local-get": "View all",
+    "sub-item-local-delete": "Delete",
+    
+    "name": "Name",
+    "date": "Date"
+}

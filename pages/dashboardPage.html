@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,20 +13,20 @@
     <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="UTF-8"></script>
 
-    <title> Sphynx - Dashboard </title>
+    <title id="dashboard-title"> Sphynx - Dashboard </title>
 </head>
 <body>
     <section>
 
         <div class="translate-div">
-            <a href="/pages/dashboardPage.html?language=pt"> PT </a> <p> | </p> <a href="/pages/dashboardPage.html?language=en"> EN </a>
+            <a href="/pages/dashboardPage.html?language=pt-BR"> PT </a> <p> | </p> <a href="/pages/dashboardPage.html?language=en-US"> EN </a>
         </div>
 
         <div class="side-bar">
             <div class="menu">
 
                 <div class="item"> 
-                    <a class="sub-btn" data-access> <i class="fa-solid fa-chevron-right dropdown"></i> Access Registers </a> 
+                    <a class="sub-btn" data-access id="access-menu"> <i class="fa-solid fa-chevron-right dropdown"></i> Access Registers </a> 
                     <div class="sub-menu">
                         <a id="sub-item-access-all" class="sub-item"> View all </a>
                         <a id="sub-item-access-date" class="sub-item"> By date </a>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="item"> 
-                    <a class="sub-btn" data-consumer> <i class="fa-solid fa-chevron-right dropdown"></i> Consumers </a> 
+                    <a class="sub-btn" data-consumer id="consumers-menu"> <i class="fa-solid fa-chevron-right dropdown"></i> Consumers </a> 
                     <div class="sub-menu">
                         <a id="sub-item-consumer-register" class="sub-item"> Register </a>
                         <a id="sub-item-consumer-update" class="sub-item"> Edit </a>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="item"> 
-                    <a class="sub-btn" data-local> <i class="fa-solid fa-chevron-right dropdown"></i> Locals </a> 
+                    <a class="sub-btn" data-local id="locals-menu"> <i class="fa-solid fa-chevron-right dropdown"></i> Locals </a> 
                     <div class="sub-menu">
                         <a id="sub-item-local-register" class="sub-item"> Register </a>
                         <a id="sub-item-local-update" class="sub-item"> Edit </a>
@@ -69,12 +69,12 @@
                 <table class="content-table">
                     <thead>
                         <tr>
-                            <th> ID </th>
-                            <th> RA </th>
-                            <th data-name> Name </th>
-                            <th> Tag </th>
-                            <th> Local </th>
-                            <th data-date> Date </th>
+                            <th id="id-table"> ID </th>
+                            <th id="ra-table"> RA </th>
+                            <th data-name id="name-table"> Name </th>
+                            <th id="tag-table"> Tag </th>
+                            <th id="local-table"> Local </th>
+                            <th data-date id="date-table"> Date </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -86,7 +86,7 @@
 
             <div id="consumer-register-div" class="consumer-register-div subscreen">
                 
-                <h1 data-register> Register </h1>
+                <h1 data-register id="register"> Register </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -104,7 +104,7 @@
             </div>
 
             <div id="consumer-update-div" class="consumer-update-div subscreen">
-                <h1 data-update> Update </h1>
+                <h1 data-update id="update"> Update </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -122,7 +122,7 @@
             </div>
 
             <div id="consumer-delete-div" class="consumer-update-div subscreen">
-                <h1 data-delete> Delete </h1>
+                <h1 data-delete id="delete"> Delete </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -142,10 +142,10 @@
                 <table class="content-table">
                     <thead>
                         <tr>
-                            <th> ID </th>
-                            <th> RA </th>
-                            <th data-name> Name </th>
-                            <th> Tag </th>
+                            <th id="id-table"> ID </th>
+                            <th id="ra-table"> RA </th>
+                            <th data-name id="name-table"> Name </th>
+                            <th id="tag-table"> Tag </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -157,7 +157,7 @@
 
             <div id="local-register-div" class="local-register-div subscreen">
                 
-                <h1 data-register> Register </h1>
+                <h1 data-register id="register"> Register </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -175,7 +175,7 @@
             </div>
 
             <div id="local-update-div" class="local-update-div subscreen">
-                <h1 data-update> Update </h1>
+                <h1 data-update id="update"> Update </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -193,7 +193,7 @@
             </div>
 
             <div id="local-delete-div" class="local-update-div subscreen">
-                <h1 data-delete> Delete </h1>
+                <h1 data-delete id="delete"> Delete </h1>
 
                 <p id="alert" class="alert"></p>
 
@@ -213,9 +213,9 @@
                 <table class="content-table">
                     <thead>
                         <tr>
-                            <th> ID </th>
-                            <th data-name> Name </th>
-                            <th> Ipv4 </th>
+                            <th id="id-table"> ID </th>
+                            <th data-name id="name-table"> Name </th>
+                            <th id="ipv4-table"> Ipv4 </th>
                         </tr>
                     </thead>
                     <tbody>
