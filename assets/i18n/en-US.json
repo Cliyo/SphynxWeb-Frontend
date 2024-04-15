@@ -3,10 +3,11 @@
     "input-user": "User",
     "password-user": "Password",
     "submit-login": "Login",
+    "submit": "Submit",
 
     "dashboard-title": "Sphynx - Dashboard",
 
-    "access-menu": "Acess registers",
+    "access-menu": "Access registers",
     "sub-item-access-all": "View all",
     "sub-item-access-date": "View by date",
     "sub-item-access-local": "View by local",
@@ -18,12 +19,31 @@
     "sub-item-consumer-get": "View all",
     "sub-item-consumer-delete": "Delete",
 
+    "register":"Register",
+    "update": "Update",
+    "delete": "Delete",
+
     "locals-menu": "Locals",
     "sub-item-local-register": "Register",
     "sub-item-local-update": "Edit",
     "sub-item-local-get": "View all",
     "sub-item-local-delete": "Delete",
     
+    "ra-input": "RA",
+    "local-input": "Local",
+    "date-input": "Date",
+    "tag-input": "Mifare TAG",
+    "name-input": "Name",
+    "mac-input": "MAC Address",
+    
+    "id-table": "ID",
+    "ra-table": "RA",
+    "name-table": "Name",
+    "tag-table": "Tag",
+    "local-table": "Local",
+    "date-table": "Date",
+    "ipv4-table": "IP ADDR",
+
     "name": "Name",
     "date": "Date"
 }
