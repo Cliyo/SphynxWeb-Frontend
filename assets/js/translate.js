@@ -8,9 +8,9 @@ fetch('../assets/i18n/' + userLanguage + '.json')
     .then(response => response.json())
     .then(data => {
         Object.keys(data).forEach(key => {
-            
+
             var elements = document.querySelectorAll(key);
-            if(element.length > 1){
+            if(elements.length > 1){
                 elements.forEach(element => {
                     if (element.tagName === 'INPUT' && (element.type === 'text' || element.type === 'password')) {
                         element.placeholder = data[key];
