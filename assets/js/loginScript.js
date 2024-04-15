@@ -18,7 +18,7 @@ if(localStorage.getItem("token")){
     .then(response => response.json())
     .then(data => {
         if(data["result"] == true){
-            window.location = "dashboardPage.html";
+            window.location = "pages/dashboardPage.html";
         }
     })
     .catch(err => {
@@ -58,7 +58,7 @@ form.addEventListener("submit", (event) => {
         message.innerHTML = "Logged!";
         message.style.color = "#00FF00";
         localStorage.setItem("token", data["token"]);
-        window.location = "dashboardPage.html";
+        window.location = "pages/dashboardPage.html";
     })
     .catch(err => {
         console.log(err);
