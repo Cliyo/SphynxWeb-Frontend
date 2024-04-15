@@ -1,4 +1,5 @@
-import { language } from "./dashboardScript.js";
+const urlParams = new URLSearchParams(window.location.search);
+const language = urlParams.get("language");
 
 var userLanguage = language || navigator.language || navigator.userLanguage;
 console.log(userLanguage);
