@@ -26,13 +26,13 @@ formLocalRegister.addEventListener("submit", (event) => {
         return response.json();
     })
     .then(data => {
-        if(data.message){
+        if(data.message == 400){
             let message = formLocalRegister.parentNode.querySelector("#alert");
             message.innerHTML = data.message;
             message.style.color = "#FF0000";
         } else{
             let message = formLocalRegister.parentNode.querySelector("#alert");
-            message.innerHTML = "Local created!";
+            message.innerHTML = data.message;
             message.style.color = "#00FF00";
             window.location = "dashboardPage.html";
         }
@@ -61,13 +61,13 @@ formLocalUpdate.addEventListener("submit", (event) => {
         return response.json();
     })
     .then(data => {
-        if(data.message){
+        if(data.message == 400){
             let message = formLocalUpdate.parentNode.querySelector("#alert");
             message.innerHTML = data.message;
             message.style.color = "#FF0000";
         } else{
             let message = formLocalUpdate.parentNode.querySelector("#alert");
-            message.innerHTML = "Local edited!";
+            message.innerHTML = data.message;
             message.style.color = "#00FF00";
             window.location = "dashboardPage.html";
         }

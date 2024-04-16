@@ -26,13 +26,13 @@ formConsumerRegister.addEventListener("submit", (event) => {
         return response.json();
     })
     .then(data => {
-        if(data.message){
+        if(data.status == 400){
             let message = formConsumerRegister.parentNode.querySelector("#alert");
             message.innerHTML = data.message;
             message.style.color = "#FF0000";
         } else{
             let message = formConsumerRegister.parentNode.querySelector("#alert");
-            message.innerHTML = "Consumer created!";
+            message.innerHTML = data.message;
             message.style.color = "#00FF00";
             window.location = "dashboardPage.html";
         } 
@@ -60,13 +60,13 @@ formConsumerUpdate.addEventListener("submit", (event) => {
         return response.json();
     })
     .then(data => {
-        if(data.message){
+        if(data.message == 400){
             let message = formConsumerUpdate.parentNode.querySelector("#alert");
             message.innerHTML = data.message;
             message.style.color = "#FF0000";
         } else{
             let message = formConsumerUpdate.parentNode.querySelector("#alert");
-            message.innerHTML = "Consumer edited!";
+            message.innerHTML = data.message;
             message.style.color = "#00FF00";
             window.location = "dashboardPage.html";
         }
