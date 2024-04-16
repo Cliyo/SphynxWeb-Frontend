@@ -1,4 +1,4 @@
-import { header, language } from "../dashboardScript.js";
+import { header, language, IP } from "../dashboardScript.js";
 
 // CONSUMER FORMS //
 const formConsumerRegister = document.querySelector("#consumer-register-form");
@@ -16,7 +16,7 @@ formConsumerRegister.addEventListener("submit", (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    fetch("http://localhost:8080/consumer", {
+    fetch(`http://${IP}:8080/consumer`, {
         mode: "cors",
         method: "POST",
         headers: header,
@@ -50,7 +50,7 @@ formConsumerUpdate.addEventListener("submit", (event) => {
     var formData =  new FormData(formConsumerUpdate);
     var data = Object.fromEntries(formData);
 
-    fetch(`http://localhost:8080/consumer/${data["ra"]}`, {
+    fetch(`http://${IP}:8080/consumer/${data["ra"]}`, {
         mode: "cors",
         method: "PUT",
         headers: header,
@@ -85,7 +85,7 @@ formConsumerDelete.addEventListener("submit", (event) => {
     var formData =  new FormData(formConsumerDelete);
     var data = Object.fromEntries(formData);
 
-    fetch(`http://localhost:8080/consumer/${data["ra"]}`, {
+    fetch(`http://${IP}:8080/consumer/${data["ra"]}`, {
         mode: "cors",
         method: "DELETE",
         headers: header,
@@ -119,7 +119,7 @@ formConsumerDelete.addEventListener("submit", (event) => {
 
 subItemConsumerGet.addEventListener("click", (event) => {
     event.preventDefault()
-    fetch(`http://localhost:8080/consumer`, {
+    fetch(`http://${IP}:8080/consumer`, {
         mode: "cors",
         method: "GET",
         headers: header

@@ -1,3 +1,4 @@
+const IP = window.location.hostname
 $('.sub-btn').next('.sub-menu').slideToggle();
 
 $(document).ready(function(){
@@ -14,10 +15,10 @@ const language = urlParams.get("language");
 
 const header = {
     'Authorization': `Bearer ${localStorage.getItem("token")}`,
-    'Access-Control-Allow-Origin': 'http://localhost:8080',
+    'Access-Control-Allow-Origin': `http://${IP}:8080`,
     'Access-Control-Allow-Credentials': 'true',
     'Content-Type': 'application/json',
     'language': language
 }
 
-export {header, language};
+export {header, language, IP};

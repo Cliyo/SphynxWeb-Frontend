@@ -1,4 +1,4 @@
-import { header } from "../dashboardScript.js";
+import { header, IP } from "../dashboardScript.js";
 
 // CONSUMER FORMS //
 const formLocalRegister = document.querySelector("#local-register-form");
@@ -16,7 +16,7 @@ formLocalRegister.addEventListener("submit", (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    fetch("http://localhost:8080/local", {
+    fetch(`http://${IP}:8080/local`, {
         mode: "cors",
         method: "POST",
         headers: header,
@@ -51,7 +51,7 @@ formLocalUpdate.addEventListener("submit", (event) => {
     var formData =  new FormData(formLocalUpdate);
     var data = Object.fromEntries(formData);
 
-    fetch(`http://localhost:8080/local/${data["name"]}`, {
+    fetch(`http://${IP}:8080/local/${data["name"]}`, {
         mode: "cors",
         method: "PUT",
         headers: header,
@@ -86,7 +86,7 @@ formLocalDelete.addEventListener("submit", (event) => {
     var formData =  new FormData(formLocalDelete);
     var data = Object.fromEntries(formData);
 
-    fetch(`http://localhost:8080/local/${data["name"]}`, {
+    fetch(`http://${IP}:8080/local/${data["name"]}`, {
         mode: "cors",
         method: "DELETE",
         headers: header,
@@ -120,7 +120,7 @@ formLocalDelete.addEventListener("submit", (event) => {
 
 subItemLocalGet.addEventListener("click", (event) => {
     event.preventDefault()
-    fetch(`http://localhost:8080/local`, {
+    fetch(`http://${IP}:8080/local`, {
         mode: "cors",
         method: "GET",
         headers: header

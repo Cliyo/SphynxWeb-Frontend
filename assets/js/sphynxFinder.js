@@ -1,11 +1,12 @@
+import { IP } from "./dashboardScript.js"
 const arrayEsp = [];
 
 async function finder(){
-    fetch(`http://localhost:3000`, {
+    fetch(`http://${IP}:3000`, {
         mode: "cors",
         method: "GET",
         headers: {
-            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Origin': `http://${IP}:3000`,
             'Access-Control-Allow-Credentials': 'true',
             'Content-Type': 'application/json'
         }

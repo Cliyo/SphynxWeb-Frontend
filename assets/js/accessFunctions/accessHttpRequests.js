@@ -1,4 +1,5 @@
 import finder from "../sphynxFinder.js"; 
+import { IP } from "../dashboardScript.js"
 
 const arrayEsp = await finder();
 
@@ -14,7 +15,7 @@ const accessConsumerButton = document.querySelector("#sub-item-access-consumer")
 // WEBSOCKET //
 arrayEsp.forEach(esp => {
     esp.onmessage = (data) => {
-        fetch(`http://localhost:8080/accessRegister`, {
+        fetch(`http://${IP}:8080/accessRegister`, {
             mode: "cors",
             method: "POST",
             headers: header,
@@ -39,7 +40,7 @@ arrayEsp.forEach(esp => {
 // HTTP REQUESTS TO THE API //
 accessAllButton.addEventListener("click", (event) => {
     event.preventDefault()
-    fetch(`http://localhost:8080/accessRegister`, {
+    fetch(`http://${IP}:8080/accessRegister`, {
         mode: "cors",
         method: "GET",
         headers: header
@@ -96,7 +97,7 @@ raInput.addEventListener("focusout", (event) => {
 
     let ra = raInput.value;
 
-    fetch(`http://localhost:8080/accessRegister/byRa/${ra}`, {
+    fetch(`http://${IP}:8080/accessRegister/byRa/${ra}`, {
         mode: "cors",
         method: "GET",
         headers: header
@@ -153,7 +154,7 @@ localInput.addEventListener("focusout", (event) => {
 
     let local = localInput.value.replace(" ", "_");
 
-    fetch(`http://localhost:8080/accessRegister/byLocal/${local}`, {
+    fetch(`http://${IP}:8080/accessRegister/byLocal/${local}`, {
         mode: "cors",
         method: "GET",
         headers: header
@@ -215,7 +216,7 @@ dateInput.addEventListener("focusout", (event) => {
     let year = date.getFullYear();
     let dateComplete = year + "-" + month + "-" + day;
 
-    fetch(`http://localhost:8080/accessRegister/byDate/${dateComplete}`, {
+    fetch(`http://${IP}:8080/accessRegister/byDate/${dateComplete}`, {
         mode: "cors",
         method: "GET",
         headers: header
