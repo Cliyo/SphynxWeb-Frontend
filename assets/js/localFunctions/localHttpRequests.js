@@ -38,7 +38,7 @@ localRegisterDiv.addEventListener("click", async (event) => {
         tr.appendChild(tdIp);
         tr.appendChild(tdMac);
         
-        localRegisterDiv.querySelector("content-table").querySelector("tbody").appendChild(tr);
+        localRegisterDiv.querySelector(".content-table").querySelector("tbody").appendChild(tr);
     })
 })
 
