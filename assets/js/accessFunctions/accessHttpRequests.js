@@ -1,7 +1,8 @@
-import finder from "../sphynxFinder.js"; 
+import {finder, validateEspAndReturnWebsocket} from "../sphynxFinder.js"; 
 import { IP } from "../dashboardScript.js"
 
-const arrayEsp = await finder();
+const allIps = await finder();
+const arrayEsp = await validateEspAndReturnWebsocket(allIps);
 
 // TABLE //
 const accessGetTableData = accessGetDiv.querySelector(".content-table").querySelector("tbody");
