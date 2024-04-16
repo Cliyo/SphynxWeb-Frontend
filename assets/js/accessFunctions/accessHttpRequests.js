@@ -1,4 +1,6 @@
-import arrayEsp from "../sphynxFinder.js";
+import finder from "../sphynxFinder.js"; 
+
+const arrayEsp = await finder();
 
 // TABLE //
 const accessGetTableData = accessGetDiv.querySelector(".content-table").querySelector("tbody");
