@@ -42,41 +42,41 @@ localRegisterDiv.addEventListener("click", async (event) => {
     })
 })
 
-formLocalRegister.addEventListener("submit", (event) => {
-    event.preventDefault();
+// formLocalRegister.addEventListener("submit", (event) => {
+//     event.preventDefault();
 
-    var formData =  new FormData(formLocalRegister);
-    var data = Object.fromEntries(formData);
-    var jsonData = JSON.stringify(data);
+//     var formData =  new FormData(formLocalRegister);
+//     var data = Object.fromEntries(formData);
+//     var jsonData = JSON.stringify(data);
 
-    fetch(`http://${IP}:8080/local`, {
-        mode: "cors",
-        method: "POST",
-        headers: header,
-        body: jsonData
-    })
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        if(data.message == 400){
-            let message = formLocalRegister.parentNode.querySelector("#alert");
-            message.innerHTML = data.message;
-            message.style.color = "#FF0000";
-        } else{
-            let message = formLocalRegister.parentNode.querySelector("#alert");
-            message.innerHTML = data.message;
-            message.style.color = "#00FF00";
-            window.location = "dashboardPage.html";
-        }
+//     fetch(`http://${IP}:8080/local`, {
+//         mode: "cors",
+//         method: "POST",
+//         headers: header,
+//         body: jsonData
+//     })
+//     .then(response => {
+//         return response.json();
+//     })
+//     .then(data => {
+//         if(data.message == 400){
+//             let message = formLocalRegister.parentNode.querySelector("#alert");
+//             message.innerHTML = data.message;
+//             message.style.color = "#FF0000";
+//         } else{
+//             let message = formLocalRegister.parentNode.querySelector("#alert");
+//             message.innerHTML = data.message;
+//             message.style.color = "#00FF00";
+//             window.location = "dashboardPage.html";
+//         }
         
-    })
-    .catch(err => {
-        let message = formLocalRegister.parentNode.querySelector("#alert");
-        message.innerHTML = "Error...";
-        message.style.color = "#FF0000";
-    })
-})
+//     })
+//     .catch(err => {
+//         let message = formLocalRegister.parentNode.querySelector("#alert");
+//         message.innerHTML = "Error...";
+//         message.style.color = "#FF0000";
+//     })
+// })
 
 formLocalUpdate.addEventListener("submit", (event) => {
     event.preventDefault()
