@@ -1,4 +1,32 @@
-div.local-register-div, div.local-update-div{
+div.local-register-div{
+    position: relative;
+    display:none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 95%;
+    border-radius: 15px;
+    background-color: var(--color-background-bright);
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+}
+
+div.local-register-div::-webkit-scrollbar{
+    width: 10px;
+}
+
+div.local-register-div::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+   
+div.local-register-div::-webkit-scrollbar-thumb {
+    background: var(--color-background); 
+    border-radius: 10px;
+}
+
+
+div.local-update-div{
     position: relative;
     display:none;
     flex-direction: column;

@@ -1,16 +1,49 @@
 import { header, IP } from "../dashboardScript.js";
+import {finder, validateEsp} from "../sphynxFinder.js";
 
-// CONSUMER FORMS //
+// LOCAL FORMS //
 const formLocalRegister = document.querySelector("#local-register-form");
 const formLocalUpdate = document.querySelector("#local-update-form");
 const formLocalDelete = document.querySelector("#local-delete-form");
+
+// LOCAL BUTTON //
+const localRegisterDiv = document.querySelector("#local-register-div");
 
 // TABLE //
 const localsTableData = localGetDiv.querySelector(".content-table").querySelector("tbody"); 
 
 // HTTP REQUESTS TO THE API //
+localRegisterDiv.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const allIps = await finder();
+    const arrayEsp = await validateEsp(allIps);
+
+    arrayEsp.forEach(esp => {
+        let tr = document.createElement("tr");
+
+        let input = document.createElement("input");
+        input.type = "text";
+
+        let tdName = document.createElement("td");
+        tdName.appendChild(input);
+
+        let tdIp = document.createElement("td");
+        tdIp.innerHTML = esp.ip;
+
+        let tdMac = document.createElement("td");
+        tdDate.innerHTML = esp.mac;
+        
+        tr.appendChild(tdName);
+        tr.appendChild(tdIp);
+        tr.appendChild(tdMac);
+        
+        localRegisterDiv.querySelector("content-table").querySelector("tbody").appendChild(tr);
+    })
+})
+
 formLocalRegister.addEventListener("submit", (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     var formData =  new FormData(formLocalRegister);
     var data = Object.fromEntries(formData);
