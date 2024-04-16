@@ -1,8 +1,7 @@
 import { IP } from "./dashboardScript.js"
 
 async function finder(){
-    let result;
-    fetch(`http://${IP}:3000`, {
+    const response = await fetch(`http://${IP}:3000`, {
         mode: "cors",
         method: "GET",
         headers: {
@@ -10,15 +9,14 @@ async function finder(){
             'Access-Control-Allow-Credentials': 'true',
             'Content-Type': 'application/json'
         }
-    })
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        result = data;
-    })
+    });
 
-    return result;
+    if (!response.ok) {
+        console.error("Não foi possível pegar os dispositivos")
+    }
+
+    const data = await response.json();
+    return data;
 }
 
 async function validateEsp(data){
