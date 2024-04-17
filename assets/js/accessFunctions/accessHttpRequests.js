@@ -1,5 +1,5 @@
 import {finder, validateEspAndReturnWebsocket} from "../sphynxFinder.js"; 
-import { IP } from "../dashboardScript.js"
+import { header, IP } from "../dashboardScript.js"
 
 const allIps = await finder();
 const arrayEsp = await validateEspAndReturnWebsocket(allIps);
