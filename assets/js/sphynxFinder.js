@@ -22,39 +22,64 @@ async function finder(){
 async function validateEsp(data){
     let arrayEsp = [];
 
-    data.forEach(esp => {
-        try{
+    let connectionPromises = data.map(async esp => {
+        try {
             let ws = new WebSocket(`ws://${esp.ip}/ws`);
-            ws.onmessage = (data) => {
-                if(data.data == "$2a$12$X9my8HHbMJYk6y04FnR6ie1B/WnLOlBAeEMRhEOvt.8z/OmOR6kLS"){
-                    arrayEsp.push(esp);
-                }
-            }
-        } catch(error){
-            console.error("Error: ", error);
+
+            let messagePromise = new Promise((resolve, reject) => {
+                ws.onmessage = event => {
+                    if (event.data === "data") {
+                        arrayEsp.push(esp);
+                        resolve();
+                    }
+                };
+                ws.onerror = reject;
+                ws.onclose = () => {
+                    reject(new Error("Conexão com o WebSocket fechada"));
+                };
+            });
+
+            await messagePromise;
+
+        } catch (error) {
+            console.error("Erro: ", error);
         }
-        
     });
+
+    await Promise.all(connectionPromises);
 
     return arrayEsp;
 }
 
-async function validateEspAndReturnWebsocket(data){
+
+async function validateEspAndReturnWebsocket(data) {
     let arrayEsp = [];
 
-    data.forEach(esp => {
-        try{
+    let connectionPromises = data.map(async esp => {
+        try {
             let ws = new WebSocket(`ws://${esp.ip}/ws`);
-            ws.onmessage = (data) => {
-                if(data.data == "$2a$12$X9my8HHbMJYk6y04FnR6ie1B/WnLOlBAeEMRhEOvt.8z/OmOR6kLS"){
-                    arrayEsp.push(ws);
-                }
-            }
-        } catch(error){
-            console.error("Error: ", error);
+
+            let messagePromise = new Promise((resolve, reject) => {
+                ws.onmessage = event => {
+                    if (event.data === "data") {
+                        arrayEsp.push(ws);
+                        resolve();
+                    }
+                };
+                ws.onerror = reject;
+                ws.onclose = () => {
+                    reject(new Error("Conexão com o WebSocket fechada"));
+                };
+            });
+
+            await messagePromise;
+
+        } catch (error) {
+            console.error("Erro: ", error);
         }
-        
     });
+
+    await Promise.all(connectionPromises);
 
     return arrayEsp;
 }
