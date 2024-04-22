@@ -1,5 +1,6 @@
 import {finder, validateEspAndReturnWebsocket} from "../sphynxFinder.js"; 
 import { header, IP } from "../dashboardScript.js"
+import { raInput, localInput, dateInput, accessGetDiv } from "./accessMenus.js";
 
 const allIps = await finder();
 const arrayEsp = await validateEspAndReturnWebsocket(allIps);
@@ -9,9 +10,6 @@ const accessGetTableData = accessGetDiv.querySelector(".content-table").querySel
 
 // BUTTONS //
 const accessAllButton = document.querySelector("#sub-item-access-all");
-const accessDailyButton = document.querySelector("#sub-item-access-daily");
-const accessLocalButton = document.querySelector("#sub-item-access-local");
-const accessConsumerButton = document.querySelector("#sub-item-access-consumer");
 
 // WEBSOCKET //
 arrayEsp.forEach(esp => {

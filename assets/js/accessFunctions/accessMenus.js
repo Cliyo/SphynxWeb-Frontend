@@ -53,3 +53,5 @@ function showAndHide(){
         input.style.display = "none";
     });
 }
+
+export {accessGetDiv, raInput, localInput, dateInput}
