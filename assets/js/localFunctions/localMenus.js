@@ -28,18 +28,39 @@ subItemLocalRegister.addEventListener("click", async (event) => {
     allIps.forEach(esp => {
         let tr = document.createElement("tr");
 
-        let input = document.createElement("input");
-        input.type = "text";
-        input.className = "input-local-table";
-        input.id = "input-local-table";
+        // INPUT NAME //
+        let inputName = document.createElement("input");
+        inputName.type = "text";
+        inputName.className = "input-name-local-table";
+        inputName.id = "input-name-local-table";
 
         let tdName = document.createElement("td");
-        tdName.appendChild(input);
+        tdName.appendChild(inputName);
 
+        // INPUT PERMISSION //
+        let listPermissions = ["High", "Mid", "Low"];
+
+        let selectPermission = document.createElement("select");
+        selectPermission.className = "select-permission-local-table";
+        selectPermission.id = "select-permission-local-table";
+
+        for(let i = 0; i < 3; i++){
+            let option = document.createElement("option");
+            option.className = "select-permission-option";
+            option.innerHTML = i + " - " + listPermissions[i];
+            option.value = i;
+            selectPermission.appendChild(option);
+        }
+
+        let tdPermission = document.createElement("td");
+        tdPermission.appendChild(selectPermission);
+
+        // MAC COLUMN //
         let tdMac = document.createElement("td");
         tdMac.innerHTML = esp.mac;
         tdMac.id = "mac-local-table"
 
+        // INPUT SUBMIT BUTTON //
         let button = document.createElement("button");
         button.innerHTML = "Save";
         button.className = "button-local-table";
@@ -48,11 +69,13 @@ subItemLocalRegister.addEventListener("click", async (event) => {
             event.preventDefault();
     
             let mac = button.parentNode.parentNode.querySelector("#mac-local-table").innerHTML;
-            let name = button.parentNode.parentNode.querySelector("#input-local-table").value;
-        
+            let name = button.parentNode.parentNode.querySelector("#input-name-local-table").value;
+            let permission = button.parentNode.parentNode.querySelector("#select-permission-local-table").value;
+
             let formData = new FormData();
             formData.append("name", name);
             formData.append("mac", mac);
+            formData.append("permission", permission);
             var data = Object.fromEntries(formData);
             var jsonData = JSON.stringify(data);
 
@@ -82,10 +105,13 @@ subItemLocalRegister.addEventListener("click", async (event) => {
         let tdButton = document.createElement("td");
         tdButton.appendChild(button);
         
+        // LEFT THE FOUR ELEMENTS IN TR //
         tr.appendChild(tdName);
+        tr.appendChild(tdPermission);
         tr.appendChild(tdMac);
         tr.appendChild(tdButton);
         
+        // SHOW IN SCREEN //
         localRegisterDiv.querySelector(".content-table").querySelector("tbody").appendChild(tr);
     })
 })

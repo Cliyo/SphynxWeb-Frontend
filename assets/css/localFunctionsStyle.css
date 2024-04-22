@@ -12,7 +12,7 @@ div.local-register-div{
     scrollbar-gutter: stable;
 }
 
-input.input-local-table{
+input.input-name-local-table{
     position: relative;
     width: 100%;
     height: 100%;
@@ -25,7 +25,25 @@ input.input-local-table{
     transition: .5s;
 }
 
-input.input-local-table{
+input.input-name-local-table:focus-visible{
+    outline: none;
+    background-color: white;
+}
+
+select.select-permission-local-table{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    border: 0;
+    font-size: 1rem;
+    background-color: var(--color-gray);
+    display: flex;
+    transition: .5s;
+}
+
+select.select-permission-local-table:focus-visible{
     outline: none;
     background-color: white;
 }
