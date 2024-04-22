@@ -66,7 +66,7 @@ subItemLocalRegister.addEventListener("click", async (event) => {
                 return response.json();
             })
             .then(data => {
-                if(data.message == 400){
+                if(data.status == 400){
                     alert(data.message);
                 } else{
                     alert(data.message);
