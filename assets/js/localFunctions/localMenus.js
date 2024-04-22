@@ -1,3 +1,4 @@
+import { header } from "../dashboardScript.js";
 import {finder, validateEsp} from "../sphynxFinder.js";
 
 // LOCAL SCREENS DIVS //
@@ -37,11 +38,46 @@ subItemLocalRegister.addEventListener("click", async (event) => {
 
         let tdMac = document.createElement("td");
         tdMac.innerHTML = esp.mac;
+        tdMac.id = "mac-local-table"
 
         let button = document.createElement("button");
         button.innerHTML = "Save";
         button.className = "button-local-table";
         button.id = "button-local-table";
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+    
+            let mac = button.parentNode.parentNode.querySelector("#mac-local-table").innerHTML;
+            let name = button.parentNode.parentNode.querySelector("#input-local-table").value;
+        
+            let formData = new FormData();
+            formData.append("name", name);
+            formData.append("mac", mac);
+            var data = Object.fromEntries(formData);
+            var jsonData = JSON.stringify(data);
+
+            fetch("http://localhost:8080/local", {
+                mode: "cors",
+                method: "POST",
+                headers: header,
+                body: jsonData
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                if(data.message == 400){
+                    alert(data.message);
+                } else{
+                    alert(data.message);
+                    window.location = "dashboardPage.html";
+                }
+                
+            })
+            .catch(err => {
+                alert(err);
+            })
+        })
 
         let tdButton = document.createElement("td");
         tdButton.appendChild(button);
