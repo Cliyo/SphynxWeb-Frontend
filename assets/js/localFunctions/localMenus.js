@@ -29,21 +29,26 @@ subItemLocalRegister.addEventListener("click", async (event) => {
 
         let input = document.createElement("input");
         input.type = "text";
+        input.className = "input-local-table";
+        input.id = "input-local-table";
 
         let tdName = document.createElement("td");
         tdName.appendChild(input);
 
-        let tdIp = document.createElement("td");
-        tdIp.innerHTML = esp.ip;
-
         let tdMac = document.createElement("td");
         tdMac.innerHTML = esp.mac;
+
+        let button = document.createElement("button");
+        button.innerHTML = "Save";
+        button.className = "button-local-table";
+        button.id = "button-local-table";
+
+        let tdButton = document.createElement("td");
+        tdButton.appendChild(button);
         
         tr.appendChild(tdName);
-        tr.appendChild(tdIp);
         tr.appendChild(tdMac);
-
-        console.log(localRegisterDiv.querySelector(".content-table").querySelector("tbody"))
+        tr.appendChild(tdButton);
         
         localRegisterDiv.querySelector(".content-table").querySelector("tbody").appendChild(tr);
     })
