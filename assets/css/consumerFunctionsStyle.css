@@ -21,16 +21,30 @@ div.consumer-register-div form, div.consumer-update-div form{
     flex-direction: column;
     margin-top: 30px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    height: 50%;
 }
 
-div.consumer-register-div form div, div.consumer-update-div form div{
+div.consumer-register-div form div.adjust-consumer-register-inputs, div.consumer-update-div form div.adjust-consumer-update-inputs{
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 110px;
+    height: 80%;
     justify-content: space-between;
     align-items: center;
+}
+
+select.permission-input{
+    position: relative;
+    width: 80%;
+    height: 50px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 0;
+    font-size: 1rem;
+    background-color: var(--color-gray);
+    display: flex;
+    transition: .5s;
 }
 
 div.consumer-register-div form div input, div.consumer-update-div form div input{
@@ -45,7 +59,7 @@ div.consumer-register-div form div input, div.consumer-update-div form div input
     transition: .5s;
 }
 
-div.consumer-register-div form div input:focus-visible, div.consumer-update-div form div input:focus-visible{
+div.consumer-register-div form div input:focus-visible, div.consumer-update-div form div input:focus-visible, select.permission-input:focus-visible{
     background-color: white;
     outline: none;
 }
@@ -56,7 +70,6 @@ input.submit{
     height: 50px;
     border: 0;
     border-radius: 20px;
-    margin-top: 30px;
     font-size: 1.5rem;
     cursor: pointer;
     background-color: var(--color-gray);
