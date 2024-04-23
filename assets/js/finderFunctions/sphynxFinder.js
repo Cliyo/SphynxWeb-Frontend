@@ -1,4 +1,4 @@
-import { IP } from "./dashboardScript.js"
+import { IP } from "../dashboardScript.js"
 
 async function finder(){
     const response = await fetch(`http://${IP}:3000`, {

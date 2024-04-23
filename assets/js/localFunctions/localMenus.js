@@ -1,5 +1,5 @@
 import { header } from "../dashboardScript.js";
-import {finder, validateEsp} from "../sphynxFinder.js";
+import {finder, validateEsp} from "../finderFunctions/sphynxFinder.js";
 
 // LOCAL SCREENS DIVS //
 const localRegisterDiv = document.querySelector("#local-register-div");
