@@ -1,3 +1,4 @@
+import RequestHTTP from "../RequestHTTP.js";
 import { header, language, IP } from "../dashboardScript.js";
 
 // CONSUMER FORMS //
@@ -9,156 +10,103 @@ const formConsumerDelete = document.querySelector("#consumer-delete-form");
 const consumersTableData = consumerGetDiv.querySelector(".content-table").querySelector("tbody");
 
 // HTTP REQUESTS TO THE API //
-formConsumerRegister.addEventListener("submit", (event) => {
+formConsumerRegister.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     var formData =  new FormData(formConsumerRegister);
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    fetch(`http://${IP}:8080/consumer`, {
-        mode: "cors",
-        method: "POST",
-        headers: header,
-        body: jsonData
-    })
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        if(data.status == 400){
-            let message = formConsumerRegister.parentNode.querySelector("#alert");
-            message.innerHTML = data.message;
-            message.style.color = "#FF0000";
-        } else{
-            let message = formConsumerRegister.parentNode.querySelector("#alert");
-            message.innerHTML = data.message;
-            message.style.color = "#00FF00";
-            window.location = "dashboardPage.html";
-        } 
-    })
-    .catch(err => {
+    const req = new RequestHTTP(IP, "consumer", "POST", header, jsonData);
+    const reqData = await req.request();
+
+    if(reqData.status == 400){
         let message = formConsumerRegister.parentNode.querySelector("#alert");
-        message.innerHTML = "Intern Error...";
+        message.innerHTML = reqData.message;
         message.style.color = "#FF0000";
-    })
+    } else{
+        let message = formConsumerRegister.parentNode.querySelector("#alert");
+        message.innerHTML = reqData.message;
+        message.style.color = "#00FF00";
+        window.location = "/pages/dashboardPage.html";
+    } 
 })
 
-formConsumerUpdate.addEventListener("submit", (event) => {
+formConsumerUpdate.addEventListener("submit", async (event) => {
     event.preventDefault()
 
     var formData =  new FormData(formConsumerUpdate);
     var data = Object.fromEntries(formData);
+    var jsonData = JSON.stringify({"tag": data["tag"]});
 
-    fetch(`http://${IP}:8080/consumer/${data["ra"]}`, {
-        mode: "cors",
-        method: "PUT",
-        headers: header,
-        body: JSON.stringify({"tag": data["tag"]})
-    })
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        if(data.message == 400){
-            let message = formConsumerUpdate.parentNode.querySelector("#alert");
-            message.innerHTML = data.message;
-            message.style.color = "#FF0000";
-        } else{
-            let message = formConsumerUpdate.parentNode.querySelector("#alert");
-            message.innerHTML = data.message;
-            message.style.color = "#00FF00";
-            window.location = "dashboardPage.html";
-        }
-        
-    })
-    .catch(err => {
+    const req = new RequestHTTP(IP, `consumer/${data["ra"]}`, "PUT", header, jsonData);
+    const reqData = await req.request();
+
+    if(reqData.status == 400){
         let message = formConsumerUpdate.parentNode.querySelector("#alert");
-        message.innerHTML = "Error...";
+        message.innerHTML = reqData.message;
         message.style.color = "#FF0000";
-    })
+    } else{
+        let message = formConsumerUpdate.parentNode.querySelector("#alert");
+        message.innerHTML = reqData.message;
+        message.style.color = "#00FF00";
+        window.location = "/pages/dashboardPage.html";
+    } 
 })
 
-formConsumerDelete.addEventListener("submit", (event) => {
+formConsumerDelete.addEventListener("submit", async (event) => {
     event.preventDefault()
 
     var formData =  new FormData(formConsumerDelete);
     var data = Object.fromEntries(formData);
+    var jsonData = JSON.stringify({});
 
-    fetch(`http://${IP}:8080/consumer/${data["ra"]}`, {
-        mode: "cors",
-        method: "DELETE",
-        headers: header,
-        body: JSON.stringify({})
-    })
-    .then(response => {
-        if(response.status != 204){
-            let message = formConsumerDelete.parentNode.querySelector("#alert");
-            message.innerHTML = "Error..."
-            message.style.color = "#FF0000";
+    const req = new RequestHTTP(IP, `consumer/${data["ra"]}`, "DELETE", header, jsonData);
 
-            throw new Error("HTTP Status " + response.status);
-        }
-        console.log(response);
-        console.log(response.status)
-        return response;
-    })
-    .then(data => {
+    try{
+        const reqData = await req.request();
+
         let message = formConsumerDelete.parentNode.querySelector("#alert");
-        message.innerHTML = "Consumer deleted!";
+        message.innerHTML = "Success";
         message.style.color = "#00FF00";
-        window.location = "dashboardPage.html";
-    })
-    .catch(err => {
+        window.location = "/pages/dashboardPage.html";
+    }
+    catch(e){
         let message = formConsumerDelete.parentNode.querySelector("#alert");
-        message.innerHTML = "Error...";
+        message.innerHTML = "Error";
         message.style.color = "#FF0000";
-        console.log(err)
-    })
+    }
 })
 
-subItemConsumerGet.addEventListener("click", (event) => {
+subItemConsumerGet.addEventListener("click", async (event) => {
     event.preventDefault()
-    fetch(`http://${IP}:8080/consumer`, {
-        mode: "cors",
-        method: "GET",
-        headers: header
-    })
-    .then(response => {
-        if(!response.ok){
-            throw new Error("HTTP Status " + response.status);
-        }
-        return response.json();
-    })
-    .then(data => {
-        consumersTableData.innerHTML = "";
-        let array = Object.keys(data);
 
-        array.forEach(index => {
-            let tr = document.createElement("tr");
+    const req = new RequestHTTP(IP, "consumer", "GET", header, null);
+    const reqData = await req.request();
 
-            let tdId = document.createElement("td");
-            tdId.innerHTML = data[index]["id"];
+    consumersTableData.innerHTML = "";
+    let array = Object.keys(reqData);
 
-            let tdRa = document.createElement("td");
-            tdRa.innerHTML = data[index]["person"]["ra"];
+    array.forEach(index => {
+        let tr = document.createElement("tr");
 
-            let tdNome = document.createElement("td");
-            tdNome.innerHTML = data[index]["person"]["name"];
+        let tdId = document.createElement("td");
+        tdId.innerHTML = reqData[index]["id"];
 
-            let tdTag = document.createElement("td");
-            tdTag.innerHTML = data[index]["tag"];
-            
-            tr.appendChild(tdId);
-            tr.appendChild(tdRa);
-            tr.appendChild(tdNome);
-            tr.appendChild(tdTag);
-            
-            consumersTableData.appendChild(tr);
-        })
+        let tdRa = document.createElement("td");
+        tdRa.innerHTML = reqData[index]["person"]["ra"];
+
+        let tdNome = document.createElement("td");
+        tdNome.innerHTML = reqData[index]["person"]["name"];
+
+        let tdTag = document.createElement("td");
+        tdTag.innerHTML = reqData[index]["tag"];
         
-    })
-    .catch(err => {
-        console.log(err)
-    })
+        tr.appendChild(tdId);
+        tr.appendChild(tdRa);
+        tr.appendChild(tdNome);
+        tr.appendChild(tdTag);
+        
+        consumersTableData.appendChild(tr);
+    })    
 })
