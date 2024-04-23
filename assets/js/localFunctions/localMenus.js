@@ -17,6 +17,8 @@ const subItemLocalGet = document.querySelector("#sub-item-local-get")
 subItemLocalRegister.addEventListener("click", async (event) => {
     event.preventDefault();
 
+    localRegisterDiv.querySelector(".content-table").querySelector("tbody").innerHTML = "";
+
     allScreens.forEach(screen => {
         screen.style.display = "none";
     })
