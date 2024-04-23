@@ -1,4 +1,4 @@
-import RequestHTTP from "../RequestHTTP.js";
+import request from "../utils/requestHttp.js";
 import { header, language, IP } from "../dashboardScript.js";
 
 // CONSUMER FORMS //
@@ -17,8 +17,7 @@ formConsumerRegister.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    const req = new RequestHTTP(IP, "consumer", "POST", header, jsonData);
-    const reqData = await req.request();
+    const reqData = await request(IP, "consumer", "POST", header, jsonData);
 
     if(reqData.status == 400){
         let message = formConsumerRegister.parentNode.querySelector("#alert");
@@ -39,8 +38,7 @@ formConsumerUpdate.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify({"tag": data["tag"]});
 
-    const req = new RequestHTTP(IP, `consumer/${data["ra"]}`, "PUT", header, jsonData);
-    const reqData = await req.request();
+    const reqData = await request(IP, `consumer/${data["ra"]}`, "PUT", header, jsonData);
 
     if(reqData.status == 400){
         let message = formConsumerUpdate.parentNode.querySelector("#alert");
@@ -61,10 +59,8 @@ formConsumerDelete.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify({});
 
-    const req = new RequestHTTP(IP, `consumer/${data["ra"]}`, "DELETE", header, jsonData);
-
     try{
-        const reqData = await req.request();
+        const reqData = await request(IP, `consumer/${data["ra"]}`, "DELETE", header, jsonData);
 
         let message = formConsumerDelete.parentNode.querySelector("#alert");
         message.innerHTML = "Success";
@@ -79,10 +75,9 @@ formConsumerDelete.addEventListener("submit", async (event) => {
 })
 
 subItemConsumerGet.addEventListener("click", async (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
-    const req = new RequestHTTP(IP, "consumer", "GET", header, null);
-    const reqData = await req.request();
+    const reqData = await request(IP, "consumer", "GET", header, null);
 
     consumersTableData.innerHTML = "";
     let array = Object.keys(reqData);
