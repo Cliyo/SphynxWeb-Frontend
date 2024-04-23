@@ -1,9 +1,5 @@
-import {finder, validateEspAndReturnWebsocket} from "../sphynxFinder.js"; 
 import { header, IP } from "../dashboardScript.js"
 import { raInput, localInput, dateInput, accessGetDiv } from "./accessMenus.js";
-
-const allIps = await finder();
-const arrayEsp = await validateEspAndReturnWebsocket(allIps);
 
 // TABLE //
 const accessGetTableData = accessGetDiv.querySelector(".content-table").querySelector("tbody");
@@ -11,34 +7,11 @@ const accessGetTableData = accessGetDiv.querySelector(".content-table").querySel
 // BUTTONS //
 const accessAllButton = document.querySelector("#sub-item-access-all");
 
-// WEBSOCKET //
-arrayEsp.forEach(esp => {
-    esp.onmessage = (data) => {
-        fetch(`http://${IP}:8080/accessRegister`, {
-            mode: "cors",
-            method: "POST",
-            headers: header,
-            body: JSON.stringify({
-                tag: data.data,
-                local: "sala apenas teste"
-            })
-        })
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            ws.send("true");
-        })
-        .catch(err => {
-            console.log(err);
-            ws.send("false");
-        })
-    }
-});
-
 // HTTP REQUESTS TO THE API //
 accessAllButton.addEventListener("click", (event) => {
-    event.preventDefault()
+    event.preventDefault();
+
+    
     fetch(`http://${IP}:8080/accessRegister`, {
         mode: "cors",
         method: "GET",
