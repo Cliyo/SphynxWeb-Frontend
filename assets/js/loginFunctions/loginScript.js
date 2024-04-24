@@ -3,7 +3,7 @@ var message = document.querySelector("#alert-login")
 const IP = window.location.hostname
 
 if(localStorage.getItem("token")){
-    fetch(`http:${IP}/login/verify`,{
+    fetch(`http://${IP}:8080/login/verify`,{
         mode: 'cors',
         method: "POST",
         headers: {
