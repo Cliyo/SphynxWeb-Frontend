@@ -1,7 +1,7 @@
 import { IP } from "../dashboardScript.js"
 
 async function finder(){
-    const response = await fetch(`http://${IP}:3000`, {
+    const response = await fetch(`http://${IP}:3000/sphynx`, {
         mode: "cors",
         method: "GET",
         headers: {
@@ -19,40 +19,7 @@ async function finder(){
     return data;
 }
 
-async function validateEsp(data){
-    let arrayEsp = [];
-
-    let connectionPromises = data.map(async esp => {
-        try {
-            let ws = new WebSocket(`ws://${esp.ip}/ws`);
-
-            let messagePromise = new Promise((resolve, reject) => {
-                ws.onmessage = event => {
-                    if (event.data === "data") {
-                        arrayEsp.push(esp);
-                        resolve();
-                    }
-                };
-                ws.onerror = reject;
-                ws.onclose = () => {
-                    reject(new Error("Conexão com o WebSocket fechada"));
-                };
-            });
-
-            await messagePromise;
-
-        } catch (error) {
-            console.error("Erro: ", error);
-        }
-    });
-
-    await Promise.all(connectionPromises);
-
-    return arrayEsp;
-}
-
-
-async function validateEspAndReturnWebsocket(data) {
+async function turnsEspInWebsocket(data) {
     let arrayEsp = [];
 
     let connectionPromises = data.map(async esp => {
@@ -84,4 +51,4 @@ async function validateEspAndReturnWebsocket(data) {
     return arrayEsp;
 }
 
-export {finder, validateEsp, validateEspAndReturnWebsocket};
+export {finder, turnsEspInWebsocket};

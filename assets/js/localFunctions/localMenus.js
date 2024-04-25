@@ -1,5 +1,5 @@
 import { header } from "../dashboardScript.js";
-import {finder, validateEsp} from "../finderFunctions/sphynxFinder.js";
+import {finder, turnsEspInWebsocket} from "../finderFunctions/sphynxFinder.js";
 
 // LOCAL SCREENS DIVS //
 const localRegisterDiv = document.querySelector("#local-register-div");
@@ -25,7 +25,7 @@ subItemLocalRegister.addEventListener("click", async (event) => {
     localRegisterDiv.style.display = "flex";
 
     const allIps = await finder();
-    const arrayEsp = await validateEsp(allIps);
+    const arrayEsp = await turnsEspInWebsocket(allIps);
 
     allIps.forEach(esp => {
         let tr = document.createElement("tr");
