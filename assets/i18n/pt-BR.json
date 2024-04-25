@@ -42,7 +42,7 @@
     "tag-table": "Tag",
     "local-table": "Local",
     "date-table": "Data",
-    "ipv4-table": "IP",
+    "mac-table": "MAC",
 
     "name": "Nome",
     "date": "Data"
