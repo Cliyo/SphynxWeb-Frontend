@@ -18,22 +18,28 @@ const subItemLocalGet = document.querySelector("#sub-item-local-get")
 subItemLocalRegister.addEventListener("click", async (event) => {
     event.preventDefault();
 
+    // LOADING IMAGE CREATION //
     let img = document.createElement("img");
     img.id = "load-image"
     img.src = "../assets/img/load.gif";
     localRegisterDiv.appendChild(img);
 
+    // CLEAR TABLE //
     localRegisterDiv.querySelector(".content-table").querySelector("tbody").innerHTML = "";
 
+    // SHOW THE SCREEN //
     allScreens.forEach(screen => {
         screen.style.display = "none";
     })
     localRegisterDiv.style.display = "flex";
 
+    // SPHYNX FINDER //
     const allIps = await finder();
 
+    // DELETE THE LOADING IMAGE //
     document.querySelector("#load-image").style.display = "none";
 
+    // CREATING THE TABLE COLUMN //
     allIps.forEach(esp => {
         let tr = document.createElement("tr");
 
