@@ -1,5 +1,6 @@
-import { header } from "../dashboardScript.js";
+import { IP, header } from "../dashboardScript.js";
 import {finder, turnsEspInWebsocket} from "../finderFunctions/sphynxFinder.js";
+import request from "../utils/requestHttp.js";
 
 // LOCAL SCREENS DIVS //
 const localRegisterDiv = document.querySelector("#local-register-div");
@@ -17,6 +18,11 @@ const subItemLocalGet = document.querySelector("#sub-item-local-get")
 subItemLocalRegister.addEventListener("click", async (event) => {
     event.preventDefault();
 
+    let img = document.createElement("img");
+    img.id = "load-image"
+    img.src = "../assets/img/load.gif";
+    localRegisterDiv.appendChild(img);
+
     localRegisterDiv.querySelector(".content-table").querySelector("tbody").innerHTML = "";
 
     allScreens.forEach(screen => {
@@ -25,6 +31,8 @@ subItemLocalRegister.addEventListener("click", async (event) => {
     localRegisterDiv.style.display = "flex";
 
     const allIps = await finder();
+
+    document.querySelector("#load-image").style.display = "none";
 
     allIps.forEach(esp => {
         let tr = document.createElement("tr");
@@ -66,7 +74,8 @@ subItemLocalRegister.addEventListener("click", async (event) => {
         button.innerHTML = "Save";
         button.className = "button-local-table";
         button.id = "button-local-table";
-        button.addEventListener("click", (event) => {
+
+        button.addEventListener("click", async (event) => {
             event.preventDefault();
     
             let mac = button.parentNode.parentNode.querySelector("#mac-local-table").innerHTML;
@@ -80,27 +89,15 @@ subItemLocalRegister.addEventListener("click", async (event) => {
             var data = Object.fromEntries(formData);
             var jsonData = JSON.stringify(data);
 
-            fetch("http://localhost:8080/local", {
-                mode: "cors",
-                method: "POST",
-                headers: header,
-                body: jsonData
-            })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                if(data.status == 400){
-                    alert(data.message);
-                } else{
-                    alert(data.message);
-                    window.location = "dashboardPage.html";
-                }
+            const reqData = await request(IP, `local`, "POST", header, jsonData);
+
+            if(reqData.status == 400){
+                alert(reqData.message);
+            } else{
+                alert(reqData.message);
+                window.location = "dashboardPage.html";
+            }
                 
-            })
-            .catch(err => {
-                alert(err);
-            })
         })
 
         let tdButton = document.createElement("td");
