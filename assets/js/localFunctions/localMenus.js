@@ -27,7 +27,7 @@ subItemLocalRegister.addEventListener("click", async (event) => {
     const allIps = await finder();
     const arrayEsp = await turnsEspInWebsocket(allIps);
 
-    allIps.forEach(esp => {
+    arrayEsp.forEach(esp => {
         let tr = document.createElement("tr");
 
         // INPUT NAME //

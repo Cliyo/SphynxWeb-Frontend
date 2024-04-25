@@ -89,17 +89,13 @@ subItemConsumerGet.addEventListener("click", async (event) => {
         tdId.innerHTML = reqData[index]["id"];
 
         let tdRa = document.createElement("td");
-        tdRa.innerHTML = reqData[index]["person"]["ra"];
-
-        let tdNome = document.createElement("td");
-        tdNome.innerHTML = reqData[index]["person"]["name"];
+        tdRa.innerHTML = reqData[index]["ra"];
 
         let tdTag = document.createElement("td");
         tdTag.innerHTML = reqData[index]["tag"];
         
         tr.appendChild(tdId);
         tr.appendChild(tdRa);
-        tr.appendChild(tdNome);
         tr.appendChild(tdTag);
         
         consumersTableData.appendChild(tr);
