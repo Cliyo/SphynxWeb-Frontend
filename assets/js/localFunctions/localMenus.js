@@ -25,9 +25,8 @@ subItemLocalRegister.addEventListener("click", async (event) => {
     localRegisterDiv.style.display = "flex";
 
     const allIps = await finder();
-    const arrayEsp = await turnsEspInWebsocket(allIps);
 
-    arrayEsp.forEach(esp => {
+    allIps.forEach(esp => {
         let tr = document.createElement("tr");
 
         // INPUT NAME //
