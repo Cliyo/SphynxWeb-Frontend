@@ -1,5 +1,6 @@
-import { finder, turnsEspInWebsocket } from "./finderFunctions/sphynxFinder.js";
+import { finder, inDatabase, turnsEspInWebsocket } from "./finderFunctions/sphynxFinder.js";
 import request from "./utils/requestHttp.js";
+import { localRegisterTable } from "./localFunctions/localMenus.js";
 
 const IP = window.location.hostname
 
@@ -57,41 +58,21 @@ if(localStorage.getItem("token")){
     window.location = "/";
 }
 
-// LOADING IMAGE CREATION //
-const mainSection = document.querySelector("body").querySelector("section");
+const macsInDatabase = await inDatabase();
 
-let img = document.createElement("img");
-img.id = "load-image"
-img.style.position = "absolute";
-img.style.width = "75px";
-img.style.top = "30px";
-img.style.left = "10px";
-img.src = "../assets/img/load.gif";
-mainSection.appendChild(img);
-
-// GET ALL THE ESP32 //
-const sphynxIps = [];
-
-// GET ALL THE MAC IN DATABASE //
-const reqData = await request(IP, `local`, "GET", header, null);
-
-let array = Object.keys(reqData);
-
-// GET ALL THE IPS ADDRESS
 const allIps = await finder();
 
-// FILTER //
-array.forEach(index => {
+const sphynxsInDatabase = []
+macsInDatabase.forEach(mac => {
     allIps.forEach(device => {
-        if(reqData[index]["mac"] == device.mac){
-            sphynxIps.push(device);
+        if(mac == device.mac){
+            sphynxsInDatabase.push(device);
         }
     })
-    
 })
 
-const listSockets = await turnsEspInWebsocket(sphynxIps);
+await localRegisterTable(allIps, sphynxsInDatabase)
 
-img.style.display = "none";
+const listSockets = await turnsEspInWebsocket(sphynxsInDatabase);
 
-export {header, language, IP, sphynxIps, listSockets};
+export {header, language, IP, sphynxsInDatabase, listSockets};

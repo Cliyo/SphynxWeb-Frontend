@@ -1,6 +1,7 @@
 import { IP, header } from "../dashboardScript.js";
-import {finder} from "../finderFunctions/sphynxFinder.js";
+import {finder, inDatabase} from "../finderFunctions/sphynxFinder.js";
 import request from "../utils/requestHttp.js";
+import { showMessage } from "../utils/messages.js";
 
 // LOCAL SCREENS DIVS //
 const localRegisterDiv = document.querySelector("#local-register-div");
@@ -15,35 +16,18 @@ const subItemLocalDelete = document.querySelector("#sub-item-local-delete");
 const subItemLocalGet = document.querySelector("#sub-item-local-get")
 
 // FUNCTIONS TO SHOW AND HID THE SCREENS //
-subItemLocalRegister.addEventListener("click", async (event) => {
-    event.preventDefault();
-
-    // LOADING IMAGE CREATION //
-    let img = document.createElement("img");
-    img.id = "load-image"
-    img.src = "../assets/img/load.gif";
-    img.style.position = "relative";
-    img.style.width = "60%";
-    img.style.height = "60%";
-    localRegisterDiv.appendChild(img);
-
-    // CLEAR TABLE //
-    localRegisterDiv.querySelector(".content-table").querySelector("tbody").innerHTML = "";
-
-    // SHOW THE SCREEN //
-    allScreens.forEach(screen => {
-        screen.style.display = "none";
-    })
-    localRegisterDiv.style.display = "flex";
-
-    // SPHYNX FINDER //
-    const allIps = await finder();
-
-    // DELETE THE LOADING IMAGE //
-    document.querySelector("#load-image").style.display = "none";
-
+async function localRegisterTable(arrayEsp, databaseEsp) {
     // CREATING THE TABLE COLUMN //
-    allIps.forEach(esp => {
+    arrayEsp.forEach(esp => {
+        let inDatabase = false;
+        databaseEsp.forEach(espInDB => {
+            if (esp == espInDB){
+                inDatabase = true;
+            }
+        })
+        if (inDatabase){
+            return;
+        }
         let tr = document.createElement("tr");
 
         // INPUT NAME //
@@ -112,15 +96,72 @@ subItemLocalRegister.addEventListener("click", async (event) => {
         let tdButton = document.createElement("td");
         tdButton.appendChild(button);
         
-        // LEFT THE FOUR ELEMENTS IN TR //
-        tr.appendChild(tdName);
-        tr.appendChild(tdPermission);
-        tr.appendChild(tdMac);
-        tr.appendChild(tdButton);
+        const jaListado = Array.from(localRegisterDiv.querySelector(".content-table").querySelectorAll("#mac-local-table")).map(mac => mac.textContent);
+
+        if (!jaListado.includes(tdMac.textContent)){
+            // LEFT THE FOUR ELEMENTS IN TR //
+
+            tr.appendChild(tdName);
+            tr.appendChild(tdPermission);
+            tr.appendChild(tdMac);
+            tr.appendChild(tdButton);
+            
+            // SHOW IN SCREEN //
+            localRegisterDiv.querySelector(".content-table").querySelector("tbody").appendChild(tr);
+            
+            showMessage("Novo Sphynx encontrado")
+        }
         
-        // SHOW IN SCREEN //
-        localRegisterDiv.querySelector(".content-table").querySelector("tbody").appendChild(tr);
     })
+}
+
+subItemLocalRegister.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    // Tries to remove old loading if there is one
+    try {
+        var loaderDiv = document.querySelector("#loader-div");
+        if (loaderDiv) {
+            loaderDiv.remove();
+        }
+    } catch (error) {
+        console.log("no loading: ", error);
+    }
+
+    // LOADING //
+    loaderDiv = document.createElement("div");
+    loaderDiv.classList.add("loader");
+    loaderDiv.id = "loader-div";
+    localRegisterDiv.appendChild(loaderDiv);
+
+    // SHOW THE SCREEN //
+    allScreens.forEach(screen => {
+        screen.style.display = "none";
+    })
+    localRegisterDiv.style.display = "flex";
+
+    // SPHYNX FINDER //
+    const allIps = await finder();
+
+    const sphynxsInDatabase = [];
+
+    // GET ALL THE MAC IN DATABASE //
+    const macsInDatabase = await inDatabase();
+
+    macsInDatabase.forEach(mac => {
+        allIps.forEach(device => {
+            if(mac == device.mac){
+                sphynxsInDatabase.push(device);
+            }
+        })
+    })
+
+    // CREATE TABLE WITH ALL LOCAL TO REGISTER
+    await localRegisterTable(allIps, sphynxsInDatabase);
+
+    // DELETE THE LOADING IMAGE //
+    loaderDiv.remove();
+
 })
 subItemLocalUpdate.addEventListener("click", (event) => {
     allScreens.forEach(screen => {
@@ -143,4 +184,4 @@ subItemLocalGet.addEventListener("click", (event) => {
     localGetDiv.style.display = "flex";
 })
 
-export {localGetDiv, subItemLocalGet};
+export {localGetDiv, subItemLocalGet, localRegisterTable};

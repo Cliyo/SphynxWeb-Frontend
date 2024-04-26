@@ -1,5 +1,5 @@
 import request from "../utils/requestHttp.js";
-import { header, IP, sphynxIps, listSockets } from "../dashboardScript.js"
+import { header, IP, sphynxsInDatabase, listSockets } from "../dashboardScript.js"
 import { createLineTable } from "../utils/createLineTable.js";
 import { raInput, localInput, dateInput, accessGetDiv } from "./accessMenus.js";
 
@@ -13,7 +13,7 @@ const accessAllButton = document.querySelector("#sub-item-access-all");
 let i = 0;
 
 listSockets.forEach((socket) => {
-    const mac = sphynxIps[i].mac;
+    const mac = sphynxsInDatabase[i].mac;
     socket.onmessage = async data => {
         let tag = data.data;
         console.log(tag)

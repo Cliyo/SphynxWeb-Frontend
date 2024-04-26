@@ -1,4 +1,6 @@
 import { IP } from "../dashboardScript.js"
+import request from "../utils/requestHttp.js";
+import {header, language} from "../dashboardScript.js"
 
 async function finder(){
     const response = await fetch(`http://${IP}:3000/sphynx`, {
@@ -17,6 +19,22 @@ async function finder(){
 
     const data = await response.json();
     return data;
+}
+
+async function inDatabase(){
+    // GET ALL THE ESP32 //
+    const sphynxs = [];
+
+    // GET ALL THE MAC IN DATABASE //
+    const reqData = await request(IP, `local`, "GET", header, null);
+
+    let array = Object.keys(reqData);
+    
+    array.forEach(index => {
+        sphynxs.push(reqData[index]["mac"])       
+    })
+
+    return sphynxs;
 }
 
 async function turnsEspInWebsocket(data) {
@@ -51,4 +69,4 @@ async function turnsEspInWebsocket(data) {
     return arrayEsp;
 }
 
-export {finder, turnsEspInWebsocket};
+export {finder, inDatabase, turnsEspInWebsocket};
