@@ -95,4 +95,4 @@ const listSockets = await turnsEspInWebsocket(sphynxIps);
 img.style.display = "none";
 mainSection.style.filter = "brightness(100%)";
 
-export {header, language, IP, listSockets};
+export {header, language, IP, sphynxIps, listSockets};

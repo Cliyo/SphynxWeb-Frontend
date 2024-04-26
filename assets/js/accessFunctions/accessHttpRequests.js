@@ -1,5 +1,5 @@
 import request from "../utils/requestHttp.js";
-import { header, IP } from "../dashboardScript.js"
+import { header, IP, sphynxIps, listSockets } from "../dashboardScript.js"
 import { createLineTable } from "../utils/createLineTable.js";
 import { raInput, localInput, dateInput, accessGetDiv } from "./accessMenus.js";
 
@@ -8,6 +8,23 @@ const accessGetTableData = accessGetDiv.querySelector(".content-table").querySel
 
 // BUTTONS //
 const accessAllButton = document.querySelector("#sub-item-access-all");
+
+// WEB SOCKETS //
+let i = 0;
+
+listSockets.forEach((socket) => {
+    const mac = sphynxIps[i].mac;
+    socket.onmessage = async (data) => {
+        let tag = data.data;
+        const formData = new FormData();
+        formData.append("tag", tag);
+        formData.append("mac", mac);
+        var data = Object.fromEntries(formData);
+        var jsonData = JSON.stringify(data);
+
+        await request(IP, "accessRegister", "POST", header, jsonData);
+    }
+})
 
 // HTTP REQUESTS TO THE API //
 accessAllButton.addEventListener("click", async (event) => {
