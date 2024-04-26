@@ -19,17 +19,16 @@ div.consumer-register-div form, div.consumer-update-div form{
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 50%;
 }
 
-div.consumer-register-div form div.adjust-consumer-register-inputs, div.consumer-update-div form div.adjust-consumer-update-inputs{
+div.adjust-consumer-register-inputs, div.adjust-consumer-update-inputs{
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 50%;
     justify-content: space-between;
     align-items: center;
 }
