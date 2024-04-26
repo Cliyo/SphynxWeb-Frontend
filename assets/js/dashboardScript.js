@@ -59,13 +59,13 @@ if(localStorage.getItem("token")){
 
 // LOADING IMAGE CREATION //
 const mainSection = document.querySelector("body").querySelector("section");
-mainSection.style.filter = "brightness(50%)";
 
 let img = document.createElement("img");
 img.id = "load-image"
 img.style.position = "absolute";
-img.style.width = "90%";
-img.style.height = "90%";
+img.style.width = "75px";
+img.style.top = "30px";
+img.style.left = "10px";
 img.src = "../assets/img/load.gif";
 mainSection.appendChild(img);
 
@@ -93,6 +93,5 @@ array.forEach(index => {
 const listSockets = await turnsEspInWebsocket(sphynxIps);
 
 img.style.display = "none";
-mainSection.style.filter = "brightness(100%)";
 
 export {header, language, IP, sphynxIps, listSockets};

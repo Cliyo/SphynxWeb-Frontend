@@ -14,8 +14,9 @@ let i = 0;
 
 listSockets.forEach((socket) => {
     const mac = sphynxIps[i].mac;
-    socket.onmessage = async (data) => {
+    socket.onmessage = async data => {
         let tag = data.data;
+        console.log(tag)
         const formData = new FormData();
         formData.append("tag", tag);
         formData.append("mac", mac);
@@ -24,6 +25,7 @@ listSockets.forEach((socket) => {
 
         await request(IP, "accessRegister", "POST", header, jsonData);
     }
+    i++;
 })
 
 // HTTP REQUESTS TO THE API //
