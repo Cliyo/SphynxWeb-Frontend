@@ -1,5 +1,5 @@
 import { IP, header } from "../dashboardScript.js";
-import {finder, turnsEspInWebsocket} from "../finderFunctions/sphynxFinder.js";
+import {finder} from "../finderFunctions/sphynxFinder.js";
 import request from "../utils/requestHttp.js";
 
 // LOCAL SCREENS DIVS //
@@ -22,6 +22,9 @@ subItemLocalRegister.addEventListener("click", async (event) => {
     let img = document.createElement("img");
     img.id = "load-image"
     img.src = "../assets/img/load.gif";
+    img.style.position = "relative";
+    img.style.width = "60%";
+    img.style.height = "60%";
     localRegisterDiv.appendChild(img);
 
     // CLEAR TABLE //
