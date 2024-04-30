@@ -1,6 +1,4 @@
-import { finder, inDatabase, turnsEspInWebsocket } from "./finderFunctions/sphynxFinder.js";
-import request from "./utils/requestHttp.js";
-import { localRegisterTable } from "./localFunctions/localMenus.js";
+import { fetchEspData } from "./localFunctions/localMenus.js";
 
 const IP = window.location.hostname
 
@@ -58,21 +56,6 @@ if(localStorage.getItem("token")){
     window.location = "/";
 }
 
-const macsInDatabase = await inDatabase();
+fetchEspData(true);
 
-const allIps = await finder();
-
-const sphynxsInDatabase = []
-macsInDatabase.forEach(mac => {
-    allIps.forEach(device => {
-        if(mac == device.mac){
-            sphynxsInDatabase.push(device);
-        }
-    })
-})
-
-await localRegisterTable(allIps, sphynxsInDatabase)
-
-const listSockets = await turnsEspInWebsocket(sphynxsInDatabase);
-
-export {header, language, IP, sphynxsInDatabase, listSockets};
+export {header, language, IP};

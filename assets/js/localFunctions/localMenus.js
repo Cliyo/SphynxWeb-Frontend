@@ -15,8 +15,31 @@ const subItemLocalUpdate = document.querySelector("#sub-item-local-update");
 const subItemLocalDelete = document.querySelector("#sub-item-local-delete");
 const subItemLocalGet = document.querySelector("#sub-item-local-get")
 
+// GET ALL ESPS
+async function fetchEspData(timeout){
+    const sphynxsInDatabase = []
+    const macsInDatabase = await inDatabase();
+
+    const allIps = await finder();
+
+    macsInDatabase.forEach(mac => {
+        allIps.forEach(device => {
+            if(mac == device.mac){
+                sphynxsInDatabase.push(device);
+            }
+        })
+    })
+
+    await localRegisterTable(allIps, sphynxsInDatabase)
+
+    if (timeout){
+        setTimeout(fetchEspData, 120000);
+    }
+}
+
 // FUNCTIONS TO SHOW AND HID THE SCREENS //
 async function localRegisterTable(arrayEsp, databaseEsp) {
+
     // CREATING THE TABLE COLUMN //
     arrayEsp.forEach(esp => {
         let inDatabase = false;
@@ -141,23 +164,7 @@ subItemLocalRegister.addEventListener("click", async (event) => {
     localRegisterDiv.style.display = "flex";
 
     // SPHYNX FINDER //
-    const allIps = await finder();
-
-    const sphynxsInDatabase = [];
-
-    // GET ALL THE MAC IN DATABASE //
-    const macsInDatabase = await inDatabase();
-
-    macsInDatabase.forEach(mac => {
-        allIps.forEach(device => {
-            if(mac == device.mac){
-                sphynxsInDatabase.push(device);
-            }
-        })
-    })
-
-    // CREATE TABLE WITH ALL LOCAL TO REGISTER
-    await localRegisterTable(allIps, sphynxsInDatabase);
+    fetchEspData(false);
 
     // DELETE THE LOADING IMAGE //
     loaderDiv.remove();
@@ -184,4 +191,4 @@ subItemLocalGet.addEventListener("click", (event) => {
     localGetDiv.style.display = "flex";
 })
 
-export {localGetDiv, subItemLocalGet, localRegisterTable};
+export {localGetDiv, subItemLocalGet, fetchEspData};
