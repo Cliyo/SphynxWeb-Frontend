@@ -1,13 +1,13 @@
 var form = document.querySelector("#form")
 var message = document.querySelector("#alert-login")
-const IP = window.location.hostname
+const api = 'sphynx-api.local'
 
 if(localStorage.getItem("token")){
-    fetch(`http://${IP}:8080/login/verify`,{
+    fetch(`http://${api}/login/verify`,{
         mode: 'cors',
         method: "POST",
         headers: {
-            'Access-Control-Allow-Origin': `http://${IP}:8080`,
+            'Access-Control-Allow-Origin': `http://${api}`,
             'Access-Control-Allow-Credentials': 'true',
             'Content-Type': 'application/json'
         },
@@ -34,11 +34,11 @@ form.addEventListener("submit", (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    fetch(`http://${IP}:8080/login`,{
+    fetch(`http://${api}/login`,{
         mode: 'cors',
         method: "POST",
         headers: {
-            'Access-Control-Allow-Origin': `http://${IP}:8080`,
+            'Access-Control-Allow-Origin': `http://${api}`,
             'Access-Control-Allow-Credentials': 'true',
             'Content-Type': 'application/json'
         },

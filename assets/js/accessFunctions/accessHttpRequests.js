@@ -1,5 +1,5 @@
 import request from "../utils/requestHttp.js";
-import { header, IP } from "../dashboardScript.js"
+import { header, api } from "../dashboardScript.js"
 import { createLineTable } from "../utils/createLineTable.js";
 import { raInput, localInput, dateInput, accessGetDiv } from "./accessMenus.js";
 
@@ -13,7 +13,7 @@ const accessAllButton = document.querySelector("#sub-item-access-all");
 accessAllButton.addEventListener("click", async (event) => {
     event.preventDefault();
 
-    const reqData = await request(IP, "accessRegister", "GET", header, null);
+    const reqData = await request(api, "accessRegister", "GET", header, null);
 
     accessGetTableData.innerHTML = "";
     let array = Object.keys(reqData);
@@ -30,7 +30,7 @@ raInput.addEventListener("focusout", async (event) => {
 
     let ra = raInput.value;
 
-    const reqData = await request(IP, `accessRegister/byRa/${ra}`, "GET", header, null);
+    const reqData = await request(api, `accessRegister/byRa/${ra}`, "GET", header, null);
 
     accessGetTableData.innerHTML = "";
     let array = Object.keys(reqData);
@@ -47,7 +47,7 @@ localInput.addEventListener("focusout", async (event) => {
 
     let local = localInput.value.replace(" ", "_");
 
-    const reqData = await request(IP, `accessRegister/byLocal/${local}`, "GET", header, null);
+    const reqData = await request(api, `accessRegister/byLocal/${local}`, "GET", header, null);
 
     accessGetTableData.innerHTML = "";
     let array = Object.keys(reqData);
@@ -69,7 +69,7 @@ dateInput.addEventListener("focusout", async (event) => {
     let year = date.getFullYear();
     let dateComplete = year + "-" + month + "-" + day;
     
-    const reqData = await request(IP, `accessRegister/byDate/${dateComplete}`, "GET", header, null);
+    const reqData = await request(api, `accessRegister/byDate/${dateComplete}`, "GET", header, null);
 
     accessGetTableData.innerHTML = "";
     let array = Object.keys(reqData);

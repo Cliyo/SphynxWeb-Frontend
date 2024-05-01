@@ -1,4 +1,4 @@
-import { IP, header } from "../dashboardScript.js";
+import { api, header } from "../dashboardScript.js";
 import {finder, inDatabase} from "../finderFunctions/sphynxFinder.js";
 import request from "../utils/requestHttp.js";
 import { showMessage } from "../utils/messages.js";
@@ -19,32 +19,39 @@ const subItemLocalGet = document.querySelector("#sub-item-local-get")
 async function fetchEspData(timeout){
     const sphynxsInDatabase = []
     const macsInDatabase = await inDatabase();
+    
+    const types = ["services", "scan"]
 
-    const allIps = await finder();
+    for (let i = 0; i < types.length; i++ ){
+        const allIps = await finder(types[i]);
 
-    macsInDatabase.forEach(mac => {
-        allIps.forEach(device => {
-            if(mac == device.mac){
-                sphynxsInDatabase.push(device);
-            }
+        macsInDatabase.forEach(mac => {
+            allIps.forEach(device => {
+                if(mac == device.mac){
+                    sphynxsInDatabase.push(device);
+                }
+            })
         })
-    })
-
-    await localRegisterTable(allIps, sphynxsInDatabase)
-
-    if (timeout){
-        setTimeout(fetchEspData, 120000);
+        
+        await localRegisterTable(allIps, sphynxsInDatabase)
+    
+        if (timeout){
+            setTimeout(fetchEspData, 60000);
+        }
     }
+
 }
 
 // FUNCTIONS TO SHOW AND HID THE SCREENS //
 async function localRegisterTable(arrayEsp, databaseEsp) {
-
+    if (arrayEsp == null){
+        return;
+    }
     // CREATING THE TABLE COLUMN //
     arrayEsp.forEach(esp => {
         let inDatabase = false;
         databaseEsp.forEach(espInDB => {
-            if (esp == espInDB){
+            if (esp.mac == espInDB.mac){
                 inDatabase = true;
             }
         })
@@ -105,7 +112,7 @@ async function localRegisterTable(arrayEsp, databaseEsp) {
             var data = Object.fromEntries(formData);
             var jsonData = JSON.stringify(data);
 
-            const reqData = await request(IP, `local`, "POST", header, jsonData);
+            const reqData = await request(api, `local`, "POST", header, jsonData);
 
             if(reqData.status == 400){
                 alert(reqData.message);
@@ -164,7 +171,7 @@ subItemLocalRegister.addEventListener("click", async (event) => {
     localRegisterDiv.style.display = "flex";
 
     // SPHYNX FINDER //
-    fetchEspData(false);
+    await fetchEspData(false);
 
     // DELETE THE LOADING IMAGE //
     loaderDiv.remove();

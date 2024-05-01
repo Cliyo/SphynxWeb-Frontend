@@ -1,7 +1,7 @@
-async function request(ip, entity, method, header, body){
+async function request(api, entity, method, header, body){
     let response;
 
-    await fetch(`http://${ip}:8080/${entity}`, {
+    await fetch(`http://${api}/${entity}`, {
         mode: "cors",
         method: `${method}`,
         headers: header,

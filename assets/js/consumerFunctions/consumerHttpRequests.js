@@ -1,5 +1,5 @@
 import request from "../utils/requestHttp.js";
-import { header, language, IP } from "../dashboardScript.js";
+import { header, language, api } from "../dashboardScript.js";
 
 // CONSUMER FORMS //
 const formConsumerRegister = document.querySelector("#consumer-register-form");
@@ -17,7 +17,7 @@ formConsumerRegister.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    const reqData = await request(IP, "consumer", "POST", header, jsonData);
+    const reqData = await request(api, "consumer", "POST", header, jsonData);
 
     if(reqData.status == 400){
         let message = formConsumerRegister.parentNode.querySelector("#alert");
@@ -38,7 +38,7 @@ formConsumerUpdate.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify({"tag": data["tag"]});
 
-    const reqData = await request(IP, `consumer/${data["ra"]}`, "PUT", header, jsonData);
+    const reqData = await request(api, `consumer/${data["ra"]}`, "PUT", header, jsonData);
 
     if(reqData.status == 400){
         let message = formConsumerUpdate.parentNode.querySelector("#alert");
@@ -60,7 +60,7 @@ formConsumerDelete.addEventListener("submit", async (event) => {
     var jsonData = JSON.stringify({});
 
     try{
-        const reqData = await request(IP, `consumer/${data["ra"]}`, "DELETE", header, jsonData);
+        const reqData = await request(api, `consumer/${data["ra"]}`, "DELETE", header, jsonData);
 
         let message = formConsumerDelete.parentNode.querySelector("#alert");
         message.innerHTML = "Success";
@@ -77,7 +77,7 @@ formConsumerDelete.addEventListener("submit", async (event) => {
 subItemConsumerGet.addEventListener("click", async (event) => {
     event.preventDefault();
 
-    const reqData = await request(IP, "consumer", "GET", header, null);
+    const reqData = await request(api, "consumer", "GET", header, null);
 
     consumersTableData.innerHTML = "";
     let array = Object.keys(reqData);

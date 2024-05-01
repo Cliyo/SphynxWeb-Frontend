@@ -1,6 +1,6 @@
 import { fetchEspData } from "./localFunctions/localMenus.js";
 
-const IP = window.location.hostname
+const api = 'sphynx-api.local'
 
 // MENU ANIMATION //
 $('.sub-btn').next('.sub-menu').slideToggle();
@@ -21,7 +21,7 @@ const language = urlParams.get("language");
 // DEFINE THE HTTP HEADER //
 const header = {
     'Authorization': `Bearer ${localStorage.getItem("token")}`,
-    'Access-Control-Allow-Origin': `http://${IP}:8080`,
+    'Access-Control-Allow-Origin': `http://${api}`,
     'Access-Control-Allow-Credentials': 'true',
     'Content-Type': 'application/json',
     'language': language
@@ -29,11 +29,11 @@ const header = {
 
 // VERIFY THE USER LOGIN //
 if(localStorage.getItem("token")){
-    fetch(`http://${IP}:8080/login/verify`,{
+    fetch(`http://${api}/login/verify`,{
         mode: 'cors',
         method: "POST",
         headers: {
-            'Access-Control-Allow-Origin': `http://${IP}:8080`,
+            'Access-Control-Allow-Origin': `http://${api}`,
             'Access-Control-Allow-Credentials': 'true',
             'Content-Type': 'application/json'
         },
@@ -58,4 +58,4 @@ if(localStorage.getItem("token")){
 
 fetchEspData(true);
 
-export {header, language, IP};
+export {header, language, api};

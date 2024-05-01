@@ -1,17 +1,44 @@
-import { IP } from "../dashboardScript.js"
+import { api } from "../dashboardScript.js";
 import request from "../utils/requestHttp.js";
 import {header, language} from "../dashboardScript.js"
 
-async function finder(){
-    const response = await fetch(`http://${IP}:3000/sphynx`, {
+const finderAPI = 'sphynx-finder.local'
+
+async function finderServices(){
+    const response = await fetch(`http://${finderAPI}/services`, {
         mode: "cors",
         method: "GET",
         headers: {
-            'Access-Control-Allow-Origin': `http://${IP}:3000`,
+            'Access-Control-Allow-Origin': `http://${finderAPI}`,
             'Access-Control-Allow-Credentials': 'true',
             'Content-Type': 'application/json'
         }
     });
+
+    return response;
+}
+
+async function finderScan(){
+    const response = await fetch(`http://${finderAPI}/scan`, {
+        mode: "cors",
+        method: "GET",
+        headers: {
+            'Access-Control-Allow-Origin': `http://${finderAPI}`,
+            'Access-Control-Allow-Credentials': 'true',
+            'Content-Type': 'application/json'
+        }
+    });
+
+    return response;
+}
+
+async function finder(type){
+    var response = null;
+    if (type == "scan"){
+        response = await finderScan();
+    }else{
+        response = await finderServices();
+    }
 
     if (!response.ok) {
         console.error("Não foi possível pegar os dispositivos")
@@ -26,7 +53,7 @@ async function inDatabase(){
     const sphynxs = [];
 
     // GET ALL THE MAC IN DATABASE //
-    const reqData = await request(IP, `local`, "GET", header, null);
+    const reqData = await request(api, `local`, "GET", header, null);
 
     let array = Object.keys(reqData);
     
