@@ -2,7 +2,7 @@ import { api } from "../dashboardScript.js";
 import request from "../utils/requestHttp.js";
 import {header, language} from "../dashboardScript.js"
 
-const finderAPI = 'sphynx-finder.local'
+const finderAPI = 'sphynx-finder.local:57127'
 
 async function finderServices(){
     const response = await fetch(`http://${finderAPI}/services`, {

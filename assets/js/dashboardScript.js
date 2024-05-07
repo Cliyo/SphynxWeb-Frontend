@@ -1,6 +1,6 @@
 import { fetchEspData } from "./localFunctions/localMenus.js";
 
-const api = 'sphynx-api.local'
+const api = 'sphynx-api.local:57128'
 
 // MENU ANIMATION //
 $('.sub-btn').next('.sub-menu').slideToggle();

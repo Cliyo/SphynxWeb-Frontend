@@ -1,6 +1,6 @@
 var form = document.querySelector("#form")
 var message = document.querySelector("#alert-login")
-const api = 'sphynx-api.local'
+const api = 'sphynx-api.local:57128'
 
 if(localStorage.getItem("token")){
     fetch(`http://${api}/login/verify`,{
