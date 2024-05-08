@@ -17,7 +17,7 @@ formConsumerRegister.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    const reqData = await request(api, "consumer", "POST", header, jsonData);
+    const reqData = await request(api, "consumers", "POST", header, jsonData);
 
     if(reqData.status == 400){
         let message = formConsumerRegister.parentNode.querySelector("#alert");
@@ -38,7 +38,7 @@ formConsumerUpdate.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify({"tag": data["tag"]});
 
-    const reqData = await request(api, `consumer/${data["ra"]}`, "PUT", header, jsonData);
+    const reqData = await request(api, `consumers/${data["ra"]}`, "PUT", header, jsonData);
 
     if(reqData.status == 400){
         let message = formConsumerUpdate.parentNode.querySelector("#alert");
@@ -60,7 +60,7 @@ formConsumerDelete.addEventListener("submit", async (event) => {
     var jsonData = JSON.stringify({});
 
     try{
-        const reqData = await request(api, `consumer/${data["ra"]}`, "DELETE", header, jsonData);
+        const reqData = await request(api, `consumers/${data["ra"]}`, "DELETE", header, jsonData);
 
         let message = formConsumerDelete.parentNode.querySelector("#alert");
         message.innerHTML = "Success";
@@ -77,7 +77,7 @@ formConsumerDelete.addEventListener("submit", async (event) => {
 subItemConsumerGet.addEventListener("click", async (event) => {
     event.preventDefault();
 
-    const reqData = await request(api, "consumer", "GET", header, null);
+    const reqData = await request(api, "consumers", "GET", header, null);
 
     consumersTableData.innerHTML = "";
     let array = Object.keys(reqData);

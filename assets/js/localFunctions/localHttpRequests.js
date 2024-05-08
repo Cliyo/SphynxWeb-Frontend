@@ -18,7 +18,7 @@ formLocalUpdate.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify({"mac": data["mac"]});
 
-    const reqData = await request(api, `local/${data["name"]}`, "PUT", header, jsonData);
+    const reqData = await request(api, `locals/${data["name"]}`, "PUT", header, jsonData);
 
     if(reqData.message == 400){
         let message = formLocalUpdate.parentNode.querySelector("#alert");
@@ -40,7 +40,7 @@ formLocalDelete.addEventListener("submit", async (event) => {
     var jsonData = JSON.stringify({});
 
     try{
-        const reqData = await request(api, `local/${data["name"]}`, "DELETE", header, jsonData);
+        const reqData = await request(api, `locals/${data["name"]}`, "DELETE", header, jsonData);
         let message = formLocalDelete.parentNode.querySelector("#alert");
         message.innerHTML = "Local deleted!";
         message.style.color = "#00FF00";
@@ -56,7 +56,7 @@ formLocalDelete.addEventListener("submit", async (event) => {
 subItemLocalGet.addEventListener("click", async (event) => {
     event.preventDefault()
 
-    const reqData = await request(api, `local`, "GET", header, null);
+    const reqData = await request(api, `locals`, "GET", header, null);
 
     localsTableData.innerHTML = "";
     let array = Object.keys(reqData);
