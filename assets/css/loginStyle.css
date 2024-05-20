@@ -83,3 +83,16 @@ p.alert-login{
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+@media (max-width: 650px) {
+    div.login-container{
+        min-width: 0px;
+        max-width: 500px;
+        width: 100%;
+        
+    }
+
+    input.user, input.password{
+        width: 90%;
+    }
+}

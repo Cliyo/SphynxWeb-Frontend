@@ -4,15 +4,22 @@ const api = 'sphynx-api.local:57128'
 
 // MENU ANIMATION //
 $('.sub-btn').next('.sub-menu').slideToggle();
-
-$(document).ready(function(){
-    $('.sub-btn').click(function(){
-        $(this).parent().parent().find('.rotate').parent().parent().find('.sub-menu').slideToggle();
-        $(this).parent().parent().find('.rotate').parent().parent().find('.sub-btn').find('.dropdown').toggleClass('rotate');
+$(document).ready(function() {
+    if (window.innerWidth <= 650) { 
+        $('.menu-button').next('.menu').slideToggle();
+        $('.menu-button').click(function() {
+            $('.menu').slideToggle();
+            $(this).find('.dropdown').toggleClass('rotate');
+        });
+    }
+    
+    $('.sub-btn').click(function() {
+        $('.sub-menu').not($(this).next('.sub-menu')).slideUp();
+        $('.dropdown').not($(this).find('.dropdown')).removeClass('rotate');
         $(this).next('.sub-menu').slideToggle();
         $(this).find('.dropdown').toggleClass('rotate');
-    })
-})
+    });
+});
 
 // GET THE WEBSITE LANGUAGE //
 const urlParams = new URLSearchParams(window.location.search);

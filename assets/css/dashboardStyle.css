@@ -15,6 +15,10 @@ section{
     width: auto;
 }
 
+.menu-button {
+    visibility: hidden;
+}
+
 .side-bar .menu .item{
     position: relative;
     cursor: pointer;
@@ -57,6 +61,48 @@ section{
     background-color: rgba(0, 0, 0, 0.507);
 }
 
+@media (max-width: 650px) {
+    .side-bar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: white;
+        z-index: 1000;
+        display: grid;
+        height: fit-content;
+        border-radius: 15px;
+    }
+
+    .menu-button {
+        visibility:visible;
+        color: rgb(255, 255, 255);
+        background-color: #022534;
+        font-size: 1.5rem;
+        width: 100%;
+        height: fit-content;
+        cursor: pointer;
+    }
+
+    .side-bar .menu .item{
+        border-radius: 0px;
+    }
+
+    .side-bar .menu .item .sub-menu{
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    
+    .side-bar .menu .item a {
+        font-size: 1.2rem;
+        line-height: 50px;
+    }
+    
+    .side-bar .menu .item .sub-menu a {
+        padding-left: 30px;
+    }
+}
+
 .rotate{
     transform: rotate(90deg);
 }
@@ -71,6 +117,15 @@ div.screen{
     border-radius: 15px;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 650px) {
+    div.screen{
+        width: 100%;
+        top: 2%;
+        height: 90%;
+        border-radius: 15px;
+    }
 }
 
 .loader {
