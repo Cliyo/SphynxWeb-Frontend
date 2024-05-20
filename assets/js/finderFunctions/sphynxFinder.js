@@ -53,7 +53,7 @@ async function inDatabase(){
     const sphynxs = [];
 
     // GET ALL THE MAC IN DATABASE //
-    const reqData = await request(api, `local`, "GET", header, null);
+    const reqData = await request(api, `locals`, "GET", header, null);
 
     let array = Object.keys(reqData);
     

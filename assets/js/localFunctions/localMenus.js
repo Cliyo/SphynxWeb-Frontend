@@ -112,7 +112,7 @@ async function localRegisterTable(arrayEsp, databaseEsp) {
             var data = Object.fromEntries(formData);
             var jsonData = JSON.stringify(data);
 
-            const reqData = await request(api, `local`, "POST", header, jsonData);
+            const reqData = await request(api, `locals`, "POST", header, jsonData);
 
             if(reqData.status == 400){
                 alert(reqData.message);
