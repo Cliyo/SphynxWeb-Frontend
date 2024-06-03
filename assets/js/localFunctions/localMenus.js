@@ -1,6 +1,6 @@
 import { api, header } from "../dashboardScript.js";
 import {finder, inDatabase} from "../finderFunctions/sphynxFinder.js";
-import request from "../utils/requestHttp.js";
+import {request} from "../utils/requestHttp.js";
 import { showMessage } from "../utils/messages.js";
 
 // LOCAL SCREENS DIVS //

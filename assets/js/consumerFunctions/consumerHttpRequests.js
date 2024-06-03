@@ -1,4 +1,4 @@
-import request from "../utils/requestHttp.js";
+import {request} from "../utils/requestHttp.js";
 import { header, language, api } from "../dashboardScript.js";
 
 // CONSUMER FORMS //

@@ -1,5 +1,5 @@
 import { header, api } from "../dashboardScript.js";
-import request from "../utils/requestHttp.js";
+import {request} from "../utils/requestHttp.js";
 import { localGetDiv, subItemLocalGet } from "./localMenus.js";
 
 // LOCAL FORMS //

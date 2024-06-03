@@ -1,4 +1,4 @@
-import request from "../utils/requestHttp.js";
+import {request} from "../utils/requestHttp.js";
 import { header, api } from "../dashboardScript.js"
 import { createLineTable } from "../utils/createLineTable.js";
 import { raInput, localInput, dateInput, accessGetDiv } from "./accessMenus.js";

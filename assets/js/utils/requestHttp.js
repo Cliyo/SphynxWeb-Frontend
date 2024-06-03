@@ -1,23 +1,32 @@
-async function request(api, entity, method, header, body){
-    let response;
+async function request(api, entity, method, header, body, rawResponse = false) {
+    try {
+        const response = await fetch(`http://${api}/${entity}`, {
+            mode: "cors",
+            method: `${method}`,
+            headers: header,
+            body: body
+        });
 
-    await fetch(`http://${api}/${entity}`, {
-        mode: "cors",
-        method: `${method}`,
-        headers: header,
-        body: body
-    })
-    .then(response => {
-        return response.json();          
-    })
-    .then(data => {
-        response = data;
-    })
-    .catch(err => {
+        if (rawResponse) {
+            return response;
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (err) {
         console.log(err);
-    })
-
-    return response;
+    }
 }
 
-export default request;
+async function testConnection(apiUrls){
+    for (const url of apiUrls){
+        const response = await request (url, `online`, "get", {'Access-Control-Allow-Origin': `${window.location.hostname}`,'Access-Control-Allow-Credentials': 'true','Content-Type': 'application/json'}, null,  true)
+            if (response){
+                if(response.ok){
+                    console.log(url)
+                    return url
+                }
+            }
+    }
+}
+export {request, testConnection};

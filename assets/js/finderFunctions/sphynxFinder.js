@@ -1,8 +1,12 @@
 import { api } from "../dashboardScript.js";
-import request from "../utils/requestHttp.js";
+import {request, testConnection} from "../utils/requestHttp.js";
 import {header, language} from "../dashboardScript.js"
 
-const finderAPI = 'sphynx-finder.local:57127'
+var finderAPI = 'sphynx-finder.local:57127';
+const apiUrls = ['sphynx-finder.local:57127','localhost:57127', `${window.location.hostname}:57127`]
+
+finderAPI = await testConnection(apiUrls)
+
 
 const finderHeader = {
     'Access-Control-Allow-Origin': `http://${finderAPI}`,
@@ -11,13 +15,13 @@ const finderHeader = {
     }
     
 async function finderServices(){
-    const response = await request(finderAPI, `services`, "GET", finderHeader, null)
+    const response = await request(finderAPI, `services`, "GET", finderHeader, null, true)
 
     return response;
 }
 
 async function finderScan(){
-    const response = await request(finderAPI, `scan`, "GET", finderHeader, null)
+    const response = await request(finderAPI, `scan`, "GET", finderHeader, null, true)
 
     return response;
 }
@@ -34,8 +38,7 @@ async function finder(type){
         console.error("Não foi possível pegar os dispositivos")
     }
 
-    const data = await response.json();
-    return data;
+    return response.json()
 }
 
 async function inDatabase(){
