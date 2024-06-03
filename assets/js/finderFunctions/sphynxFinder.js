@@ -4,30 +4,20 @@ import {header, language} from "../dashboardScript.js"
 
 const finderAPI = 'sphynx-finder.local:57127'
 
+const finderHeader = {
+    'Access-Control-Allow-Origin': `http://${finderAPI}`,
+    'Access-Control-Allow-Credentials': 'true',
+    'Content-Type': 'application/json'
+    }
+    
 async function finderServices(){
-    const response = await fetch(`http://${finderAPI}/services`, {
-        mode: "cors",
-        method: "GET",
-        headers: {
-            'Access-Control-Allow-Origin': `http://${finderAPI}`,
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        }
-    });
+    const response = await request(finderAPI, `services`, "GET", finderHeader, null)
 
     return response;
 }
 
 async function finderScan(){
-    const response = await fetch(`http://${finderAPI}/scan`, {
-        mode: "cors",
-        method: "GET",
-        headers: {
-            'Access-Control-Allow-Origin': `http://${finderAPI}`,
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        }
-    });
+    const response = await request(finderAPI, `scan`, "GET", finderHeader, null)
 
     return response;
 }
