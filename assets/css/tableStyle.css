@@ -21,3 +21,9 @@ table.content-table tbody tr{
     border-bottom: 1px solid var(--color-background);
     text-align: center;
 }
+
+@media (max-width: 1306px) {
+    table.content-table{
+        font-size: 1rem;
+    }
+}
