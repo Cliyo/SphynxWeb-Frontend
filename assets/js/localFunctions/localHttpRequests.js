@@ -60,6 +60,7 @@ subItemLocalGet.addEventListener("click", async (event) => {
 
     localsTableData.innerHTML = "";
     let array = Object.keys(reqData);
+    console.log(array)
 
     array.forEach(index => {
         let tr = document.createElement("tr");

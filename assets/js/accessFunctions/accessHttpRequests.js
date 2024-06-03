@@ -15,6 +15,7 @@ accessAllButton.addEventListener("click", async (event) => {
 
     const reqData = await request(api, "accessRegisters", "GET", header, null);
 
+    console.log(reqData)
     accessGetTableData.innerHTML = "";
     let array = Object.keys(reqData);
 
