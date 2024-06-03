@@ -10,7 +10,9 @@ Continuação do projeto Sphynx, com foco em melhorar e acrescentar funcionalida
 - WebSocket
 
 ## Requisitos
-- Baixar backend do projeto pelo seguinte link: https://github.com/PedroVidalDev/sphynx_v2_backend
+- Caso queira utilizar em conjunto com as APIs do projeto, baixar no link abaixo:
+  - https://github.com/Cliyo/Sphynx-API
+  - https://github.com/Cliyo/Sphynx-Finder
 
 # Amostra das telas do sistema
 ![image](https://github.com/PedroVidalDev/sphynx_V2_frontend/assets/113215138/8976705b-dd3f-4d4a-8000-518aae4d6654)
