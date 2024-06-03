@@ -50,7 +50,7 @@ async function localRegisterTable(arrayEsp, databaseEsp) {
         return;
     }
     // CREATING THE TABLE COLUMN //
-    arrayEsp.forEach(esp => {
+    arrayEsp.forEach(async (esp) => {
         let inDatabase = false;
         databaseEsp.forEach(espInDB => {
             if (esp.mac == espInDB.mac){
@@ -78,13 +78,14 @@ async function localRegisterTable(arrayEsp, databaseEsp) {
         selectPermission.className = "select-permission-local-table";
         selectPermission.id = "select-permission-local-table";
 
-        for(let i = 0; i < 3; i++){
+        let reqData = await request(api, "permissions", "GET", header, null);
+        reqData.sort((a, b) => a.level - b.level);
+        reqData.forEach(permission => {
             let option = document.createElement("option");
-            option.className = "select-permission-option";
-            option.innerHTML = i + " - " + listPermissions[i];
-            option.value = i;
+            option.value = permission.level;
+            option.innerHTML = permission.level + " - " + permission.name;
             selectPermission.appendChild(option);
-        }
+        });
 
         let tdPermission = document.createElement("td");
         tdPermission.appendChild(selectPermission);
