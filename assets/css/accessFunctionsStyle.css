@@ -51,3 +51,24 @@ input.ra-access-input:focus-visible, input.local-access-input:focus-visible, inp
     outline: none;
     background-color: white;
 }
+
+
+@media (max-width: 1306px) {
+    div.access-get-div table thead tr th{
+        font-size: 0.75rem;
+    }
+    
+    div.access-get-div table tbody tr td{
+        font-size: 0.5rem;
+    }
+}
+
+@media (max-width: 806px) {
+    div.access-get-div table thead tr th{
+        font-size: 0.5rem;
+    }
+    
+    div.access-get-div table tbody tr td{
+        font-size: 0.3rem;
+    }
+}

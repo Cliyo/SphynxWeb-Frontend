@@ -120,3 +120,12 @@ div.consumer-get-div::-webkit-scrollbar-thumb {
     border-radius: 10px;
 }
 
+@media (max-width: 1306px) {
+    div.consumer-get-div table thead tr th{
+        font-size: 1rem;   
+    }
+    
+    div.consumer-get-div table tbody tr td{
+        font-size: 0.75rem;   
+    }
+}

@@ -187,3 +187,23 @@ div.local-get-div::-webkit-scrollbar-thumb {
     background: var(--color-background); 
     border-radius: 10px;
 }
+
+@media (max-width: 1306px) {
+    div.local-get-div table thead tr th{
+        font-size: 1rem;   
+    }
+    
+    div.local-get-div table tbody tr td{
+        font-size: 0.75rem;   
+    }
+
+    input.input-name-local-table{
+        padding: 15px;
+        font-size: 0.6rem;
+    }
+
+    select.select-permission-local-table{
+        padding: 15px;
+        font-size: 0.6rem;
+    }
+}
