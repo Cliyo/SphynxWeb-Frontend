@@ -25,6 +25,19 @@ $(document).ready(function() {
 const urlParams = new URLSearchParams(window.location.search);
 const language = urlParams.get("language");
 
+// SWITCH THE WEBSITE FONT STYLE //
+const htmlDocument = document.querySelector("html");
+
+const switchButton = document.querySelector("#switch");
+switchButton.addEventListener("click", () => {
+    if(switchButton.checked == true){
+        htmlDocument.style.fontFamily = "Dyslexic";
+    } else{
+        htmlDocument.style.fontFamily = "Roboto";
+    }
+})
+
+
 // DEFINE THE HTTP HEADER //
 const header = {
     'Authorization': `Bearer ${localStorage.getItem("token")}`,
