@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/css/tableStyle.css">
     <link rel="stylesheet" href="../assets/css/accessFunctionsStyle.css">
     <link rel="stylesheet" href="../assets/css/localFunctionsStyle.css">
+    <link rel="stylesheet" href="../assets/css/permissionFunctionsStyle.css">
     <link rel="stylesheet" href="../assets/css/translateStyle.css">
     <link rel="stylesheet" href="../assets/css/messages.css">
     <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
@@ -64,6 +65,14 @@
                         <a id="sub-item-local-update" class="sub-item"> Edit </a>
                         <a id="sub-item-local-get" class="sub-item"> View all </a>
                         <a id="sub-item-local-delete" class="sub-item"> Delete </a>
+                    </div>
+                </div>
+
+                <div class="item"> 
+                    <a class="sub-btn" data-permission id="permissions-menu"> <i class="fa-solid fa-chevron-right dropdown"></i> Permissions </a> 
+                    <div class="sub-menu">
+                        <a id="sub-item-permission-register" class="sub-item"> Register </a>
+                        <a id="sub-item-permission-delete" class="sub-item"> Delete </a>
                     </div>
                 </div>
             
@@ -244,6 +253,42 @@
                 </table>
 
             </div>
+
+            <div id="permission-register-div" class="permission-register-div subscreen">
+                
+                <h1 data-register id="register"> Register </h1>
+
+                <p id="alert" class="alert"></p>
+
+                <form id="permission-register-form" method="POST">
+
+                    <div class="adjust-consumer-register-inputs">
+                        <input type="number" class="level-input" id="level-input" name="level" placeholder="Level" required>
+                        <input type="text" class="name-input" id="name-input" name="name" placeholder="Name" required>
+                    </div>
+
+                    <input type="submit" class="submit" id="submit" value="Finalize">
+                
+                </form>
+
+            </div>
+
+            <div id="permission-delete-div" class="permission-update-div subscreen">
+                <h1 data-delete id="delete"> Delete </h1>
+
+                <p id="alert" class="alert"></p>
+
+                <form id="permission-delete-form" method="POST">
+
+                    <div class="adjust-permission-delete-inputs">
+                        <input type="number" class="level-input" id="level-input" name="level" placeholder="Level" required>
+                    </div>
+
+                    <input type="submit" class="submit" id="submit" value="Finalize">
+                
+                </form>
+
+            </div>
         </div>
     </section>
     <div id="mensagem"></div>
@@ -259,6 +304,8 @@
 
 <script src="../assets/js/localFunctions/localMenus.js" type="module"></script>
 <script src="../assets/js/localFunctions/localHttpRequests.js" type="module"></script>
+
+<script src="../assets/js/permissionFunctions/permissionMenus.js" type="module"></script>
 
 <script type="module" src="../assets/js/translate.js"></script>
 <script src="../assets/js/changeFavicon.js"> </script>
