@@ -1,8 +1,8 @@
 var form = document.querySelector("#form")
 var message = document.querySelector("#alert-login")
 const api = 'sphynx-api.local:57128'
-
-if(localStorage.getItem("token")){
+if (localStorage){
+    if(localStorage.getItem("token")){
     fetch(`http://${api}/login/verify`,{
         mode: 'cors',
         method: "POST",
@@ -25,6 +25,8 @@ if(localStorage.getItem("token")){
     .catch(err => {
         console.log(err);
     })
+}
+
 }
 
 form.addEventListener("submit", (event) => {
@@ -58,7 +60,9 @@ form.addEventListener("submit", (event) => {
     .then(data => {
         message.innerHTML = "Logged!";
         message.style.color = "#00FF00";
-        localStorage.setItem("token", data["token"]);
+        if (localStorage){
+            localStorage.setItem("token", data["token"]);
+        }
         window.location = "pages/dashboardPage.html";
     })
     .catch(err => {
