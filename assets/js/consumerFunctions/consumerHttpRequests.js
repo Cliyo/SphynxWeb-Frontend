@@ -1,5 +1,6 @@
 import {request} from "../utils/requestHttp.js";
 import { header, language, api } from "../dashboardScript.js";
+import { consumerGetDiv, subItemConsumerGet } from "./consumerMenus.js";
 
 // CONSUMER FORMS //
 const formConsumerRegister = document.querySelector("#consumer-register-form");
@@ -13,9 +14,13 @@ const consumersTableData = consumerGetDiv.querySelector(".content-table").queryS
 formConsumerRegister.addEventListener("submit", async (event) => {
     event.preventDefault();
 
+    let selectInput = document.querySelector("#permission-input");
+
     var formData =  new FormData(formConsumerRegister);
     var data = Object.fromEntries(formData);
+    data.permission = selectInput.value;
     var jsonData = JSON.stringify(data);
+    console.log(data)
 
     const reqData = await request(api, "consumers", "POST", header, jsonData);
 
@@ -88,15 +93,23 @@ subItemConsumerGet.addEventListener("click", async (event) => {
         let tdId = document.createElement("td");
         tdId.innerHTML = reqData[index]["id"];
 
+        let tdName = document.createElement("td");
+        tdName.innerHTML = reqData[index]["name"];
+
         let tdRa = document.createElement("td");
         tdRa.innerHTML = reqData[index]["ra"];
 
         let tdTag = document.createElement("td");
         tdTag.innerHTML = reqData[index]["tag"];
+
+        let tdPermission = document.createElement("td");
+        tdPermission.innerHTML = reqData[index]["permission"]["name"];
         
         tr.appendChild(tdId);
+        tr.appendChild(tdName);
         tr.appendChild(tdRa);
         tr.appendChild(tdTag);
+        tr.appendChild(tdPermission);
         
         consumersTableData.appendChild(tr);
     })    

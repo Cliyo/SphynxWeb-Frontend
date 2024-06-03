@@ -2,6 +2,9 @@
 const accessGetDiv = document.querySelector("#access-get");
 
 // ACCESS SUB BUTTONS TO SHOW THE SCREENS //
+// LOCAL SCREENS DIVS //
+const allScreens = document.querySelectorAll(".subscreen")
+
 const subItemAccessGetAllButton = document.querySelector("#sub-item-access-all")
 const subItemAccessGetRaButton = document.querySelector("#sub-item-access-consumer")
 const subItemAccessGetLocalButton = document.querySelector("#sub-item-access-local")

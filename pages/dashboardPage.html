@@ -118,9 +118,6 @@
                         <input type="text" class="ra-input" id="ra-input" name="ra" placeholder="RA" minlength="13" required>
                         <input type="text" class="tag-input" id="tag-input" name="tag" placeholder="Mifare TAG" required>
                         <select id="permission-input" class="permission-input">
-                            <option value="0"> 0 - High </option>
-                            <option value="1"> 1 - Mid </option>
-                            <option value="2"> 2 - Low </option>
                         </select>
                     </div>
 
@@ -170,8 +167,10 @@
                     <thead>
                         <tr>
                             <th id="id-table"> ID </th>
+                            <th id="name-table"> Name </th>
                             <th id="ra-table"> RA </th>
                             <th id="tag-table"> Tag </th>
+                            <th id="permission-table"> Level </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -296,7 +295,7 @@
 
 <script src="../assets/js/dashboardScript.js" type="module" ></script>
 
-<script src="../assets/js/consumerFunctions/consumerMenus.js"></script>
+<script src="../assets/js/consumerFunctions/consumerMenus.js" type="module"></script>
 <script src="../assets/js/consumerFunctions/consumerHttpRequests.js" type="module"></script>
 
 <script src="../assets/js/accessFunctions/accessMenus.js" type="module"></script>
@@ -306,6 +305,7 @@
 <script src="../assets/js/localFunctions/localHttpRequests.js" type="module"></script>
 
 <script src="../assets/js/permissionFunctions/permissionMenus.js" type="module"></script>
+<script src="../assets/js/permissionFunctions/permissionHttpRequests.js" type="module"></script>
 
 <script type="module" src="../assets/js/translate.js"></script>
 <script src="../assets/js/changeFavicon.js"> </script>

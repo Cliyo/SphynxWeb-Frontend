@@ -4,6 +4,8 @@ import {request} from "../utils/requestHttp.js";
 import { showMessage } from "../utils/messages.js";
 
 // LOCAL SCREENS DIVS //
+const allScreens = document.querySelectorAll(".subscreen")
+
 const localRegisterDiv = document.querySelector("#local-register-div");
 const localUpdateDiv = document.querySelector("#local-update-div");
 const localDeleteDiv = document.querySelector("#local-delete-div");
