@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Dyslexic";
-    src: url('../fonts/dyslexic/OpenDyslexic-Bold.woff') format('woff');
+    src: url('./../fonts/dyslexic/OpenDyslexic-Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
