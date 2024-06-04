@@ -2,7 +2,7 @@ import { api } from "../dashboardScript.js";
 import {request, testConnection} from "../utils/requestHttp.js";
 import {header, language} from "../dashboardScript.js"
 
-var finderAPI = 'sphynx-finder.local:57127';
+var finderAPI = `${window.location.hostname}:57127`;
 const apiUrls = ['sphynx-finder.local:57127','localhost:57127', `${window.location.hostname}:57127`]
 
 finderAPI = await testConnection(apiUrls)
