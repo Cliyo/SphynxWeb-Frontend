@@ -173,6 +173,15 @@ div.screen{
 }
 
 @media (max-width: 650px) {
+    section{
+        padding: 0 0px;
+    }
+
+    div.screen{
+        width: 90%;
+        height: 90%;
+    }
+
     .side-bar {
         width: 100%;
         position: fixed;
