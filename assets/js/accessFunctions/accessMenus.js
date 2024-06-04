@@ -48,9 +48,12 @@ subItemAccessGetDateButton.addEventListener("click", () => {
 })
 
 function showAndHide(){
-    allScreens.forEach(screen => {
+    if (allScreens){
+        allScreens.forEach(screen => {
         screen.style.display = "none";
-    })
+        })
+    }
+    
 
     inputs.forEach(input => {
         input.style.display = "none";
