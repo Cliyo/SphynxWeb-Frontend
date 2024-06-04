@@ -27,3 +27,15 @@ table.content-table tbody tr{
         font-size: 1rem;
     }
 }
+
+@media (max-width: 1306px) {
+    table.content-table{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 440px) {
+    table.content-table{
+        font-size: 0.6rem;
+    }
+}

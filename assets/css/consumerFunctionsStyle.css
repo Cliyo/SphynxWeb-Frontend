@@ -24,12 +24,11 @@ div.consumer-register-div form, div.consumer-update-div form{
     height: 85%;
 }
 
-div.adjust-consumer-register-inputs, div.adjust-consumer-update-inputs{
+div.adjust-consumer-register-inputs, div.adjust-consumer-update-inputs, div.adjust-consumer-delete-inputs{
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 50%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -48,7 +47,7 @@ select.permission-input{
 
 div.consumer-register-div form div input, div.consumer-update-div form div input, div.consumer-delete-div form div input{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 50px;
     padding: 15px;
     border-radius: 15px;
