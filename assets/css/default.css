@@ -1,27 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@100&display=swap');
-
-@font-face {
-    font-family: "Dyslexic";
-    src: url('./../fonts/dyslexic/OpenDyslexic-Bold.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    text-decoration: none;
-}
-
-html{
-    font-size: 16px;
-    font-family: 'Roboto';
 }
 
 :root{
-    --color-background: #024959;
-    --color-background-bright: #026773;
-    --color-gray: #D9D9D9;
-    --color-submenu: #022534;
+    --cor-fundo: #024959;
+    --cor-fundo-escura: #00262F;
+    --cor-clara: #026773;
+}
+
+html{
+    font-size: 62.5px;
+    font-family: 'Roboto';
+}
+
+input:focus-visible{
+    outline: none;
 }
