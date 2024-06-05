@@ -41,6 +41,7 @@ nav ul li:hover, .botao-menu:hover{
 .menu-icone{
     display: none;
     color: white;
+    cursor: pointer;
 }
 
 .mostrarMenu{
