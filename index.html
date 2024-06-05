@@ -1,30 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon"></link>
     <link rel="stylesheet" href="./assets/css/default.css">
     <link rel="stylesheet" href="./assets/css/loginStyle.css">
-    <title id="login-title"> Sphynx - Login </title>
+    <title> Login | Sphynx </title>
 </head>
 <body>
-    <section>
-        <div class="login-container">
-            <img class="logo" alt="logo" src="./assets/img/logo.png">
-            <br>
-            <p id="alert-login" class="alert-login"></p>
-            <form id="form" method="POST">
-                <div class="adjust-inputs">
-                    <input type="text" class="user" id="input-user" name="user" placeholder="User" required>
-                    <input type="password" class="password" id="password-user" name="password" placeholder="Password" minlength=4 required>
-                </div>
-                <input type="submit" class="submit" id="submit-login" value="Login">
+    <main>
+        <div class="container-login">
+            <form id="form">
+                <input type="email" class="email-input" id="email-input" placeholder="E-mail" required>
+                <input type="password" class="senha-input" id="senha-input" placeholder="Senha" required>
+                <input type="submit" class="submit" id="submit" value="Enviar">
             </form>
         </div>
-    </section>
+    </main>
 </body>
-<script src="./assets/js/translate.js"> </script>
-<script src="./assets/js/loginFunctions/loginScript.js" type="module"> </script>
-<script src="./assets/js/changeFavicon.js"> </script>
 </html>
