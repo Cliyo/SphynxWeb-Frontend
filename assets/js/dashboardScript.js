@@ -8,30 +8,6 @@ const language = urlParams.get("language");
 
 // api = await testConnection(apiUrls)
 
-// GET THE WEBSITE LANGUAGE //
-
-
-// SWITCH THE WEBSITE FONT STYLE //
-const htmlDocument = document.querySelector("html");
-
-const switchButton = document.querySelector("#switch");
-switchButton.addEventListener("click", () => {
-    if(switchButton.checked == true){
-        htmlDocument.style.fontFamily = "Dyslexic";
-    } else{
-        htmlDocument.style.fontFamily = "Roboto";
-    }
-})
-
-// DEFINE THE HTTP HEADER //
-const header = {
-    'Authorization': `Bearer ${localStorage.getItem("token")}`,
-    'Access-Control-Allow-Origin': `http://${api}`,
-    'Access-Control-Allow-Credentials': 'true',
-    'Content-Type': 'application/json',
-    'language': language
-}
-
 
 // VERIFY THE USER LOGIN //
 if(localStorage.getItem("token")){
@@ -78,4 +54,4 @@ botaoMenuMobile.addEventListener("click", () => {
 
 //fetchEspData(true);
 
-//export {header, language, api};
+//export {language, api};
