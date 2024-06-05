@@ -65,3 +65,13 @@ main{
     color: white;
     transform: scale(105%);
 }
+
+@media (max-width: 550px){
+    .container-login{
+        width: 90%;
+    }
+
+    .logo{
+        width: 80%;
+    }
+}
