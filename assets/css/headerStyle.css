@@ -100,16 +100,6 @@ nav ul li:hover, .botao-menu:hover{
     }
 }
 
-@keyframes mostrarMenuMobile {
-    0%{
-        left: -100%;
-    }
-
-    100%{
-        left: 0%;
-    }
-}
-
 @keyframes esconderMenuMobile {
     0%{
         left: 0%;
