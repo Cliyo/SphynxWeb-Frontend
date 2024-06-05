@@ -40,6 +40,7 @@ nav ul li:hover, .botao-menu:hover{
 
 .menu-icone{
     display: none;
+    font-size: 0.5rem;
     color: white;
     cursor: pointer;
 }
