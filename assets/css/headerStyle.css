@@ -44,12 +44,12 @@ nav ul li:hover, .botao-menu:hover{
 }
 
 .mostrarMenu{
-    animation: mostrarMenuMobile 1s ease-in-out;
+    animation: mostrarMenuMobile .5s ease-in-out;
     animation-fill-mode: forwards;
 }
 
 .esconderMenu{
-    animation: esconderMenuMobile 1s ease-in-out;
+    animation: esconderMenuMobile .5s ease-in-out;
     animation-fill-mode: forwards;
 }
 
