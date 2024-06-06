@@ -63,6 +63,7 @@ nav ul li:hover, .botao-menu:hover{
     nav{
         position: absolute;
         width: 100%;
+        z-index: 99;
         align-items: center;
         justify-content: center;
         left: -100%;
