@@ -110,9 +110,15 @@ main{
 }
 
 @media (max-width: 582px){
-    .configuracoes-geral-opcao p{
-        font-size: 0.3rem;
+    .configuracoes-geral-opcao{
+        align-items: flex-start;
+        flex-direction: column;
     }
+
+    .configuracoes-geral-opcao select, .configuracoes-geral-opcao input{
+        width: 100%;
+    }
+    
 
     .configuracoes-menu p{
         font-size: 0.4rem;
