@@ -57,6 +57,7 @@ main{
 .configuracoes-geral{
     position: relative;
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 85%;
     background-color: var(--cor-clara);
@@ -71,6 +72,7 @@ main{
     width: 90%;
     align-items: center;
     justify-content: space-between;
+    margin: 10px 0;
 }
 
 .configuracoes-geral-opcao p{
@@ -78,11 +80,31 @@ main{
     color: white;
 }
 
-.configuracoes-geral-opcao select{
-    width: 200px;
+.configuracoes-geral-opcao select, .configuracoes-geral-opcao input{
+    min-width: 200px;
+    width: 40%;
+    max-width: 500px;
     height: 50px;
     border-radius: 15px;
     border: 0;
     padding: 10px 10px;
     font-size: 0.3rem;
+}
+
+.botao-salvar-configuracao{
+    position: relative;
+    width: 30%;
+    min-width: 300px;
+    height: 50px;
+    border-radius: 15px;
+    border: 0;
+    cursor: pointer;
+    font-size: 0.3rem;
+    margin-top: 10px;
+    transition: .5s;
+}
+
+.botao-salvar-configuracao:hover{
+    background-color: var(--cor-fundo);
+    color: white;
 }
