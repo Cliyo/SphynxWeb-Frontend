@@ -17,7 +17,7 @@ html{
     font-family: 'Roboto';
 }
 
-input:focus-visible{
+input:focus-visible, select:focus-visible{
     outline: none;
 }
 

@@ -61,4 +61,28 @@ main{
     height: 85%;
     background-color: var(--cor-clara);
     border-radius: 0px 0px 15px 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.configuracoes-geral-opcao{
+    position: relative;
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.configuracoes-geral-opcao p{
+    font-size: 0.5rem;
+    color: white;
+}
+
+.configuracoes-geral-opcao select{
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    border: 0;
+    padding: 10px 10px;
+    font-size: 0.3rem;
 }
