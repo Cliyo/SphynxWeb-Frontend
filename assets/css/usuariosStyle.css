@@ -99,6 +99,7 @@ main{
 
 select{
     display: none;
+    padding: 10px 10px;
 }
 
 .botao-adicionar-novo:hover{
