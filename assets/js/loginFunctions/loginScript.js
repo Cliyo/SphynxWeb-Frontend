@@ -1,12 +1,10 @@
+import { mostrarMensagem } from "../utils/messages.js";
 import {request} from "../utils/requestHttp.js";
 
 var form = document.querySelector("#form")
-var message = document.querySelector("#alert-login")
 
 const api = `${window.location.hostname}:57128`;
 const apiUrls = ['sphynx-api.local:57128','localhost:57128', `${window.location.hostname}:57128`]
-// api = await testConnection(apiUrls)
-
 
 const headers = {
     'Access-Control-Allow-Origin': `http://${api}`,
@@ -15,14 +13,14 @@ const headers = {
 }
 
 request(api,`login/verify`,"POST",headers,JSON.stringify({"token": localStorage.getItem("token")}))
-.then(response =>{
-    if (response["result"]){
-        window.location = "pages/dashboardPage.html"
-    }
-})
-.catch(err =>{
-    console.log(err);
-})
+    .then(response =>{
+        if (response["result"]){
+            window.location = "pages/dashboard.html"
+        }
+    })
+    .catch(err =>{
+        console.log(err);
+    })
 
 
 form.addEventListener("submit", async (event) => {
@@ -31,21 +29,23 @@ form.addEventListener("submit", async (event) => {
     var formData = new FormData(form);
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
-    request (api, `login`, "POST", headers, jsonData, true)
-    .then(response => {
-        if(!response.ok){
-            message.innerHTML = "Login error...";
-            message.style.color = "#FF0000";
 
-            throw new Error("HTTP Status " + response.status);
-        }
-        
-        return response.json()
-    })
-    .then(data => {
-        message.innerHTML = "Logged!";
-        message.style.color = "#00FF00";
-        localStorage.setItem("token", data["token"]);
-        window.location = "pages/dashboardPage.html";
-    })
+    request (api, `login`, "POST", headers, jsonData, true)
+        .then(response => {
+            if(!response.ok){
+                mostrarMensagem("Login error...");
+
+                throw new Error("HTTP Status " + response.status);
+            }
+            
+            return response.json()
+        })
+        .then(data => {
+            mostrarMensagem("Logged!");
+            localStorage.setItem("token", data["token"]);
+            window.location = "pages/dashboard.html";
+        })
+        .catch(err => {
+            mostrarMensagem("Error!");
+        })
 })

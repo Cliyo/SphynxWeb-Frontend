@@ -1,9 +1,9 @@
-export function showMessage(mensagem) {
-    var message = document.getElementById("mensagem");
-    message.className = "show";
-    message.innerHTML = mensagem;
+export function mostrarMensagem(texto) {
+    var mensagem = document.getElementById("mensagem");
+    mensagem.className = "show";
+    mensagem.innerHTML = texto;
     setTimeout(
         function(){
-            message.className = message.className.replace("show", ""); 
+            mensagem.className = mensagem.className.replace("show", ""); 
         }, 5000);
   }
