@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./../assets/css/usuariosStyle.css">
     <link rel="stylesheet" href="./../assets/css/tableStyle.css">
     <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
-    <title> Configurações | Sphynx </title>
+    <title> Usuarios | Sphynx </title>
 </head>
 <body>
     <header>
@@ -45,7 +45,7 @@
         <i id="menu-mobile-botao" class="menu-icone fa-solid fa-bars"></i>
     </header>
     <main>
-        <div class="usuarios-container">
+        <div id="usuarios-container" class="usuarios-container">
             <div class="usuarios-menu">
                 <div id="usuarios-menu-ver" class="usuarios-menu-opcao selecionado">
                     <p> Ver tudo </p>
@@ -78,8 +78,8 @@
                 </div>
                 <div class="legenda-tabela">
                     <div class="ajustar-botoes">
-                        <button class="botao-adicionar-novo"> + Adicionar novo </button>
-                        <select id="input-grupo">
+                        <button id="botao-adicionar-novo" class="botao-adicionar-novo"> + Adicionar novo </button>
+                        <select class="input-grupo" id="input-grupo">
                             <option value="aluno"> 1- Aluno </option>
                             <option value="professor"> 2 - Professor </option>
                         </select>
@@ -87,6 +87,43 @@
                     <p> Total: x usuarios</p>
                 </div>
             </div>
+        </div>
+        <div id="usuarios-cadastrar" class="usuarios-cadastrar">
+            <form id="form">
+                <div class="ajustar-input">
+                    <label for="nome-input"> Nome </label>
+                    <input type="text" class="nome-input" id="nome-input" name="nome" required>
+                </div>
+                
+                <div class="form-ajustar">
+                    <div class="ajustar-input">
+                        <label for="ra-input"> RA </label>
+                        <input type="number" class="ra-input" id="ra-input" name="ra" required>    
+                    </div>
+                    
+                    <div class="ajustar-input">
+                        <label for="grupo-input"> Grupo </label>
+                        <select class="input-grupo-cadastrar" id="input-grupo-cadastrar">
+                            <option value="1"> Aluno </option>
+                            <option value="2"> Professor </option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="ajustar-input">
+                    <label for="tag-input"> Tag </label>
+                    <input type="text" class="tag-input" id="tag-input" name="tag" required>
+                </div>
+
+                <div class="ajustar-botoes-cadastrar">
+                    <button type="button" id="cancelar-cadastrar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button type="submit">  
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+                </div>
+            </form>
         </div>
     </main>
     <footer></footer>
