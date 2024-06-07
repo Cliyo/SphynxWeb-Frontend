@@ -10,22 +10,23 @@
 }
 
 .ajustar-tabela::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
-  }
+    width: 12px;
+}
   
 .ajustar-tabela::-webkit-scrollbar-track {
-    background: none;        /* color of the tracking area */
-  }
+    background: none;
+}
   
 .ajustar-tabela::-webkit-scrollbar-thumb {
-    background-color: white;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: none;  /* creates padding around scroll thumb */
-  }
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+}
 
 table{
     position: relative;
     width: 95%;
+    min-width: 650px;
     font-size: 0.5rem;
     text-align: center;
     color: white;
@@ -53,4 +54,32 @@ td button{
 td button:hover{
     color: white;
     background-color: var(--cor-fundo);
+}
+
+@media (max-width: 1342px){
+    table{
+        font-size: 0.25rem;
+    }
+
+    td button{
+        width: 60px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 686px){
+    table{
+        font-size: 0.2rem;
+    }
+
+    td button{
+        width: 60px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 650px){
+    .ajustar-tabela{
+        align-items: flex-start;
+    }
 }
