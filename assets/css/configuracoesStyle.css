@@ -119,12 +119,12 @@ main{
 }
 
 @media (max-width: 582px){
-    .configuracoes-geral-opcao{
+    .configuracoes-geral-opcao, .configuracoes-avancada-opcao{
         align-items: flex-start;
         flex-direction: column;
     }
 
-    .configuracoes-geral-opcao select, .configuracoes-geral-opcao input{
+    .configuracoes-geral-opcao select, .configuracoes-geral-opcao input, .configuracoes-avancada-opcao select, .configuracoes-avancada-opcao input{
         width: 100%;
     }
     
