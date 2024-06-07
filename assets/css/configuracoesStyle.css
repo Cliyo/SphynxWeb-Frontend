@@ -63,7 +63,22 @@ main{
     background-color: var(--cor-clara);
     border-radius: 0px 0px 15px 15px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+
+.configuracoes-geral::-webkit-scrollbar, .configuracoes-avancada::-webkit-scrollbar {
+    width: 12px;
+}
+  
+.configuracoes-geral::-webkit-scrollbar-track, .configuracoes-avancada::-webkit-scrollbar {
+    background: none;
+}
+  
+.configuracoes-geral::-webkit-scrollbar-thumb, .configuracoes-avancada::-webkit-scrollbar {
+    background-color: white;
+    border-radius: 20px;
+    border: none;
 }
 
 .configuracoes-avancada{
@@ -100,6 +115,7 @@ main{
     width: 30%;
     min-width: 250px;
     height: 50px;
+    min-height: 50px;
     border-radius: 15px;
     border: 0;
     cursor: pointer;
