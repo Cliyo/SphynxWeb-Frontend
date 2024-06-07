@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../assets/css/default.css">
+    <link rel="stylesheet" href="./../assets/css/mensagemAlerta.css">
+    <link rel="stylesheet" href="./../assets/css/headerStyle.css">
+    <link rel="stylesheet" href="./../assets/css/usuariosStyle.css">
+    <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
+    <title> Configurações | Sphynx </title>
+</head>
+<body>
+    <header>
+        <img class="logo" alt="Sphynx Logo" src="./../assets/img/logo-branca.png">
+        <nav class="esconderMenu">
+            <ul>
+                <li> 
+                    <i class="fa-solid fa-house"></i> 
+                    <a class="botao-menu" href="./dashboard.html"> Início </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-user"></i> 
+                    <a class="botao-menu" href="./usuarios.html"> Usuários </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-location-dot"></i> 
+                    <a class="botao-menu" href="#"> Locais </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-right-from-bracket"></i> 
+                    <a class="botao-menu" href="#"> Acessos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-users"></i> 
+                    <a class="botao-menu" href="#"> Grupos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-gear"></i> 
+                    <a class="botao-menu" href="./configuracoes.html"> Configurações </a>
+                 </li>
+            </ul>
+        </nav>
+        <i id="menu-mobile-botao" class="menu-icone fa-solid fa-bars"></i>
+    </header>
+    <main>
+        <div class="usuarios-container">
+            <div class="usuarios-menu">
+                <div id="usuarios-menu-ver" class="usuarios-menu-opcao selecionado">
+                    <p> Ver tudo </p>
+                </div>
+                <div id="usuarios-menu-cadastrar" class="usuarios-menu-opcao">
+                    <p> Cadastrar </p>
+                </div>
+            </div>
+            <div id="usuarios-geral" class="usuarios-geral">
+                
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+<script src="./../assets/js/utils/animacaoMobileMenu.js" type="module"></script>
+<script src="./../assets/js/configuracoesScript.js" type="module"></script>
+</html>
