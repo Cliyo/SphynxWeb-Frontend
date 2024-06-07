@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./../assets/css/mensagemAlerta.css">
     <link rel="stylesheet" href="./../assets/css/headerStyle.css">
     <link rel="stylesheet" href="./../assets/css/usuariosStyle.css">
+    <link rel="stylesheet" href="./../assets/css/tableStyle.css">
     <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
     <title> Configurações | Sphynx </title>
 </head>
@@ -53,26 +54,32 @@
                     <p> Ver por Grupo </p>
                 </div>
             </div>
-            <div id="usuarios-geral" class="usuarios-geral">
-                <table>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Grupo</th>
-                        <th>RA</th>
-                        <th>TAG</th>
-                        <th>Acao</th>
-                    </tr>
-                    <tr>
-                        <td>Pedro Vidal</td>
-                        <td>3 - Aluno</td>
-                        <td>2920482311030</td>
-                        <td>a32sja321jai87s</td>
-                        <td>
-                            <button> Editar </button>
-                            <button> Excluir </button>
-                        </td>
-                    </tr>
-                </table>
+            <div id="usuarios-ver" class="usuarios-ver">
+                <div class="ajustar-tabela">
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Grupo</th>
+                            <th>RA</th>
+                            <th>TAG</th>
+                            <th>Acao</th>
+                        </tr>
+                        <tr>
+                            <td>Pedro Vidal</td>
+                            <td>3 - Aluno</td>
+                            <td>2920482311030</td>
+                            <td>a32sja321jai87s</td>
+                            <td>
+                                <button> Editar </button>
+                                <button> Excluir </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="legenda-tabela">
+                    <button class="botao-adicionar-novo"> + Adicionar novo </button>
+                    <p> Total: x usuarios</p>
+                </div>
             </div>
         </div>
     </main>
