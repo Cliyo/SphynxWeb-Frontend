@@ -147,4 +147,8 @@ main{
     .configuracoes-menu p{
         font-size: 0.4rem;
     }
+
+    .configuracoes-geral-opcao p, .configuracoes-avancada-opcao p{
+        font-size: 0.3rem;
+    }
 }
