@@ -39,7 +39,7 @@ nav ul li:hover, .botao-menu:hover{
 }
 
 .menu-icone{
-    display: none;
+    display: none!important;
     font-size: 0.5rem;
     color: white;
     cursor: pointer;
@@ -57,7 +57,7 @@ nav ul li:hover, .botao-menu:hover{
 
 @media (max-width: 1054px){
     .menu-icone{
-        display: flex;
+        display: flex!important;
     }
 
     nav{
