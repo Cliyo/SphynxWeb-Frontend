@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="./../assets/css/default.css">
     <link rel="stylesheet" href="./../assets/css/mensagemAlerta.css">
     <link rel="stylesheet" href="./../assets/css/headerStyle.css">
-    <link rel="stylesheet" href="./../assets/css/dashboardStyle.css">
+    <link rel="stylesheet" href="./../assets/css/locaisStyle.css">
+    <link rel="stylesheet" href="./../assets/css/tableStyle.css">
     <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
-    <title> Dashboard | Sphynx </title>
+    <title> Locais | Sphynx </title>
 </head>
 <body>
     <header>
@@ -44,12 +45,47 @@
         <i id="menu-mobile-botao" class="menu-icone fa-solid fa-bars"></i>
     </header>
     <main>
-        <div class="dashboard-container">
-            
+        <div id="locais-container" class="locais-container">
+            <div class="locais-menu">
+                <div id="locais-menu-ver" class="locais-menu-opcao selecionado">
+                    <p> Ver tudo </p>
+                </div>
+                <div id="locais-menu-cadastrar" class="locais-menu-opcao">
+                    <p> Cadastrar </p>
+                </div>
+            </div>
+            <div id="locais-ver" class="locais-ver">
+                <div class="ajustar-tabela">
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Permissão</th>
+                            <th>MAC</th>
+                            <th>Ação</th>
+                        </tr>
+                        <tr>
+                            <td> 
+                                <input type="text" class="nome-input" id="nome-input" placeholder="Nome"> 
+                            </td>
+                            <td>
+                                <select>
+                                    <option value="aluno"> 1 - Aluno </option>
+                                    <option value="professor"> 2 - Professor </option>
+                                </select>
+                            </td>
+                            <td>11:11:11:11:11:11</td>
+                            <td>
+                                <button> Editar </button>
+                                <button> Excluir </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </main>
     <footer></footer>
 </body>
-<script src="./../assets/js/dashboardScript.js" type="module"></script>
 <script src="./../assets/js/utils/animacaoMobileMenu.js" type="module"></script>
+<script src="./../assets/js/usuariosScript.js" type="module"></script>
 </html>
