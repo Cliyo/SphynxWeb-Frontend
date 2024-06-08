@@ -91,16 +91,19 @@ td select{
         width: 60px;
         height: 30px;
     }
+
+    td input{
+        width: 160px;
+    }
+
+    td select{
+        width: 160px;
+    }
 }
 
 @media (max-width: 686px){
     table{
         font-size: 0.2rem;
-    }
-
-    td button{
-        width: 60px;
-        height: 30px;
     }
 }
 

@@ -71,3 +71,9 @@ main{
     color: white;
     background-color: var(--cor-clara);
 }
+
+@media (max-width: 582px){   
+    .locais-menu p{
+        font-size: 0.4rem;
+    }
+}
