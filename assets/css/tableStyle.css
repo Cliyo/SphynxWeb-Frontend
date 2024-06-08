@@ -56,6 +56,31 @@ td button:hover{
     background-color: var(--cor-fundo);
 }
 
+td input{
+    width: 200px;
+    height: 40px;
+    border-radius: 15px;
+    border: 0;
+    padding: 10px 10px;
+    font-size: 0.25rem;
+    background-color: rgb(211, 211, 211);
+    transition: .5s;
+}
+
+td input:focus{
+    background-color: white;
+}
+
+td select{
+    width: 200px;
+    height: 40px;
+    border-radius: 15px;
+    border: 0;
+    padding: 10px 10px;
+    font-size: 0.25rem;
+    background-color: white;
+}
+
 @media (max-width: 1342px){
     table{
         font-size: 0.25rem;
