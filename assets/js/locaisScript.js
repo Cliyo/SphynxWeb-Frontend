@@ -15,6 +15,7 @@ opcaoLocalVer.addEventListener("click", () => {
         let tr = document.createElement("tr");
 
         let tdNome = document.createElement("td");
+        tdNome.id = "campo-nome";
         tdNome.innerHTML = "LAB10";
 
         let tdPermissao = document.createElement("td");
@@ -26,7 +27,11 @@ opcaoLocalVer.addEventListener("click", () => {
         let tdAcao = document.createElement("td");
 
         let botaoEditar = document.createElement("button");
+        botaoEditar.id = "botao-editar"
         botaoEditar.innerHTML = "Editar";
+        botaoEditar.addEventListener("click", () => {
+            adicionarFuncaoEditarAoBotao(botaoEditar);
+        })
 
         let botaoExcluir = document.createElement("button");
         botaoExcluir.innerHTML = "Excluir";
@@ -98,3 +103,42 @@ opcaoLocalCadastrar.addEventListener("click", () => {
         tabela.append(tr);
     }
 })
+
+function adicionarFuncaoEditarAoBotao(botao){
+    const elementosAntigos = botao.parentNode.parentNode.cloneNode(true);
+    let botaoEditarAntigo = elementosAntigos.querySelector("#botao-editar");
+    botaoEditarAntigo.addEventListener("click", () => {adicionarFuncaoEditarAoBotao(botaoEditarAntigo)});
+   
+    const elementosAntigosLista = Array.from(elementosAntigos.children);
+
+    let tdNome = botao.parentNode.parentNode.querySelector("#campo-nome");
+    let tdAcao = botao.parentNode;
+
+    let nomeAntigo = tdNome.innerHTML;
+
+    tdNome.innerHTML = "";
+    tdAcao.innerHTML = "";
+
+    let inputEditarNome = document.createElement("input");
+    inputEditarNome.type = "text";
+    inputEditarNome.className = "editar-nome-input";
+    inputEditarNome.id = "editar-nome-input";
+    inputEditarNome.placeholder = nomeAntigo;
+
+    let botaoCancelar = document.createElement("button");
+    botaoCancelar.innerHTML = "Cancelar";
+    botaoCancelar.addEventListener("click", () => {
+        let trAtual = botaoCancelar.parentNode.parentNode;
+        trAtual.innerHTML = "";
+        elementosAntigosLista.forEach(elemento => {
+            trAtual.appendChild(elemento);
+        });
+    })
+
+    let botaoConfirmar = document.createElement("button");
+    botaoConfirmar.innerHTML = "Confirmar";
+
+    tdNome.appendChild(inputEditarNome);
+    tdAcao.appendChild(botaoCancelar);
+    tdAcao.appendChild(botaoConfirmar);
+}
