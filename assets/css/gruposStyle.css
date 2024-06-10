@@ -42,10 +42,6 @@ main{
     margin-bottom: 15px;
 }
 
-.ajustar-botoes{
-    display: flex;
-}
-
 .botao-adicionar-novo, select{
     position: relative;
     width: 200px;
