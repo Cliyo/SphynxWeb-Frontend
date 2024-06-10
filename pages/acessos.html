@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../assets/css/default.css">
+    <link rel="stylesheet" href="./../assets/css/botaoSwitchStyle.css">
     <link rel="stylesheet" href="./../assets/css/mensagemAlerta.css">
     <link rel="stylesheet" href="./../assets/css/headerStyle.css">
-    <link rel="stylesheet" href="./../assets/css/locaisStyle.css">
+    <link rel="stylesheet" href="./../assets/css/gruposStyle.css">
     <link rel="stylesheet" href="./../assets/css/tableStyle.css">
     <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
-    <title> Locais | Sphynx </title>
+    <title> Grupos | Sphynx </title>
 </head>
 <body>
     <header>
@@ -30,7 +31,7 @@
                 </li>
                 <li> 
                     <i class="fa-solid fa-right-from-bracket"></i> 
-                    <a class="botao-menu" href="./acessos.html"> Acessos </a> 
+                    <a class="botao-menu" href="#"> Acessos </a> 
                 </li>
                 <li> 
                     <i class="fa-solid fa-users"></i> 
@@ -45,29 +46,33 @@
         <i id="menu-mobile-botao" class="menu-icone fa-solid fa-bars"></i>
     </header>
     <main>
-        <div id="locais-container" class="locais-container">
-            <div class="locais-menu">
-                <div id="locais-menu-ver" class="locais-menu-opcao selecionado">
-                    <p> Ver tudo </p>
-                </div>
-                <div id="locais-menu-cadastrar" class="locais-menu-opcao">
-                    <p> Cadastrar </p>
-                </div>
-            </div>
-            <div id="locais-ver" class="locais-ver">
+        <div id="acessos-container" class="acessos-container">
+            <div id="acessos-ver" class="acessos-ver">
                 <div class="ajustar-tabela">
                     <table>
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Permissão</th>
-                                <th>MAC</th>
-                                <th>Ação</th>
+                                <th>RA</th>
+                                <th>Local</th>
+                                <th>Data</th>
+                                <th>Situacao</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td>Pedro Vidal</td>
+                                <td>2920482311030</td>
+                                <td>Sala 22</td>
+                                <td>01/06/2024 21h32</td>
+                                <td>Negado</td>
+                            </tr>
                         </tbody>
                     </table>
+                </div>
+                <div class="legenda-tabela">
+                    <button id="botao-adicionar-novo" class="botao-adicionar-novo"> + Adicionar novo </button>
+                    <p> Total: x acessos</p>
                 </div>
             </div>
         </div>
@@ -75,5 +80,5 @@
     <footer></footer>
 </body>
 <script src="./../assets/js/utils/animacaoMobileMenu.js" type="module"></script>
-<script src="./../assets/js/locaisScript.js" type="module"></script>
+<script src="./../assets/js/acessosScript.js" type="module"></script>
 </html>
