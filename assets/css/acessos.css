@@ -42,26 +42,26 @@ main{
     margin-bottom: 15px;
 }
 
-.botao-adicionar-novo, select{
+.ajustar-botoes{
+    display: flex;
+}
+
+input{
     position: relative;
+    background-color: #d8d8d8;
     width: 200px;
     height: 60px;
+    padding: 10px 10px;
     font-size: 0.3rem;
     border: 0;
+    margin: 0px 10px;
     border-radius: 15px;
     cursor: pointer;
     transition: .5s;
-    margin: 0 5px;
 }
 
-.input-grupo{
-    display: none;
-    padding: 10px 10px;
-}
-
-.botao-adicionar-novo:hover{
-    color: white;
-    background-color: var(--cor-fundo);
+input:focus{
+    background-color: white;
 }
 
 .legenda-tabela p{
@@ -69,21 +69,24 @@ main{
     font-size: 0.5rem;
 }
 
-@media (max-width: 686px){
-    .ajustar-botoes{
+@media (max-width: 1106px){
+    .legenda-tabela{
         flex-direction: column;
-    }
+        align-items: center;
+    }    
+}
 
+@media (max-width: 730px){
     .legenda-tabela p{
         color: white;
         font-size: 0.3rem;
     }
 
-    .botao-adicionar-novo, select{
+    input{
         width: 100px;
         height: 30px;
         font-size: 0.15rem;
-        margin: 5px 0;
+        margin: 0px 5px;
     }
 }
 

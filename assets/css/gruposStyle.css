@@ -54,11 +54,6 @@ main{
     margin: 0 5px;
 }
 
-.input-grupo{
-    display: none;
-    padding: 10px 10px;
-}
-
 .botao-adicionar-novo:hover{
     color: white;
     background-color: var(--cor-fundo);
@@ -169,16 +164,12 @@ label{
 }
 
 @media (max-width: 686px){
-    .ajustar-botoes{
-        flex-direction: column;
-    }
-
     .legenda-tabela p{
         color: white;
         font-size: 0.3rem;
     }
 
-    .botao-adicionar-novo, select{
+    input{
         width: 100px;
         height: 30px;
         font-size: 0.15rem;
