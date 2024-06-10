@@ -4,8 +4,6 @@ const opcaoAvancado = document.querySelector("#configuracoes-menu-avancado");
 const menuGeral = document.querySelector("#configuracoes-geral");
 const menuAvancado = document.querySelector("#configuracoes-avancada");
 
-console.log(menuGeral)
-
 opcaoGeral.addEventListener("click", () => {
     if(!opcaoGeral.classList.contains("selecionado")){
         opcaoGeral.classList.toggle("selecionado");
