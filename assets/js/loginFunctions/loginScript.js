@@ -33,7 +33,7 @@ form.addEventListener("submit", async (event) => {
     request (api, `login`, "POST", headers, jsonData, true)
         .then(response => {
             if(!response.ok){
-                mostrarMensagem("Login error...");
+                mostrarMensagem("Usuario ou senha incorretos.");
 
                 throw new Error("HTTP Status " + response.status);
             }
@@ -41,11 +41,11 @@ form.addEventListener("submit", async (event) => {
             return response.json()
         })
         .then(data => {
-            mostrarMensagem("Logged!");
+            mostrarMensagem("Entrando...");
             localStorage.setItem("token", data["token"]);
             window.location = "pages/dashboard.html";
         })
         .catch(err => {
-            mostrarMensagem("Error!");
+            mostrarMensagem("Usuario ou senha incorretos.");
         })
 })
