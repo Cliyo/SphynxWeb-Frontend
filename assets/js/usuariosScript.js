@@ -1,4 +1,5 @@
 import { headerAuth } from "./utils/headers.js";
+import { mostrarMensagem } from "./utils/messages.js";
 import { request } from "./utils/requestHttp.js";
 import { api } from "./utils/testeConexao.js";
 
@@ -110,8 +111,18 @@ function criarLinhaTabela(usuario){
 
     let editarBotao = document.createElement("button");
     editarBotao.innerHTML = "Editar";
+    
     let excluirBotao = document.createElement("button");
     excluirBotao.innerHTML = "Excluir";
+    excluirBotao.addEventListener("click", async () => {
+        try{
+            await request(api, `consumers/${usuario.id}`, "DELETE", headerAuth, null);
+
+            tr.remove();
+        } catch(erro){
+            mostrarMensagem("Erro ao deletar usuario.");
+        }
+    })
 
     tdAcao.appendChild(editarBotao);
     tdAcao.appendChild(excluirBotao);
