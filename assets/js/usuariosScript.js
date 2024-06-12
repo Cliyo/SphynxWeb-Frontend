@@ -16,6 +16,8 @@ const botaoCancelarCadastro = document.querySelector("#cancelar-cadastrar");
 
 const tabela = document.querySelector("tbody");
 
+const legendaQntUsuarios = document.querySelector("#legenda-quantidade-usuarios");
+
 window.onload = async () => {
     tabela.innerHTML = "";
     const response = await request(api, "consumers", "GET", headerAuth, null);
@@ -25,6 +27,8 @@ window.onload = async () => {
 
         tabela.appendChild(linha);
     });
+
+    legendaQntUsuarios.innerHTML = `Total: ${response.length} usuario(s)`;
 }
 
 opcaoUsuarioVer.addEventListener("click", async () => {
