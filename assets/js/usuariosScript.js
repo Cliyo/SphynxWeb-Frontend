@@ -46,12 +46,34 @@ opcaoUsuarioVer.addEventListener("click", async () => {
     
 })
 
-opcaoUsuarioGrupo.addEventListener("click", () => {
+opcaoUsuarioGrupo.addEventListener("click", async () => {
     if(!opcaoUsuarioGrupo.classList.contains("selecionado")){
         opcaoUsuarioVer.classList.toggle("selecionado");
         opcaoUsuarioGrupo.classList.toggle("selecionado");
 
         inputGrupo.style.display = "flex";
+
+        inputGrupo.innerHTML = "";
+        const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
+
+        responseGrupo.forEach(grupo => {
+            let option = document.createElement("option");
+            option.value = grupo.level;
+            option.innerHTML = grupo.name;
+
+            inputGrupo.appendChild(option);
+        })
+
+        inputGrupo.addEventListener("change", async () => {
+            const response = await request(api, `consumers?permission=${inputGrupo.value}`, "GET", headerAuth, null);
+            tabela.innerHTML = "";
+
+            response.forEach(usuario => {
+                let linha = criarLinhaTabela(usuario);
+    
+                tabela.appendChild(linha);
+            });
+        })
     }
 })
 
