@@ -16,6 +16,16 @@ const botaoCancelarCadastro = document.querySelector("#cancelar-cadastrar");
 
 const tabela = document.querySelector("tbody");
 
+window.onload = async () => {
+    tabela.innerHTML = "";
+    const response = await request(api, "consumers", "GET", headerAuth, null);
+
+    response.forEach(usuario => {
+        let linha = criarLinhaTabela(usuario);
+
+        tabela.appendChild(linha);
+    });
+}
 
 opcaoUsuarioVer.addEventListener("click", async () => {
     if(!opcaoUsuarioVer.classList.contains("selecionado")){
