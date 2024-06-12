@@ -1,5 +1,6 @@
 import { headerAuth } from "./utils/headers.js";
 import { mostrarMensagem } from "./utils/messages.js";
+import { preencherSelectGrupo } from "./utils/preencherSelect.js";
 import { request } from "./utils/requestHttp.js";
 import { api } from "./utils/testeConexao.js";
 
@@ -164,18 +165,4 @@ function criarLinhaTabela(usuario){
     tr.appendChild(tdAcao);
 
     return tr;
-}
-
-async function preencherSelectGrupo(select){
-    select.innerHTML = "";
-
-    const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
-
-    responseGrupo.forEach(grupo => {
-        let option = document.createElement("option");
-        option.value = grupo.level;
-        option.innerHTML = grupo.name;
-
-        select.appendChild(option);
-    })
 }

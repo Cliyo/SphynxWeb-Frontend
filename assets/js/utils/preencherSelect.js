@@ -1,8 +1,5 @@
 function preencherSelectGrupo(select, lista){
-    select.innerHTML = "";
-
-
-    responseGrupo.forEach(grupo => {
+    lista.forEach(grupo => {
         let option = document.createElement("option");
         option.value = grupo.level;
         option.innerHTML = grupo.name;
@@ -10,4 +7,6 @@ function preencherSelectGrupo(select, lista){
         select.appendChild(option);
     })
 }
+
+export {preencherSelectGrupo}
 
