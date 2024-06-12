@@ -59,15 +59,10 @@ opcaoUsuarioGrupo.addEventListener("click", async () => {
         inputGrupo.style.display = "flex";
 
         inputGrupo.innerHTML = "";
+
         const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
 
-        responseGrupo.forEach(grupo => {
-            let option = document.createElement("option");
-            option.value = grupo.level;
-            option.innerHTML = grupo.name;
-
-            inputGrupo.appendChild(option);
-        })
+        preencherSelectGrupo(inputGrupo, responseGrupo);
 
         inputGrupo.addEventListener("change", async () => {
             const response = await request(api, `consumers?permission=${inputGrupo.value}`, "GET", headerAuth, null);
@@ -82,9 +77,36 @@ opcaoUsuarioGrupo.addEventListener("click", async () => {
     }
 })
 
-botaoCadastrarUsuario.addEventListener("click", () => {
+botaoCadastrarUsuario.addEventListener("click", async () => {
     usuariosContainer.classList.add("escurecer");
     divCadastrarUsuario.classList.add("mostrar");
+
+    let grupoInput = document.querySelector("#input-grupo-cadastrar");
+    grupoInput.innerHTML = "";
+
+    const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
+
+    preencherSelectGrupo(grupoInput, responseGrupo);
+
+    let formCadastrar = document.querySelector("form");
+    formCadastrar.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        var formData =  new FormData(formCadastrar);
+        var dados = Object.fromEntries(formData);
+        dados.permission = grupoInput.value;
+        var jsonData = JSON.stringify(dados);
+        
+        const response = await request(api, "consumers", "POST", headerAuth, jsonData);
+
+        console.log(response)
+        mostrarMensagem(response.message);
+        if(response.status == 201){
+            
+        } else{
+            
+        } 
+    })
 })
 
 botaoCancelarCadastro.addEventListener("click", () => {
@@ -142,4 +164,18 @@ function criarLinhaTabela(usuario){
     tr.appendChild(tdAcao);
 
     return tr;
+}
+
+async function preencherSelectGrupo(select){
+    select.innerHTML = "";
+
+    const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
+
+    responseGrupo.forEach(grupo => {
+        let option = document.createElement("option");
+        option.value = grupo.level;
+        option.innerHTML = grupo.name;
+
+        select.appendChild(option);
+    })
 }
