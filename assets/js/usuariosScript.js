@@ -115,13 +115,21 @@ function criarLinhaTabela(usuario){
     let excluirBotao = document.createElement("button");
     excluirBotao.innerHTML = "Excluir";
     excluirBotao.addEventListener("click", async () => {
-        try{
-            await request(api, `consumers/${usuario.id}`, "DELETE", headerAuth, null);
 
-            tr.remove();
-        } catch(erro){
-            mostrarMensagem("Erro ao deletar usuario.");
+        const response = await request(api, `consumers/${usuario.ra}`, "DELETE", headerAuth, null);
+
+        try{
+            mostrarMensagem(response.message);
         }
+        catch(erro){
+            mostrarMensagem("Produto deletado com sucesso.");
+
+            let novaQnt = legendaQntUsuarios.innerHTML.match("[0-9]")[0] - 1;
+            legendaQntUsuarios.innerHTML = `Total: ${novaQnt} usuario(s)`;
+    
+            tr.remove();
+        } 
+
     })
 
     tdAcao.appendChild(editarBotao);
