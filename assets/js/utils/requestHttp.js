@@ -1,3 +1,4 @@
+import {mostrarMensagem} from "./messages.js";
 async function request(api, entity, method, header, body, rawResponse = false) {
     try {
         const response = await fetch(`http://${api}/${entity}`, {
@@ -14,7 +15,7 @@ async function request(api, entity, method, header, body, rawResponse = false) {
         const data = await response.json();
         return data;
     } catch (err) {
-        console.log(err);
+        mostrarMensagem("Erro interno.");
     }
 }
 
