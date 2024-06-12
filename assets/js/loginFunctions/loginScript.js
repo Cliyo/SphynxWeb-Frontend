@@ -1,18 +1,11 @@
+import { header } from "../utils/headers.js";
 import { mostrarMensagem } from "../utils/messages.js";
 import {request} from "../utils/requestHttp.js";
+import { api } from "../utils/testeConexao.js";
 
 var form = document.querySelector("#form")
 
-const api = `${window.location.hostname}:57128`;
-const apiUrls = ['sphynx-api.local:57128','localhost:57128', `${window.location.hostname}:57128`]
-
-const headers = {
-    'Access-Control-Allow-Origin': `http://${api}`,
-    'Access-Control-Allow-Credentials': 'true',
-    'Content-Type': 'application/json'
-}
-
-request(api,`login/verify`,"POST",headers,JSON.stringify({"token": localStorage.getItem("token")}))
+request(api,`login/verify`,"POST",header,JSON.stringify({"token": localStorage.getItem("token")}))
     .then(response =>{
         if (response["result"]){
             window.location = "pages/dashboard.html"
@@ -30,7 +23,7 @@ form.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    request (api, `login`, "POST", headers, jsonData, true)
+    request (api, `login`, "POST", header, jsonData, true)
         .then(response => {
             if(!response.ok){
                 mostrarMensagem("Usuario ou senha incorretos.");
