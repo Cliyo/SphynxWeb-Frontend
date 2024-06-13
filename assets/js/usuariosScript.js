@@ -149,7 +149,7 @@ function criarLinhaTabela(usuario){
             mostrarMensagem(response.message);
         }
         catch(erro){
-            mostrarMensagem("Produto deletado com sucesso.");
+            mostrarMensagem("Usuario deletado com sucesso.");
 
             let novaQnt = legendaQntUsuarios.innerHTML.match("[0-9]")[0] - 1;
             legendaQntUsuarios.innerHTML = `Total: ${novaQnt} usuario(s)`;
