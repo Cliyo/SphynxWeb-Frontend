@@ -60,16 +60,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Sphyxn ADM</td>
-                                <td>Sim</td>
-                                <td>Sim</td>
-                                <td>0</td>
-                                <td>
-                                    <button> Editar </button>
-                                    <button> Excluir </button>
-                                </td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -83,9 +74,13 @@
             <form id="form">
                 <div class="ajustar-input">
                     <label for="nome-input"> Nome </label>
-                    <input type="text" class="nome-input" id="nome-input" name="nome" required>
+                    <input type="text" class="nome-input" id="nome-input" name="name" required>
                 </div>
                 
+                <div class="ajustar-input">
+                    <label for="nome-input"> Nivel </label>
+                    <input type="number" class="nivel-input" id="nivel-input" name="level" required>
+                </div>
             
                 <div class="ajustar-input horizontal">
                     <label for="adm-input"> Pode acessar o sistema: </label>

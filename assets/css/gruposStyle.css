@@ -109,7 +109,7 @@ label{
     font-size: 0.3rem;
 }
 
-.nome-input, .tag-input{
+.nome-input, .nivel-input, .tag-input{
     height: 40px;
     border-radius: 15px;
     border: 1px solid black;
