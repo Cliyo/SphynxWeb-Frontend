@@ -19,6 +19,7 @@ const botaoCancelarCadastro = document.querySelector("#cancelar-cadastrar");
 const tabela = document.querySelector("tbody");
 
 const legendaQntUsuarios = document.querySelector("#legenda-quantidade-usuarios");
+let qntUsuarios = 0;
 
 window.onload = async () => {
     tabela.innerHTML = "";
@@ -30,7 +31,8 @@ window.onload = async () => {
         tabela.appendChild(linha);
     });
 
-    legendaQntUsuarios.innerHTML = `Total: ${response.length} usuario(s)`;
+    qntUsuarios = response.length;
+    legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;
 }
 
 opcaoUsuarioVer.addEventListener("click", async () => {
@@ -105,8 +107,8 @@ botaoCadastrarUsuario.addEventListener("click", async () => {
         if(response.status == 201){
             tabela.appendChild(criarLinhaTabela(response.object));
             
-            let novaQnt = Number(legendaQntUsuarios.innerHTML.match("[0-9]")[0]) + 1;
-            legendaQntUsuarios.innerHTML = `Total: ${novaQnt} usuario(s)`;
+            qntUsuarios++;
+            legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;            
     
             usuariosContainer.classList.remove("escurecer");
             divCadastrarUsuario.classList.remove("mostrar");
@@ -151,8 +153,8 @@ function criarLinhaTabela(usuario){
         catch(erro){
             mostrarMensagem("Usuario deletado com sucesso.");
 
-            let novaQnt = Number(legendaQntUsuarios.innerHTML.match("[0-9]")[0]) - 1;
-            legendaQntUsuarios.innerHTML = `Total: ${novaQnt} usuario(s)`;
+            qntUsuarios--;
+            legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;    
     
             tr.remove();
         } 
