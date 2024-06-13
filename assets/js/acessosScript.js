@@ -38,11 +38,13 @@ filtros.forEach(filtro => {
         }
 
         else if(ra == null && local == null && data != null){
-            response = await request(api, `accessRegisters?local=${data}`, "GET", headerAuth, null);
+            let dataCompleta = gerarData(data);
+            response = await request(api, `accessRegisters?date=${data}`, "GET", headerAuth, null);
         }
 
         else if(ra != null && local != null && data != null){
-            response = await request(api, `accessRegisters?ra=${ra}&date=${data}&local=${local}`, "GET", headerAuth, null);
+            let dataCompleta = gerarData(data);
+            response = await request(api, `accessRegisters?ra=${ra}&date=${dataCompleta}&local=${local}`, "GET", headerAuth, null);
         }
 
         else{
@@ -84,4 +86,15 @@ function criarLinhaTabela(acesso){
     tr.appendChild(tdSituacao);
 
     return tr;
+}
+
+function gerarData(input){
+    let data = new Date(input);
+
+    let dia = data.getDate() + 1;
+    let mes = data.getMonth() + 1;
+    let ano = data.getFullYear();
+    let dataCompleta = ano + "-" + mes + "-" + dia;
+
+    return dataCompleta;
 }
