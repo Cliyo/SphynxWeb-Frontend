@@ -39,6 +39,6 @@ form.addEventListener("submit", async (event) => {
             window.location = "pages/dashboard.html";
         })
         .catch(err => {
-            mostrarMensagem("Usuario ou senha incorretos.");
+            mostrarMensagem("Erro interno.");
         })
 })
