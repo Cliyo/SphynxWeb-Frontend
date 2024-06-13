@@ -105,7 +105,7 @@ botaoCadastrarUsuario.addEventListener("click", async () => {
         if(response.status == 201){
             tabela.appendChild(criarLinhaTabela(response.object));
             
-            let novaQnt = legendaQntUsuarios.innerHTML.match("[0-9]")[0] + 1;
+            let novaQnt = Number(legendaQntUsuarios.innerHTML.match("[0-9]")[0]) + 1;
             legendaQntUsuarios.innerHTML = `Total: ${novaQnt} usuario(s)`;
     
             usuariosContainer.classList.remove("escurecer");
@@ -151,7 +151,7 @@ function criarLinhaTabela(usuario){
         catch(erro){
             mostrarMensagem("Usuario deletado com sucesso.");
 
-            let novaQnt = legendaQntUsuarios.innerHTML.match("[0-9]")[0] - 1;
+            let novaQnt = Number(legendaQntUsuarios.innerHTML.match("[0-9]")[0]) - 1;
             legendaQntUsuarios.innerHTML = `Total: ${novaQnt} usuario(s)`;
     
             tr.remove();
