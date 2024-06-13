@@ -67,12 +67,6 @@ function criarLinhaTabela(grupo){
 
     let tdNome = document.createElement("td");
     tdNome.innerHTML = grupo.name;
-    
-    let tdSistema = document.createElement("td");
-    tdSistema.innerHTML = "null";
-
-    let tdAdm = document.createElement("td");
-    tdAdm.innerHTML = "null";
 
     let tdNivel = document.createElement("td");
     tdNivel.innerHTML = grupo.level;
@@ -106,8 +100,6 @@ function criarLinhaTabela(grupo){
     tdAcao.appendChild(excluirBotao);
 
     tr.appendChild(tdNome);
-    tr.appendChild(tdSistema);
-    tr.appendChild(tdAdm);
     tr.appendChild(tdNivel);
     tr.appendChild(tdAcao);
 
