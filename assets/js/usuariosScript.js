@@ -67,8 +67,25 @@ opcaoUsuarioGrupo.addEventListener("click", async () => {
 
         preencherSelectGrupo(inputGrupo, responseGrupo);
 
+        const response = await request(api, `consumers?permission=${inputGrupo.value}`, "GET", headerAuth, null);
+            
+        qntUsuarios = response.length;
+        legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;
+        
+        tabela.innerHTML = "";
+
+        response.forEach(usuario => {
+            let linha = criarLinhaTabela(usuario);
+
+            tabela.appendChild(linha);
+        });
+
         inputGrupo.addEventListener("change", async () => {
             const response = await request(api, `consumers?permission=${inputGrupo.value}`, "GET", headerAuth, null);
+            
+            qntUsuarios = response.length;
+            legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;
+
             tabela.innerHTML = "";
 
             response.forEach(usuario => {
