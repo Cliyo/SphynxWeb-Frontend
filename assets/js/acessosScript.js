@@ -4,6 +4,8 @@ import {headerAuth} from "./utils/headers.js";
 
 const tabela = document.querySelector("tbody");
 
+const filtros = document.querySelector(".ajustar-inputs").querySelectorAll("input");
+
 const legendaQntAcessos = document.querySelector("#legenda-quantidade-acessos");
 let qntAcessos = 0;
 
@@ -18,6 +20,44 @@ window.onload = async () => {
     qntAcessos = response.length;
     legendaQntAcessos.innerHTML = `Total: ${qntAcessos} acesso(s)`;
 }
+
+filtros.forEach(filtro => {
+    filtro.addEventListener("change", async () => {
+        let ra = document.querySelector("#ra-input").value || null;
+        let data = document.querySelector("#data-input").value || null;
+        let local = document.querySelector("#local-input").value || null;
+
+        let response;
+
+        if(ra != null && local == null && data == null){
+            response = await request(api, `accessRegisters?ra=${ra}`, "GET", headerAuth, null);
+        }
+
+        else if(ra == null && local != null && data == null){
+            response = await request(api, `accessRegisters?local=${local}`, "GET", headerAuth, null);
+        }
+
+        else if(ra == null && local == null && data != null){
+            response = await request(api, `accessRegisters?local=${data}`, "GET", headerAuth, null);
+        }
+
+        else if(ra != null && local != null && data != null){
+            response = await request(api, `accessRegisters?ra=${ra}&date=${data}&local=${local}`, "GET", headerAuth, null);
+        }
+
+        else{
+            response = await request(api, `accessRegisters`, "GET", headerAuth, null);
+        }
+
+        tabela.innerHTML = "";
+        response.forEach(acesso => {
+            tabela.appendChild(criarLinhaTabela(acesso))
+        });
+
+        qntAcessos = response.length;
+        legendaQntAcessos.innerHTML = `Total: ${qntAcessos} acesso(s)`;
+    })
+});
 
 function criarLinhaTabela(acesso){
     let tr = document.createElement("tr");
