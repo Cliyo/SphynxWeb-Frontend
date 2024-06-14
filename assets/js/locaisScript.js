@@ -1,9 +1,14 @@
+import { findNewDevices } from "./finderFunctions/sphynxFinder.js";
 const opcaoLocalVer = document.querySelector("#locais-menu-ver");
 const opcaoLocalCadastrar = document.querySelector("#locais-menu-cadastrar");
 
 const menuGeral = document.querySelector("#locais-ver");
 
 const tabela = document.querySelector("tbody");
+
+var sphynxs = []
+
+findNewDevices(true);
 
 opcaoLocalVer.addEventListener("click", () => {
     if(!opcaoLocalVer.classList.contains("selecionado")){
@@ -55,52 +60,55 @@ opcaoLocalCadastrar.addEventListener("click", () => {
         opcaoLocalCadastrar.classList.toggle("selecionado");
 
         tabela.innerHTML = "";
+        sphynxs.forEach(sphynx => {
+            console.log(sphynx)
+            console.log(sphynx.mac)
+            let tr = document.createElement("tr");
 
-        let tr = document.createElement("tr");
+            let tdNome = document.createElement("td");
 
-        let tdNome = document.createElement("td");
+            let inputNome = document.createElement("input");
+            inputNome.type = "text";
+            inputNome.className = "nome-input";
+            inputNome.id = "nome-input";
+            inputNome.placeholder = "Nome";
 
-        let inputNome = document.createElement("input");
-        inputNome.type = "text";
-        inputNome.className = "nome-input";
-        inputNome.id = "nome-input";
-        inputNome.placeholder = "Nome";
+            tdNome.appendChild(inputNome);
 
-        tdNome.appendChild(inputNome);
+            let tdPermissao = document.createElement("td");
 
-        let tdPermissao = document.createElement("td");
+            let selectPermissao = document.createElement("select");
 
-        let selectPermissao = document.createElement("select");
+            let optionAluno = document.createElement("option");
+            optionAluno.value = "aluno"
+            optionAluno.innerHTML = "1 - Aluno";
 
-        let optionAluno = document.createElement("option");
-        optionAluno.value = "aluno"
-        optionAluno.innerHTML = "1 - Aluno";
+            let optionProfessor = document.createElement("option");
+            optionProfessor.value = "professor"
+            optionProfessor.innerHTML = "1 - Professor";
 
-        let optionProfessor = document.createElement("option");
-        optionProfessor.value = "professor"
-        optionProfessor.innerHTML = "1 - Professor";
+            selectPermissao.appendChild(optionAluno);
+            selectPermissao.appendChild(optionProfessor);
 
-        selectPermissao.appendChild(optionAluno);
-        selectPermissao.appendChild(optionProfessor);
+            tdPermissao.appendChild(selectPermissao);
 
-        tdPermissao.appendChild(selectPermissao);
+            let tdMac = document.createElement("td");
+            tdMac.innerHTML = sphynx.mac;
 
-        let tdMac = document.createElement("td");
-        tdMac.innerHTML = "11:11:11:11:11:11";
+            let tdAcao = document.createElement("td");
 
-        let tdAcao = document.createElement("td");
+            let botaoSalvar = document.createElement("button");
+            botaoSalvar.innerHTML = "Salvar";
 
-        let botaoSalvar = document.createElement("button");
-        botaoSalvar.innerHTML = "Salvar";
+            tdAcao.appendChild(botaoSalvar);
 
-        tdAcao.appendChild(botaoSalvar);
+            tr.appendChild(tdNome);
+            tr.appendChild(tdPermissao);
+            tr.appendChild(tdMac);
+            tr.appendChild(tdAcao);
 
-        tr.appendChild(tdNome);
-        tr.appendChild(tdPermissao);
-        tr.appendChild(tdMac);
-        tr.appendChild(tdAcao);
-
-        tabela.append(tr);
+            tabela.append(tr);
+        })
     }
 })
 

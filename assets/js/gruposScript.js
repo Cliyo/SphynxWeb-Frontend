@@ -1,3 +1,4 @@
+import { findNewDevices } from "./finderFunctions/sphynxFinder.js";
 import { headerAuth } from "./utils/headers.js";
 import { mostrarMensagem } from "./utils/messages.js";
 import { request } from "./utils/requestHttp.js";
@@ -15,6 +16,8 @@ const tabela = document.querySelector("tbody");
 const legendaQntGrupos = document.querySelector("#legenda-quantidade-grupos");
 
 let qntGrupos = 0;
+
+findNewDevices(true);
 
 window.onload = async () => {
     tabela.innerHTML = "";

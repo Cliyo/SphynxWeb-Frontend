@@ -1,6 +1,7 @@
 import {request} from "./utils/requestHttp.js";
 import {api} from "./utils/testeConexao.js";
 import {headerAuth} from "./utils/headers.js";
+import { findNewDevices } from "./finderFunctions/sphynxFinder.js";
 
 const tabela = document.querySelector("tbody");
 
@@ -8,6 +9,8 @@ const filtros = document.querySelector(".ajustar-inputs").querySelectorAll("inpu
 
 const legendaQntAcessos = document.querySelector("#legenda-quantidade-acessos");
 let qntAcessos = 0;
+
+findNewDevices(true)
 
 window.onload = async () => {
     const response = await request(api, "accessRegisters", "GET", headerAuth, null);

@@ -1,6 +1,7 @@
-import { api } from "../dashboardScript.js";
+import { api} from "../utils/testeConexao.js";
 import {request, testConnection} from "../utils/requestHttp.js";
-import {header, language} from "../dashboardScript.js"
+import {header, headerAuth} from "../utils/headers.js"
+import { mostrarMensagem } from "../utils/messages.js";
 
 var finderAPI = `${window.location.hostname}:57127`;
 const apiUrls = ['sphynx-finder.local:57127','localhost:57127', `${window.location.hostname}:57127`]
@@ -26,7 +27,7 @@ async function finderScan(){
     return response;
 }
 
-async function finder(type){
+async function findAllDevices(type){
     var response = null;
     if (type == "scan"){
         response = await finderScan();
@@ -46,7 +47,7 @@ async function inDatabase(){
     const sphynxs = [];
 
     // GET ALL THE MAC IN DATABASE //
-    const reqData = await request(api, `locals`, "GET", header, null);
+    const reqData = await request(api, `locals`, "GET", headerAuth, null);
 
     let array = Object.keys(reqData);
     
@@ -89,4 +90,42 @@ async function turnsEspInWebsocket(data) {
     return arrayEsp;
 }
 
-export {finder, inDatabase, turnsEspInWebsocket};
+async function findNewDevices(timeout){
+    const macsInDatabase = await inDatabase();
+
+    const newDevices = []
+
+    if (timeout){
+        loopFinder()
+    }
+
+    const types = ["services", "scan"]
+
+    for (let i = 0; i < types.length; i++ ){
+        const found = await findAllDevices(types[i]);
+
+        found.forEach(device => {
+            if (macsInDatabase.length > 0){
+                macsInDatabase.forEach(mac => {
+                    if(mac != device.mac){
+                        mostrarMensagem("Novo dispositivo encontrado");
+                        newDevices.push(device);
+                    }
+                })
+            }else{
+                mostrarMensagem("Novo dispositivo encontrado");
+                newDevices.push(device);
+            }
+            
+
+        })
+    }
+    return newDevices
+}
+
+async function loopFinder() {
+    setTimeout(findNewDevices, 60000);
+}
+
+
+export {findAllDevices, findNewDevices, turnsEspInWebsocket};

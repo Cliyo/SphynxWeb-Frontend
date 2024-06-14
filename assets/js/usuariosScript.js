@@ -1,3 +1,4 @@
+import { findNewDevices } from "./finderFunctions/sphynxFinder.js";
 import { headerAuth } from "./utils/headers.js";
 import { mostrarMensagem } from "./utils/messages.js";
 import { preencherSelectGrupo } from "./utils/preencherSelect.js";
@@ -20,6 +21,8 @@ const tabela = document.querySelector("tbody");
 
 const legendaQntUsuarios = document.querySelector("#legenda-quantidade-usuarios");
 let qntUsuarios = 0;
+
+findNewDevices(true);
 
 window.onload = async () => {
     tabela.innerHTML = "";

@@ -1,8 +1,12 @@
+import { findNewDevices } from "./finderFunctions/sphynxFinder";
+
 const opcaoGeral = document.querySelector("#configuracoes-menu-geral");
 const opcaoAvancado = document.querySelector("#configuracoes-menu-avancado");
 
 const menuGeral = document.querySelector("#configuracoes-geral");
 const menuAvancado = document.querySelector("#configuracoes-avancada");
+
+findNewDevices(true);
 
 opcaoGeral.addEventListener("click", () => {
     if(!opcaoGeral.classList.contains("selecionado")){
