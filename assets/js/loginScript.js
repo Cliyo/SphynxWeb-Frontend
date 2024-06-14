@@ -1,7 +1,7 @@
-import { header } from "../utils/headers.js";
-import { mostrarMensagem } from "../utils/messages.js";
-import {request} from "../utils/requestHttp.js";
-import { api } from "../utils/testeConexao.js";
+import { header } from "./utils/headers.js";
+import { mostrarMensagem } from "./utils/messages.js";
+import {request} from "./utils/requestHttp.js";
+import { api } from "./utils/testeConexao.js";
 
 var form = document.querySelector("#form")
 
