@@ -6,8 +6,6 @@ const menuGeral = document.querySelector("#locais-ver");
 
 const tabela = document.querySelector("tbody");
 
-var sphynxs = []
-
 findNewDevices(true);
 
 opcaoLocalVer.addEventListener("click", () => {
@@ -60,9 +58,11 @@ opcaoLocalCadastrar.addEventListener("click", () => {
         opcaoLocalCadastrar.classList.toggle("selecionado");
 
         tabela.innerHTML = "";
+        
+        let json = localStorage.getItem("Sphynxs");
+        let sphynxs = json ? JSON.parse(json) : [];
+
         sphynxs.forEach(sphynx => {
-            console.log(sphynx)
-            console.log(sphynx.mac)
             let tr = document.createElement("tr");
 
             let tdNome = document.createElement("td");

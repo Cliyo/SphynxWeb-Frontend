@@ -99,28 +99,35 @@ async function findNewDevices(timeout){
         loopFinder()
     }
 
-    const types = ["services", "scan"]
+    const types = ["services", "scan"];
 
-    for (let i = 0; i < types.length; i++ ){
+    for (let i = 0; i < types.length; i++) {
         const found = await findAllDevices(types[i]);
 
         found.forEach(device => {
-            if (macsInDatabase.length > 0){
-                macsInDatabase.forEach(mac => {
-                    if(mac != device.mac){
-                        mostrarMensagem("Novo dispositivo encontrado");
-                        newDevices.push(device);
-                    }
-                })
-            }else{
-                mostrarMensagem("Novo dispositivo encontrado");
-                newDevices.push(device);
-            }
-            
+            let json = localStorage.getItem("Sphynxs");
+            let alreadyFound = json ? JSON.parse(json) : [];
 
-        })
+            if (alreadyFound.some(sphynx => sphynx.mac === device.mac)) {
+                return;
+            }
+
+            if (macsInDatabase.length > 0) {
+                if (macsInDatabase.some(mac => mac === device.mac)) {
+                    return;
+                }
+            }
+            mostrarMensagem("Novo dispositivo encontrado");
+            newDevices.push(device);
+        });
     }
-    return newDevices
+
+    if (newDevices.length > 0) {
+        let json = localStorage.getItem("Sphynxs");
+        let alreadyFound = json ? JSON.parse(json) : [];
+        alreadyFound.push(...newDevices);
+        localStorage.setItem("Sphynxs", JSON.stringify(alreadyFound));
+    }
 }
 
 async function loopFinder() {
