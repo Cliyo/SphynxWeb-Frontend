@@ -17,8 +17,6 @@ const legendaQntGrupos = document.querySelector("#legenda-quantidade-grupos");
 
 let qntGrupos = 0;
 
-findNewDevices(true);
-
 window.onload = async () => {
     tabela.innerHTML = "";
     const response = await request(api, "permissions", "GET", headerAuth, null);
@@ -30,6 +28,8 @@ window.onload = async () => {
 
     qntGrupos = response.length;
     legendaQntGrupos.innerHTML = `Total: ${qntGrupos} grupo(s)`;
+
+    findNewDevices(true);
 
 }
 

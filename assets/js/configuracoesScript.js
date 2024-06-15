@@ -6,8 +6,6 @@ const opcaoAvancado = document.querySelector("#configuracoes-menu-avancado");
 const menuGeral = document.querySelector("#configuracoes-geral");
 const menuAvancado = document.querySelector("#configuracoes-avancada");
 
-findNewDevices(true);
-
 opcaoGeral.addEventListener("click", () => {
     if(!opcaoGeral.classList.contains("selecionado")){
         opcaoGeral.classList.toggle("selecionado");
@@ -28,3 +26,5 @@ opcaoAvancado.addEventListener("click", () => {
         menuAvancado.style.display = "flex";
     }
 })
+
+findNewDevices(true);

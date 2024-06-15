@@ -22,8 +22,6 @@ const tabela = document.querySelector("tbody");
 const legendaQntUsuarios = document.querySelector("#legenda-quantidade-usuarios");
 let qntUsuarios = 0;
 
-findNewDevices(true);
-
 window.onload = async () => {
     tabela.innerHTML = "";
     const response = await request(api, "consumers", "GET", headerAuth, null);
@@ -36,6 +34,8 @@ window.onload = async () => {
 
     qntUsuarios = response.length;
     legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;
+
+    findNewDevices(true);
 }
 
 opcaoUsuarioVer.addEventListener("click", async () => {
