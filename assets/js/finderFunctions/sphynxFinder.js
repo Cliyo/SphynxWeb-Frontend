@@ -35,10 +35,14 @@ async function findAllDevices(type){
         response = await finderServices();
     }
 
-    if (!response.ok) {
-        console.error("Não foi possível pegar os dispositivos")
+    try {
+        if (!response.ok) {
+            console.error("Não foi possível pegar os dispositivos")
+        }
+    } catch (error) {
+        return [];
     }
-
+    
     return response.json()
 }
 
@@ -95,10 +99,6 @@ async function findNewDevices(timeout){
 
     const newDevices = []
 
-    if (timeout){
-        loopFinder()
-    }
-
     const types = ["services", "scan"];
 
     for (let i = 0; i < types.length; i++) {
@@ -128,11 +128,11 @@ async function findNewDevices(timeout){
         alreadyFound.push(...newDevices);
         localStorage.setItem("Sphynxs", JSON.stringify(alreadyFound));
     }
-}
 
-async function loopFinder() {
-    setTimeout(findNewDevices, 60000);
-}
+    if (timeout){
+        setTimeout(findNewDevices, 60000);
+    }
 
+}
 
 export {findAllDevices, findNewDevices, turnsEspInWebsocket};
