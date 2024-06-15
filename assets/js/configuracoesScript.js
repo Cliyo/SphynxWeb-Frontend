@@ -1,4 +1,4 @@
-import { findNewDevices } from "./finderFunctions/sphynxFinder";
+import { findNewDevices } from "./finderFunctions/sphynxFinder.js";
 
 const opcaoGeral = document.querySelector("#configuracoes-menu-geral");
 const opcaoAvancado = document.querySelector("#configuracoes-menu-avancado");
