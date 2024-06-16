@@ -1,5 +1,5 @@
 import { findNewDevices } from "./finderFunctions/sphynxFinder.js";
-import { headerAuth } from "./utils/headers.js";
+import { header, headerAuth } from "./utils/headers.js";
 import { mostrarMensagem } from "./utils/messages.js";
 import { preencherSelectGrupo } from "./utils/preencherSelect.js";
 import { request } from "./utils/requestHttp.js";
@@ -103,6 +103,18 @@ opcaoUsuarioGrupo.addEventListener("click", async () => {
 botaoCadastrarUsuario.addEventListener("click", async () => {
     usuariosContainer.classList.add("escurecer");
     divCadastrarUsuario.classList.add("mostrar");
+
+    let inputTag = document.querySelector("#tag-input");
+    let resgatarTagBotao = document.querySelector("#resgatar-tag");
+    resgatarTagBotao.addEventListener("click", async () => {
+        const requestTag = await request("ip", "tag", "GET", header, null);
+        try{
+            inputTag.value = requestTag.tag;
+        }
+        catch(erro){
+            mostrarMensagem("Nao foi possivel achar a TAG.<br>Favor deixar ela posicionada no leitor.")
+        }
+    })
 
     let grupoInput = document.querySelector("#input-grupo-cadastrar");
     grupoInput.innerHTML = "";
