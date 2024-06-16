@@ -1,4 +1,8 @@
 import { findNewDevices } from "./finderFunctions/sphynxFinder.js";
+import { headerAuth } from "./utils/headers.js";
+import { request } from "./utils/requestHttp.js";
+import { api } from "./utils/testeConexao.js";
+
 const opcaoLocalVer = document.querySelector("#locais-menu-ver");
 const opcaoLocalCadastrar = document.querySelector("#locais-menu-cadastrar");
 
@@ -6,48 +10,33 @@ const menuGeral = document.querySelector("#locais-ver");
 
 const tabela = document.querySelector("tbody");
 
-findNewDevices(true);
+window.onload = async () => {
+    tabela.innerHTML = "";
+    const response = await request(api, "locals", "GET", headerAuth, null);
 
-opcaoLocalVer.addEventListener("click", () => {
+    response.forEach(local => {
+        let linha = criarLinhaTabela(local, "mostrar");
+
+        tabela.appendChild(linha);
+    });
+
+    findNewDevices(true);
+}
+
+opcaoLocalVer.addEventListener("click", async () => {
     if(!opcaoLocalVer.classList.contains("selecionado")){
         opcaoLocalVer.classList.toggle("selecionado");
         opcaoLocalCadastrar.classList.toggle("selecionado");
 
         tabela.innerHTML = "";
 
-        let tr = document.createElement("tr");
+        const response = await request(api, "locals", "GET", headerAuth, null);
 
-        let tdNome = document.createElement("td");
-        tdNome.id = "campo-nome";
-        tdNome.innerHTML = "LAB10";
+        response.forEach(local => {
+            let linha = criarLinhaTabela(local, "mostrar");
 
-        let tdPermissao = document.createElement("td");
-        tdPermissao.innerHTML = "1 - Aluno";
-
-        let tdMac = document.createElement("td");
-        tdMac.innerHTML = "11:11:11:11:11:11";
-
-        let tdAcao = document.createElement("td");
-
-        let botaoEditar = document.createElement("button");
-        botaoEditar.id = "botao-editar"
-        botaoEditar.innerHTML = "Editar";
-        botaoEditar.addEventListener("click", () => {
-            adicionarFuncaoEditarAoBotao(botaoEditar);
-        })
-
-        let botaoExcluir = document.createElement("button");
-        botaoExcluir.innerHTML = "Excluir";
-
-        tdAcao.appendChild(botaoEditar);
-        tdAcao.appendChild(botaoExcluir);
-
-        tr.appendChild(tdNome);
-        tr.appendChild(tdPermissao);
-        tr.appendChild(tdMac);
-        tr.appendChild(tdAcao);
-
-        tabela.append(tr);
+            tabela.appendChild(linha);
+        });
     }
     
 })
@@ -61,7 +50,7 @@ opcaoLocalCadastrar.addEventListener("click", () => {
         
         let json = localStorage.getItem("Sphynxs");
         let sphynxs = json ? JSON.parse(json) : [];
-
+        console.log(sphynxs)
         sphynxs.forEach(sphynx => {
             let tr = document.createElement("tr");
 
@@ -99,6 +88,9 @@ opcaoLocalCadastrar.addEventListener("click", () => {
 
             let botaoSalvar = document.createElement("button");
             botaoSalvar.innerHTML = "Salvar";
+            botaoSalvar.addEventListener("click", () => {
+
+            })
 
             tdAcao.appendChild(botaoSalvar);
 
@@ -149,4 +141,40 @@ function adicionarFuncaoEditarAoBotao(botao){
     tdNome.appendChild(inputEditarNome);
     tdAcao.appendChild(botaoCancelar);
     tdAcao.appendChild(botaoConfirmar);
+}
+
+function criarLinhaTabela(local, tipo){
+    let tr = document.createElement("tr");
+
+    let tdNome = document.createElement("td");
+    tdNome.id = "campo-nome";
+    tdNome.innerHTML = "LAB10";
+
+    let tdPermissao = document.createElement("td");
+    tdPermissao.innerHTML = "1 - Aluno";
+
+    let tdMac = document.createElement("td");
+    tdMac.innerHTML = "11:11:11:11:11:11";
+
+    let tdAcao = document.createElement("td");
+
+    let botaoEditar = document.createElement("button");
+    botaoEditar.id = "botao-editar"
+    botaoEditar.innerHTML = "Editar";
+    botaoEditar.addEventListener("click", () => {
+        adicionarFuncaoEditarAoBotao(botaoEditar);
+    })
+
+    let botaoExcluir = document.createElement("button");
+    botaoExcluir.innerHTML = "Excluir";
+
+    tdAcao.appendChild(botaoEditar);
+    tdAcao.appendChild(botaoExcluir);
+
+    tr.appendChild(tdNome);
+    tr.appendChild(tdPermissao);
+    tr.appendChild(tdMac);
+    tr.appendChild(tdAcao);
+
+    return tr;
 }
