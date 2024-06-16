@@ -112,13 +112,16 @@ async function findNewDevices(timeout){
                 return;
             }
 
-            if (macsInDatabase.length > 0) {
+            else if (macsInDatabase.length > 0) {
                 if (macsInDatabase.some(mac => mac === device.mac)) {
                     return;
                 }
             }
-            mostrarMensagem("Novo dispositivo encontrado");
-            newDevices.push(device);
+            else{
+                mostrarMensagem("Novo dispositivo encontrado");
+                newDevices.push(device);
+            }
+            
         });
     }
 
