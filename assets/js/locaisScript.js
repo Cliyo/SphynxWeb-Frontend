@@ -17,7 +17,7 @@ window.onload = async () => {
     const response = await request(api, "locals", "GET", headerAuth, null);
 
     response.forEach(local => {
-        let linha = criarLinhaTabelaMostrar(local, "mostrar");
+        let linha = criarLinhaTabelaMostrar(local);
 
         tabela.appendChild(linha);
     });
@@ -188,7 +188,6 @@ async function criarLinhaTabelaCadastrar(local){
         
         const response = await request(api, "locals", "POST", headerAuth, jsonData);
 
-        console.log(response)
         mostrarMensagem(response.message);
         if(response.status == 201){
             tr.remove();
