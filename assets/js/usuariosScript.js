@@ -105,17 +105,17 @@ botaoCadastrarUsuario.addEventListener("click", async () => {
     divCadastrarUsuario.classList.add("mostrar");
 
     let inputTag = document.querySelector("#tag-input");
-    let resgatarTagBotao = document.querySelector("#resgatar-tag");
-    resgatarTagBotao.addEventListener("click", async () => {
-        const requestTag = await request("ip", "tag", "GET", header, null);
-        try{
-            inputTag.value = requestTag.tag;
-        }
-        catch(erro){
-            mostrarMensagem("Nao foi possivel achar a TAG.<br>Favor deixar ela posicionada no leitor.")
-        }
-    })
 
+    const websocket = new WebSocket("ws://192.168.15.8/ws");
+    websocket.onopen = () => {
+        console.log("abriu")
+    }
+    websocket.onmessage = (event) => {
+        console.log(event)
+        console.log(event.data)
+        inputTag.value = event.data;
+    }
+    
     let grupoInput = document.querySelector("#input-grupo-cadastrar");
     grupoInput.innerHTML = "";
 
