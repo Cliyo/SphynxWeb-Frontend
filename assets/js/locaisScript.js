@@ -1,5 +1,6 @@
 import { findNewDevices } from "./finderFunctions/sphynxFinder.js";
 import { headerAuth } from "./utils/headers.js";
+import { mostrarMensagem } from "./utils/messages.js";
 import { preencherSelectGrupo } from "./utils/preencherSelect.js";
 import { request } from "./utils/requestHttp.js";
 import { api } from "./utils/testeConexao.js";
@@ -105,13 +106,13 @@ function criarLinhaTabelaMostrar(local){
 
     let tdNome = document.createElement("td");
     tdNome.id = "campo-nome";
-    tdNome.innerHTML = "LAB10";
+    tdNome.innerHTML = local.name;
 
     let tdPermissao = document.createElement("td");
-    tdPermissao.innerHTML = "1 - Aluno";
+    tdPermissao.innerHTML = local.permission.name;
     
     let tdMac = document.createElement("td");
-    tdMac.innerHTML = "11:11:11:11:11:11";
+    tdMac.innerHTML = local.mac;
 
     let tdAcao = document.createElement("td");
 
@@ -124,6 +125,18 @@ function criarLinhaTabelaMostrar(local){
 
     let botaoExcluir = document.createElement("button");
     botaoExcluir.innerHTML = "Excluir";
+    botaoExcluir.addEventListener("click", async () => {
+        const response = await request(api, `locals/${local.name}`, "DELETE", headerAuth, null);
+
+        try{
+            mostrarMensagem(response.message);
+        }
+        catch(erro){
+            mostrarMensagem("Local deletado com sucesso.");
+
+            tr.remove();
+        } 
+    })
 
     tdAcao.appendChild(botaoEditar);
     tdAcao.appendChild(botaoExcluir);
@@ -165,8 +178,21 @@ async function criarLinhaTabelaCadastrar(local){
 
     let botaoSalvar = document.createElement("button");
     botaoSalvar.innerHTML = "Salvar";
-    botaoSalvar.addEventListener("click", () => {
+    botaoSalvar.addEventListener("click",  async () => {
+        var dados = {
+            "name":  inputNome.value,
+            "mac": tdMac.innerHTML,
+            "permission": selectPermissao.value
+        }
+        var jsonData = JSON.stringify(dados);
+        
+        const response = await request(api, "locals", "POST", headerAuth, jsonData);
 
+        console.log(response)
+        mostrarMensagem(response.message);
+        if(response.status == 201){
+            tr.remove();
+        }
     })
 
     tdAcao.appendChild(botaoSalvar);
