@@ -106,9 +106,15 @@ botaoCadastrarUsuario.addEventListener("click", async () => {
 
     let inputTag = document.querySelector("#tag-input");
 
-    const websocket = new WebSocket("ws://192.168.15.8/ws");
+    const websocket = new WebSocket("ws://192.168.0.106/ws");
     websocket.onopen = () => {
-        console.log("abriu")
+        console.log("Conexão aberta com o websocket")
+        if (websocket.readyState === WebSocket.OPEN) {
+            let mensagem = "tags"
+            websocket.send(mensagem);
+            console.log('Solicitação de registro de tag enviada');
+        }
+        
     }
     websocket.onmessage = (event) => {
         console.log(event)
