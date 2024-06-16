@@ -52,12 +52,14 @@ opcaoLocalCadastrar.addEventListener("click", () => {
         
         let json = localStorage.getItem("Sphynxs");
         let sphynxs = json ? JSON.parse(json) : [];
-        console.log(sphynxs)
+        let index = 0;
+
         sphynxs.forEach(async sphynx => {
-            let linha = await criarLinhaTabelaCadastrar(sphynx);
-            console.log(linha)
+            let linha = await criarLinhaTabelaCadastrar(sphynx, sphynxs, index);
 
             tabela.appendChild(linha);
+
+            index++;
         })
     }
 })
@@ -149,7 +151,7 @@ function criarLinhaTabelaMostrar(local){
     return tr;
 }
 
-async function criarLinhaTabelaCadastrar(local){
+async function criarLinhaTabelaCadastrar(local, listaJson, index){
     let tr = document.createElement("tr");
 
     let tdNome = document.createElement("td");
@@ -191,6 +193,10 @@ async function criarLinhaTabelaCadastrar(local){
         mostrarMensagem(response.message);
         if(response.status == 201){
             tr.remove();
+
+            listaJson.splice(index, 1);
+
+            localStorage.setItem("Sphynxs", JSON.stringify(listaJson));
         }
     })
 
