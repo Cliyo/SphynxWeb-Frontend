@@ -1,5 +1,6 @@
 import { findNewDevices } from "./finderFunctions/sphynxFinder.js";
 import { headerAuth } from "./utils/headers.js";
+import { preencherSelectGrupo } from "./utils/preencherSelect.js";
 import { request } from "./utils/requestHttp.js";
 import { api } from "./utils/testeConexao.js";
 
@@ -15,7 +16,7 @@ window.onload = async () => {
     const response = await request(api, "locals", "GET", headerAuth, null);
 
     response.forEach(local => {
-        let linha = criarLinhaTabela(local, "mostrar");
+        let linha = criarLinhaTabelaMostrar(local, "mostrar");
 
         tabela.appendChild(linha);
     });
@@ -33,7 +34,7 @@ opcaoLocalVer.addEventListener("click", async () => {
         const response = await request(api, "locals", "GET", headerAuth, null);
 
         response.forEach(local => {
-            let linha = criarLinhaTabela(local, "mostrar");
+            let linha = criarLinhaTabelaMostrar(local);
 
             tabela.appendChild(linha);
         });
@@ -51,55 +52,11 @@ opcaoLocalCadastrar.addEventListener("click", () => {
         let json = localStorage.getItem("Sphynxs");
         let sphynxs = json ? JSON.parse(json) : [];
         console.log(sphynxs)
-        sphynxs.forEach(sphynx => {
-            let tr = document.createElement("tr");
+        sphynxs.forEach(async sphynx => {
+            let linha = await criarLinhaTabelaCadastrar(sphynx);
+            console.log(linha)
 
-            let tdNome = document.createElement("td");
-
-            let inputNome = document.createElement("input");
-            inputNome.type = "text";
-            inputNome.className = "nome-input";
-            inputNome.id = "nome-input";
-            inputNome.placeholder = "Nome";
-
-            tdNome.appendChild(inputNome);
-
-            let tdPermissao = document.createElement("td");
-
-            let selectPermissao = document.createElement("select");
-
-            let optionAluno = document.createElement("option");
-            optionAluno.value = "aluno"
-            optionAluno.innerHTML = "1 - Aluno";
-
-            let optionProfessor = document.createElement("option");
-            optionProfessor.value = "professor"
-            optionProfessor.innerHTML = "1 - Professor";
-
-            selectPermissao.appendChild(optionAluno);
-            selectPermissao.appendChild(optionProfessor);
-
-            tdPermissao.appendChild(selectPermissao);
-
-            let tdMac = document.createElement("td");
-            tdMac.innerHTML = sphynx.mac;
-
-            let tdAcao = document.createElement("td");
-
-            let botaoSalvar = document.createElement("button");
-            botaoSalvar.innerHTML = "Salvar";
-            botaoSalvar.addEventListener("click", () => {
-
-            })
-
-            tdAcao.appendChild(botaoSalvar);
-
-            tr.appendChild(tdNome);
-            tr.appendChild(tdPermissao);
-            tr.appendChild(tdMac);
-            tr.appendChild(tdAcao);
-
-            tabela.append(tr);
+            tabela.appendChild(linha);
         })
     }
 })
@@ -143,7 +100,7 @@ function adicionarFuncaoEditarAoBotao(botao){
     tdAcao.appendChild(botaoConfirmar);
 }
 
-function criarLinhaTabela(local, tipo){
+function criarLinhaTabelaMostrar(local){
     let tr = document.createElement("tr");
 
     let tdNome = document.createElement("td");
@@ -152,7 +109,7 @@ function criarLinhaTabela(local, tipo){
 
     let tdPermissao = document.createElement("td");
     tdPermissao.innerHTML = "1 - Aluno";
-
+    
     let tdMac = document.createElement("td");
     tdMac.innerHTML = "11:11:11:11:11:11";
 
@@ -170,6 +127,49 @@ function criarLinhaTabela(local, tipo){
 
     tdAcao.appendChild(botaoEditar);
     tdAcao.appendChild(botaoExcluir);
+
+    tr.appendChild(tdNome);
+    tr.appendChild(tdPermissao);
+    tr.appendChild(tdMac);
+    tr.appendChild(tdAcao);
+
+    return tr;
+}
+
+async function criarLinhaTabelaCadastrar(local){
+    let tr = document.createElement("tr");
+
+    let tdNome = document.createElement("td");
+
+    let inputNome = document.createElement("input");
+    inputNome.type = "text";
+    inputNome.className = "nome-input";
+    inputNome.id = "nome-input";
+    inputNome.placeholder = "Nome";
+
+    tdNome.appendChild(inputNome);
+
+    let tdPermissao = document.createElement("td");
+
+    let selectPermissao = document.createElement("select");
+
+    const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
+    preencherSelectGrupo(selectPermissao, responseGrupo);
+
+    tdPermissao.appendChild(selectPermissao);
+
+    let tdMac = document.createElement("td");
+    tdMac.innerHTML = local.mac;
+
+    let tdAcao = document.createElement("td");
+
+    let botaoSalvar = document.createElement("button");
+    botaoSalvar.innerHTML = "Salvar";
+    botaoSalvar.addEventListener("click", () => {
+
+    })
+
+    tdAcao.appendChild(botaoSalvar);
 
     tr.appendChild(tdNome);
     tr.appendChild(tdPermissao);
