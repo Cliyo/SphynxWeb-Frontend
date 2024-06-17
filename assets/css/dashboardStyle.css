@@ -14,7 +14,18 @@ main{
     width: 90%;
     height: 90%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 15px;
     border-radius: 15px;
     background-color: var(--cor-fundo-escura);
+}
+
+.dashboard-relatorio-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    height: 95%;
+    background-color: var(--cor-clara);
+    border-radius: 15px;
 }
