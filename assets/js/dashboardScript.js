@@ -8,7 +8,7 @@ const quantidadeAcessos = document.querySelector("#quantidade-acessos");
 const response = await request(api, `accessRegisters?date=${montarData()}`, "GET", headerAuth, null);
 
 quantidadeAcessos.innerHTML = `Acessos (Hoje): ${response.length}`;
-graficoAcessos.style.background = `conic-gradient(#ff0000 0deg ${(360 * (pegarPorcentagemAprovados())) / 100}, #1eff00 ${(360 * (pegarPorcentagemAprovados())) / 100} 360deg)`
+graficoAcessos.style.background = `conic-gradient(#8DB255 0deg ${(360 * (pegarPorcentagemAprovados())) / 100}, #A72127 ${(360 * (pegarPorcentagemAprovados())) / 100} 360deg)`
 
 function montarData(){
     let data = new Date();
