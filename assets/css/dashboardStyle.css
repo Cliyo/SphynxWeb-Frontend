@@ -96,10 +96,10 @@ main{
     height: 250px;
     border-radius: 50%;
     background: conic-gradient(
-        purple 0deg 90deg,
-        yellow 90deg 180deg,
-        pink 180deg 270deg,
-        darkgreen 270deg 360deg
+        #558BB2 0deg 90deg,
+        #214FA7 90deg 180deg,
+        #56ADA3 180deg 270deg,
+        #46C3D3 270deg 360deg
     );
 }
 
@@ -137,10 +137,10 @@ main{
     height: 250px;
     border-radius: 50%;
     background: conic-gradient(
-        rgb(0, 55, 235) 0deg 90deg,
-        rgb(0, 255, 234) 90deg 180deg,
-        rgb(70, 3, 255) 180deg 270deg,
-        rgb(0, 255, 136) 270deg 360deg
+        #7421A7 0deg 90deg,
+        #A72151 90deg 180deg,
+        #A721A2 180deg 270deg,
+        #D3439A 270deg 360deg
     );
 }
 
