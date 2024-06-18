@@ -8,7 +8,9 @@ const quantidadeAcessos = document.querySelector("#quantidade-acessos");
 const response = await request(api, `accessRegisters?date=${montarData()}`, "GET", headerAuth, null);
 
 quantidadeAcessos.innerHTML = `Acessos (Hoje): ${response.length}`;
-graficoAcessos.style.background = `conic-gradient(#8DB255 0deg ${(360 * (pegarPorcentagemAprovados())) / 100}, #A72127 ${(360 * (pegarPorcentagemAprovados())) / 100} 360deg)`
+const porcentagemAprovados = pegarPorcentagemAprovados(response);
+const grauAprovados = (360 * porcentagemAprovados) / 100;
+graficoAcessos.style.background = `conic-gradient(#8DB255 0deg ${grauAprovados}deg, #A72127 ${grauAprovados}deg 360deg)`;
 
 function montarData(){
     let data = new Date();
@@ -19,8 +21,7 @@ function montarData(){
     return data.getFullYear() + "-" + mes + "-" + dia;
 }
 
-function pegarPorcentagemAprovados(){
-    let aprovados = response.filter(acesso => acesso.status == true);
-
-    return (aprovados / response.length)  * 100;
+function pegarPorcentagemAprovados(response){
+    let aprovados = response.filter(acesso => acesso.status === true);
+    return (aprovados.length / response.length) * 100;
 }
