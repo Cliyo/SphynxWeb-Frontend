@@ -1,9 +1,8 @@
 import {mostrarMensagem} from "./messages.js";
-async function request(api, entity, method, header, body = null, rawResponse = false, cors = true) {
+async function request(api, entity, method, header, body = null, rawResponse = false) {
     try {
-        const mode = cors ? "cors" : "no-cors";
         const response = await fetch(`http://${api}/${entity}`, {
-            mode: mode,
+            mode: "cors",
             method: `${method}`,
             headers: header,
             body: body
