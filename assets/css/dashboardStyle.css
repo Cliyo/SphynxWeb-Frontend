@@ -77,12 +77,12 @@ main{
 }
 
 .legenda-elemento-acessos i{
-    font-size: 0.5rem;
+    font-size: 0.25rem;
 }
 
 .legenda-elemento-acessos p{
     color: white;
-    font-size: 0.5rem;
+    font-size: 0.25rem;
     margin-left: 10px;
 }
 
@@ -126,5 +126,47 @@ main{
     font-size: 0.25rem;
     margin-left: 10px;
 }
+
+/* USUARIOS */
+.grafico-usuarios{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: conic-gradient(
+        rgb(0, 55, 235) 0deg 90deg,
+        rgb(0, 255, 234) 90deg 180deg,
+        rgb(70, 3, 255) 180deg 270deg,
+        rgb(0, 255, 136) 270deg 360deg
+    );
+}
+
+.legenda-grafico-usuarios{
+    position: relative;
+    display: grid;
+    gap: 5px 40px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.legenda-elemento-usuarios{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legenda-elemento-usuarios i{
+    font-size: 0.25rem;
+}
+
+.legenda-elemento-usuarios p{
+    color: white;
+    font-size: 0.25rem;
+    margin-left: 10px;
+}
+
 
 
