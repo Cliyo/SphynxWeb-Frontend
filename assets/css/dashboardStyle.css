@@ -40,13 +40,25 @@ main{
     border-bottom: 2px solid white;
 }
 
-.grafico{
+.grafico-acessos{
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 250px;
     height: 250px;
     border-radius: 50%;
-    background-color: none;
-    border: 15px solid #000;
+    background: conic-gradient(
+        #ff0000 0deg 180deg,
+        #1eff00 180deg 360deg    
+        );
+}
+
+.ajuste-grafico{
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    background-color: var(--cor-clara);
 }
 
 .legenda-grafico-acessos{
@@ -75,6 +87,22 @@ main{
 }
 
 /* LOCAIS */
+.grafico-locais{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: conic-gradient(
+        purple 0deg 90deg,
+        yellow 90deg 180deg,
+        pink 180deg 270deg,
+        darkgreen 270deg 360deg
+    );
+}
+
 .legenda-grafico-locais{
     position: relative;
     display: grid;
