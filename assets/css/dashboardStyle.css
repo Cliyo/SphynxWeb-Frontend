@@ -33,6 +33,7 @@ main{
     padding: 10px;
 }
 
+/* ACESSOS */
 .dashboard-relatorio-container h2{
     color: white;
     font-size: 0.5rem;
@@ -48,7 +49,7 @@ main{
     border: 15px solid #000;
 }
 
-.legenda-grafico{
+.legenda-grafico-acessos{
     position: relative;
     display: flex;
     flex-direction: column;
@@ -56,19 +57,46 @@ main{
     justify-content: center;
 }
 
-.legenda-grafico-elemento{
+.legenda-elemento-acessos{
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.legenda-grafico-elemento i{
+.legenda-elemento-acessos i{
     font-size: 0.5rem;
 }
 
-.legenda-grafico-elemento p{
+.legenda-elemento-acessos p{
     color: white;
     font-size: 0.5rem;
     margin-left: 10px;
 }
+
+/* LOCAIS */
+.legenda-grafico-locais{
+    position: relative;
+    display: grid;
+    gap: 5px 40px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.legenda-elemento-locais{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legenda-elemento-locais i{
+    font-size: 0.25rem;
+}
+
+.legenda-elemento-locais p{
+    color: white;
+    font-size: 0.25rem;
+    margin-left: 10px;
+}
+
+
