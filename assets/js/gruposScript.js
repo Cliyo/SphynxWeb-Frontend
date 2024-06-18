@@ -17,21 +17,18 @@ const legendaQntGrupos = document.querySelector("#legenda-quantidade-grupos");
 
 let qntGrupos = 0;
 
-window.onload = async () => {
-    tabela.innerHTML = "";
-    const response = await request(api, "permissions", "GET", headerAuth, null);
+tabela.innerHTML = "";
+const response = await request(api, "permissions", "GET", headerAuth, null);
 
-    response.forEach(grupo => {
-        let linha = criarLinhaTabela(grupo);
-        tabela.appendChild(linha);
-    });
+response.forEach(grupo => {
+    let linha = criarLinhaTabela(grupo);
+    tabela.appendChild(linha);
+});
 
-    qntGrupos = response.length;
-    legendaQntGrupos.innerHTML = `Total: ${qntGrupos} grupo(s)`;
+qntGrupos = response.length;
+legendaQntGrupos.innerHTML = `Total: ${qntGrupos} grupo(s)`;
 
-    findNewDevices(true);
-
-}
+findNewDevices(true);
 
 botaoCadastrarGrupos.addEventListener("click", () => {
     usuariosContainer.classList.add("escurecer");

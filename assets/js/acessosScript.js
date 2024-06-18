@@ -10,19 +10,17 @@ const filtros = document.querySelector(".ajustar-inputs").querySelectorAll("inpu
 const legendaQntAcessos = document.querySelector("#legenda-quantidade-acessos");
 let qntAcessos = 0;
 
-window.onload = async () => {
-    const response = await request(api, "accessRegisters", "GET", headerAuth, null);
+const response = await request(api, "accessRegisters", "GET", headerAuth, null);
 
-    tabela.innerHTML = "";
-    response.forEach(acesso => {
-        tabela.appendChild(criarLinhaTabela(acesso))
-    });
-    
-    qntAcessos = response.length;
-    legendaQntAcessos.innerHTML = `Total: ${qntAcessos} acesso(s)`;
+tabela.innerHTML = "";
+response.forEach(acesso => {
+    tabela.appendChild(criarLinhaTabela(acesso))
+});
 
-    findNewDevices(true)
-}
+qntAcessos = response.length;
+legendaQntAcessos.innerHTML = `Total: ${qntAcessos} acesso(s)`;
+
+findNewDevices(true)
 
 filtros.forEach(filtro => {
     filtro.addEventListener("change", async () => {

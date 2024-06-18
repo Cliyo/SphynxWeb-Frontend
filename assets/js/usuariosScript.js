@@ -22,21 +22,19 @@ const tabela = document.querySelector("tbody");
 const legendaQntUsuarios = document.querySelector("#legenda-quantidade-usuarios");
 let qntUsuarios = 0;
 
-window.onload = async () => {
-    tabela.innerHTML = "";
-    const response = await request(api, "consumers", "GET", headerAuth, null);
+tabela.innerHTML = "";
+const response = await request(api, "consumers", "GET", headerAuth, null);
 
-    response.forEach(usuario => {
-        let linha = criarLinhaTabela(usuario);
+response.forEach(usuario => {
+    let linha = criarLinhaTabela(usuario);
 
-        tabela.appendChild(linha);
-    });
+    tabela.appendChild(linha);
+});
 
-    qntUsuarios = response.length;
-    legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;
+qntUsuarios = response.length;
+legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;
 
-    findNewDevices(true);
-}
+findNewDevices(true);
 
 opcaoUsuarioVer.addEventListener("click", async () => {
     if(!opcaoUsuarioVer.classList.contains("selecionado")){

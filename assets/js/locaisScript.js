@@ -12,18 +12,16 @@ const menuGeral = document.querySelector("#locais-ver");
 
 const tabela = document.querySelector("tbody");
 
-window.onload = async () => {
-    tabela.innerHTML = "";
-    const response = await request(api, "locals", "GET", headerAuth, null);
+tabela.innerHTML = "";
+const response = await request(api, "locals", "GET", headerAuth, null);
 
-    response.forEach(local => {
-        let linha = criarLinhaTabelaMostrar(local);
+response.forEach(local => {
+    let linha = criarLinhaTabelaMostrar(local);
 
-        tabela.appendChild(linha);
-    });
+    tabela.appendChild(linha);
+});
 
-    findNewDevices(true);
-}
+findNewDevices(true);
 
 opcaoLocalVer.addEventListener("click", async () => {
     if(!opcaoLocalVer.classList.contains("selecionado")){
