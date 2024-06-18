@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../assets/css/default.css">
+    <link rel="stylesheet" href="./../assets/css/mensagemAlerta.css">
+    <link rel="stylesheet" href="./../assets/css/headerStyle.css">
+    <link rel="stylesheet" href="./../assets/css/usuariosStyle.css">
+    <link rel="stylesheet" href="./../assets/css/tableStyle.css">
+    <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon">
+    <title> Usuarios | Sphynx </title>
+</head>
+<body>
+    <header>
+        <img class="logo" alt="Sphynx Logo" src="./../assets/img/logo-branca.png">
+        <nav class="esconderMenu">
+            <ul>
+                <li> 
+                    <i class="fa-solid fa-house"></i> 
+                    <a class="botao-menu" href="./dashboard.html"> Início </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-user"></i> 
+                    <a class="botao-menu" href="./usuarios.html"> Usuários </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-location-dot"></i> 
+                    <a class="botao-menu" href="./locais.html"> Locais </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-right-from-bracket"></i> 
+                    <a class="botao-menu" href="./acessos.html"> Acessos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-users"></i> 
+                    <a class="botao-menu" href="./grupos.html"> Grupos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-gear"></i> 
+                    <a class="botao-menu" href="./configuracoes.html"> Configurações </a>
+                 </li>
+            </ul>
+        </nav>
+        <i id="menu-mobile-botao" class="menu-icone fa-solid fa-bars"></i>
+    </header>
+    <main>
+        <div id="usuarios-container" class="usuarios-container">
+            <div class="usuarios-menu">
+                <div id="usuarios-menu-ver" class="usuarios-menu-opcao selecionado">
+                    <p> Ver tudo </p>
+                </div>
+                <div id="usuarios-menu-grupo" class="usuarios-menu-opcao">
+                    <p> Ver por Grupo </p>
+                </div>
+            </div>
+            <div id="usuarios-ver" class="usuarios-ver">
+                <div class="ajustar-tabela">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Grupo</th>
+                                <th>RA</th>
+                                <th>TAG</th>
+                                <th>Acao</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="legenda-tabela">
+                    <div class="ajustar-botoes">
+                        <button id="botao-adicionar-novo" class="botao-adicionar-novo"> + Adicionar novo </button>
+                        <select class="input-grupo" id="input-grupo">
+                            <option value="aluno"> 1- Aluno </option>
+                            <option value="professor"> 2 - Professor </option>
+                        </select>
+                    </div>
+                    <p id="legenda-quantidade-usuarios"> Total: x usuarios</p>
+                </div>
+            </div>
+        </div>
+        <div id="usuarios-cadastrar" class="usuarios-cadastrar">
+            <form id="form">
+                <div class="ajustar-input">
+                    <label for="nome-input"> Nome </label>
+                    <input type="text" class="nome-input" id="nome-input" name="name" required>
+                </div>
+                
+                <div class="form-ajustar">
+                    <div class="ajustar-input">
+                        <label for="ra-input"> RA </label>
+                        <input type="number" class="ra-input" id="ra-input" name="ra" required>    
+                    </div>
+                    
+                    <div class="ajustar-input">
+                        <label for="grupo-input"> Grupo </label>
+                        <select class="input-grupo-cadastrar" id="input-grupo-cadastrar">
+                            
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="ajustar-input">
+                    <label for="tag-input"> Tag </label>
+                    <input type="text" class="tag-input" id="tag-input" name="tag" placeholder="Aguardando leitura da TAG..." readonly required>
+                </div>
+
+                <div class="ajustar-botoes-cadastrar">
+                    <button type="button" id="cancelar-cadastrar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button type="submit">  
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div id="mensagem" class="mensagem"></div>
+    </main>
+    <footer></footer>
+</body>
+<script src="./../assets/js/utils/animacaoMobileMenu.js" type="module"></script>
+<script src="./../assets/js/usuariosScript.js" type="module"></script>
+<script src="./../assets/js/finderFunctions/sphynxFinder.js" type="module"></script>
+<script src="./../assets/js/utils/changeFavicon.js" type="module"></script>
+</html>

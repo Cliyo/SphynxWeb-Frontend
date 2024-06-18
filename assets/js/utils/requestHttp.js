@@ -1,4 +1,5 @@
-async function request(api, entity, method, header, body, rawResponse = false) {
+import {mostrarMensagem} from "./messages.js";
+async function request(api, entity, method, header, body = null, rawResponse = false) {
     try {
         const response = await fetch(`http://${api}/${entity}`, {
             mode: "cors",
@@ -14,7 +15,7 @@ async function request(api, entity, method, header, body, rawResponse = false) {
         const data = await response.json();
         return data;
     } catch (err) {
-        console.log(err);
+        mostrarMensagem("Erro interno.");
     }
 }
 

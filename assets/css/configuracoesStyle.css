@@ -1,0 +1,154 @@
+main{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.configuracoes-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+.configuracoes-menu{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 15%;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.configuracoes-menu-opcao{
+    position: relative;
+    display: flex;
+    font-size: 0.6rem;
+    height: 100%;
+    border-radius: 15px 15px 0px 0px;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: .5s;
+    background-color: white;
+    cursor: pointer;
+}
+
+.configuracoes-menu-opcao:hover{
+    color: white;
+    background-color: var(--cor-clara);
+}
+
+.configuracoes-menu p{
+    font-size: 0.6rem;
+}
+
+.configuracoes-geral, .configuracoes-avancada{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 85%;
+    background-color: var(--cor-clara);
+    border-radius: 0px 0px 15px 15px;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+
+.configuracoes-geral::-webkit-scrollbar, .configuracoes-avancada::-webkit-scrollbar {
+    width: 12px;
+}
+  
+.configuracoes-geral::-webkit-scrollbar-track, .configuracoes-avancada::-webkit-scrollbar {
+    background: none;
+}
+  
+.configuracoes-geral::-webkit-scrollbar-thumb, .configuracoes-avancada::-webkit-scrollbar {
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+}
+
+.configuracoes-avancada{
+    display: none;
+}
+
+.configuracoes-geral-opcao, .configuracoes-avancada-opcao{
+    position: relative;
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.configuracoes-geral-opcao p, .configuracoes-avancada-opcao p{
+    font-size: 0.5rem;
+    color: white;
+}
+
+.configuracoes-geral-opcao select, .configuracoes-geral-opcao input, .configuracoes-avancada-opcao select, .configuracoes-avancada-opcao input{
+    min-width: 150px;
+    width: 40%;
+    max-width: 500px;
+    height: 50px;
+    border-radius: 15px;
+    border: 0;
+    padding: 10px 10px;
+    font-size: 0.3rem;
+}
+
+.botao-salvar-configuracao{
+    position: relative;
+    width: 30%;
+    min-width: 250px;
+    height: 50px;
+    min-height: 50px;
+    border-radius: 15px;
+    border: 0;
+    cursor: pointer;
+    font-size: 0.3rem;
+    margin-top: 10px;
+    transition: .5s;
+}
+
+.botao-salvar-configuracao:hover{
+    background-color: var(--cor-clara);
+    color: white;
+}
+
+.selecionado{
+    color: white;
+    background-color: var(--cor-clara);
+}
+
+@media (max-width: 582px){
+    .configuracoes-geral-opcao, .configuracoes-avancada-opcao{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .configuracoes-geral-opcao select, .configuracoes-geral-opcao input, .configuracoes-avancada-opcao select, .configuracoes-avancada-opcao input{
+        width: 100%;
+    }
+    
+    .configuracoes-menu p{
+        font-size: 0.4rem;
+    }
+
+    .configuracoes-geral-opcao p, .configuracoes-avancada-opcao p{
+        font-size: 0.3rem;
+    }
+}

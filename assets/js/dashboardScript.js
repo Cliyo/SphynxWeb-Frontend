@@ -1,83 +1,27 @@
-import { fetchEspData } from "./localFunctions/localMenus.js";
+import { headerAuth } from "./utils/headers.js";
+import { request } from "./utils/requestHttp.js";
+import { api } from "./utils/testeConexao.js";
 
-const api = `${window.location.hostname}:57128`;
-const apiUrls = ['sphynx-api.local:57128','localhost:57128', `${window.location.hostname}:57128`]
-// api = await testConnection(apiUrls)
+const graficoAcessos = document.getElementById("grafico-acessos");
+const quantidadeAcessos = document.querySelector("#quantidade-acessos");
 
-// MENU ANIMATION //
-$('.sub-btn').next('.sub-menu').slideToggle();
-$(document).ready(function() {
-    if (window.innerWidth <= 650) { 
-        $('.menu-button').next('.menu').slideToggle();
-        $('.menu-button').click(function() {
-            $('.menu').slideToggle();
-            $(this).find('.dropdown').toggleClass('rotate');
-        });
-    }
-    
-    $('.sub-btn').click(function() {
-        $('.sub-menu').not($(this).next('.sub-menu')).slideUp();
-        $('.dropdown').not($(this).find('.dropdown')).removeClass('rotate');
-        $(this).next('.sub-menu').slideToggle();
-        $(this).find('.dropdown').toggleClass('rotate');
-    });
-});
+const response = await request(api, `accessRegisters?date=${montarData()}`, "GET", headerAuth, null);
 
-// GET THE WEBSITE LANGUAGE //
-const urlParams = new URLSearchParams(window.location.search);
-const language = urlParams.get("language");
+quantidadeAcessos.innerHTML = `Acessos (Hoje): ${response.length}`;
+const porcentagemAprovados = pegarPorcentagemAprovados(response);
+const grauAprovados = (360 * porcentagemAprovados) / 100;
+graficoAcessos.style.background = `conic-gradient(#8DB255 0deg ${grauAprovados}deg, #A72127 ${grauAprovados}deg 360deg)`;
 
-// SWITCH THE WEBSITE FONT STYLE //
-const htmlDocument = document.querySelector("html");
+function montarData(){
+    let data = new Date();
 
-const switchButton = document.querySelector("#switch");
-switchButton.addEventListener("click", () => {
-    if(switchButton.checked == true){
-        htmlDocument.style.fontFamily = "Dyslexic";
-    } else{
-        htmlDocument.style.fontFamily = "Roboto";
-    }
-})
+    let dia = data.getDate() < 10 ? `0${data.getDate()}` : data.getDate();
+    let mes = (data.getMonth() + 1) < 10 ? `0${data.getMonth() + 1}` : data.getMonth() + 1;
 
-
-// DEFINE THE HTTP HEADER //
-const header = {
-    'Authorization': `Bearer ${localStorage.getItem("token")}`,
-    'Access-Control-Allow-Origin': `http://${api}`,
-    'Access-Control-Allow-Credentials': 'true',
-    'Content-Type': 'application/json',
-    'language': language
+    return data.getFullYear() + "-" + mes + "-" + dia;
 }
 
-// VERIFY THE USER LOGIN //
-if(localStorage.getItem("token")){
-    fetch(`http://${api}/login/verify`,{
-        mode: 'cors',
-        method: "POST",
-        headers: {
-            'Access-Control-Allow-Origin': `http://${api}`,
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "token": localStorage.getItem("token")
-        })
-    })
-
-    .then(response => response.json())
-    .then(data => {
-        if(data["result"] == false){
-            window.location = "/";
-        }
-    })
-    .catch(err => {
-        window.location = "/";
-        console.log(err);
-    })
-} else{
-    window.location = "/";
+function pegarPorcentagemAprovados(response){
+    let aprovados = response.filter(acesso => acesso.status === true);
+    return (aprovados.length / response.length) * 100;
 }
-
-fetchEspData(true);
-
-export {header, language, api};

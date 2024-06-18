@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../assets/css/default.css">
+    <link rel="stylesheet" href="./../assets/css/mensagemAlerta.css">
+    <link rel="stylesheet" href="./../assets/css/headerStyle.css">
+    <link rel="stylesheet" href="./../assets/css/configuracoesStyle.css">
+    <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon">
+    <title> Configurações | Sphynx </title>
+</head>
+<body>
+    <header>
+        <img class="logo" alt="Sphynx Logo" src="./../assets/img/logo-branca.png">
+        <nav class="esconderMenu">
+            <ul>
+                <li> 
+                    <i class="fa-solid fa-house"></i> 
+                    <a class="botao-menu" href="./dashboard.html"> Início </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-user"></i> 
+                    <a class="botao-menu" href="./usuarios.html"> Usuários </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-location-dot"></i> 
+                    <a class="botao-menu" href="./locais.html"> Locais </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-right-from-bracket"></i> 
+                    <a class="botao-menu" href="./acessos.html"> Acessos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-users"></i> 
+                    <a class="botao-menu" href="./grupos.html"> Grupos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-gear"></i> 
+                    <a class="botao-menu" href="./configuracoes.html"> Configurações </a>
+                 </li>
+            </ul>
+        </nav>
+        <i id="menu-mobile-botao" class="menu-icone fa-solid fa-bars"></i>
+    </header>
+    <main>
+        <div class="configuracoes-container">
+            <div class="configuracoes-menu">
+                <div id="configuracoes-menu-geral" class="configuracoes-menu-opcao selecionado">
+                    <p> Gerais </p>
+                </div>
+                <div id="configuracoes-menu-avancado" class="configuracoes-menu-opcao">
+                    <p> Avançadas </p>
+                </div>
+            </div>
+            <div id="configuracoes-geral" class="configuracoes-geral">
+                <div class="configuracoes-geral-opcao">
+                    <p> Idioma do site </p>
+                    <select>
+                        <option value="PT-BR"> PT-BR </option>
+                        <option value="EN-US"> EN-US </option>
+                    </select>
+                </div>
+                <div class="configuracoes-geral-opcao">
+                    <p> Tema </p>
+                    <select>
+                        <option value="claro"> Claro </option>
+                        <option value="escuro"> Escuro </option>
+                    </select>
+                </div>
+                <div class="configuracoes-geral-opcao">
+                    <p> Usuário </p>
+                    <input class="email-input" id="email-input" type="email" name="email" placeholder="E-mail"> 
+                </div>
+                <div class="configuracoes-geral-opcao">
+                    <p> Senha atual </p>
+                    <input class="senha-input" id="senha-input" type="password" name="senha" placeholder="Senha antiga"> 
+                </div>
+                <div class="configuracoes-geral-opcao">
+                    <p> Nova senha </p>
+                    <input class="nova-senha-input" id="nova-senha-input" type="password" name="nova-senha" placeholder="Nova senha"> 
+                </div>
+                <button class="botao-salvar-configuracao" id="botao-salvar-configuracao"> Salvar </button>
+            </div>
+            <div id="configuracoes-avancada" class="configuracoes-avancada">
+                <div class="configuracoes-avancada-opcao">
+                    <p> URL do Banco de Dados </p>
+                    <input class="banco-input" id="banco-input" type="text" name="banco" placeholder="URL"> 
+                </div>
+                <div class="configuracoes-avancada-opcao">
+                    <p> Banco de Dados </p>
+                    <select>
+                        <option value="mariadb"> Maria DB </option>
+                        <option value="mysql"> MySQL </option>
+                    </select>
+                </div>
+                <button class="botao-salvar-configuracao" id="botao-salvar-configuracao"> Salvar </button>
+            </div>
+        </div>
+        <div id="mensagem" class="mensagem"></div>
+    </main>
+    <footer></footer>
+</body>
+<script src="./../assets/js/utils/animacaoMobileMenu.js" type="module"></script>
+<script src="./../assets/js/configuracoesScript.js" type="module"></script>
+<script src="./../assets/js/finderFunctions/sphynxFinder.js" type="module"></script>
+<script src="./../assets/js/utils/changeFavicon.js" type="module"></script>
+</html>

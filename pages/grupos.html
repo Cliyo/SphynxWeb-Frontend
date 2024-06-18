@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../assets/css/default.css">
+    <link rel="stylesheet" href="./../assets/css/botaoSwitchStyle.css">
+    <link rel="stylesheet" href="./../assets/css/mensagemAlerta.css">
+    <link rel="stylesheet" href="./../assets/css/headerStyle.css">
+    <link rel="stylesheet" href="./../assets/css/gruposStyle.css">
+    <link rel="stylesheet" href="./../assets/css/tableStyle.css">
+    <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon">
+    <title> Grupos | Sphynx </title>
+</head>
+<body>
+    <header>
+        <img class="logo" alt="Sphynx Logo" src="./../assets/img/logo-branca.png">
+        <nav class="esconderMenu">
+            <ul>
+                <li> 
+                    <i class="fa-solid fa-house"></i> 
+                    <a class="botao-menu" href="./dashboard.html"> Início </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-user"></i> 
+                    <a class="botao-menu" href="./usuarios.html"> Usuários </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-location-dot"></i> 
+                    <a class="botao-menu" href="./locais.html"> Locais </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-right-from-bracket"></i> 
+                    <a class="botao-menu" href="./acessos.html"> Acessos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-users"></i> 
+                    <a class="botao-menu" href="./grupos.html"> Grupos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-gear"></i> 
+                    <a class="botao-menu" href="./configuracoes.html"> Configurações </a>
+                 </li>
+            </ul>
+        </nav>
+        <i id="menu-mobile-botao" class="menu-icone fa-solid fa-bars"></i>
+    </header>
+    <main>
+        <div id="grupos-container" class="grupos-container">
+            <div id="grupos-ver" class="grupos-ver">
+                <div class="ajustar-tabela">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Nivel</th>
+                                <th>Acao</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="legenda-tabela">
+                    <button id="botao-adicionar-novo" class="botao-adicionar-novo"> + Adicionar novo </button>
+                    <p id="legenda-quantidade-grupos"> Total: x grupos</p>
+                </div>
+            </div>
+        </div>
+        <div id="grupos-cadastrar" class="grupos-cadastrar">
+            <form id="form">
+                <div class="ajustar-input">
+                    <label for="nome-input"> Nome </label>
+                    <input type="text" class="nome-input" id="nome-input" name="name" required>
+                </div>
+                
+                <div class="ajustar-input">
+                    <label for="nome-input"> Nivel </label>
+                    <input type="number" class="nivel-input" id="nivel-input" name="level" required>
+                </div>
+
+                <div class="ajustar-botoes-cadastrar">
+                    <button type="button" id="cancelar-cadastrar">
+                        Cancelar
+                    </button>
+                    <button type="submit">  
+                        Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div id="mensagem" class="mensagem"></div>
+    </main>
+    <footer></footer>
+</body>
+<script src="./../assets/js/utils/animacaoMobileMenu.js" type="module"></script>
+<script src="./../assets/js/gruposScript.js" type="module"></script>
+<script src="./../assets/js/finderFunctions/sphynxFinder.js" type="module"></script>
+<script src="./../assets/js/utils/changeFavicon.js" type="module"></script>
+</html>

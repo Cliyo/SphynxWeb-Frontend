@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../assets/css/default.css">
+    <link rel="stylesheet" href="./../assets/css/mensagemAlerta.css">
+    <link rel="stylesheet" href="./../assets/css/headerStyle.css">
+    <link rel="stylesheet" href="./../assets/css/locaisStyle.css">
+    <link rel="stylesheet" href="./../assets/css/tableStyle.css">
+    <script src="https://kit.fontawesome.com/2e476e3619.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon">
+    <title> Locais | Sphynx </title>
+</head>
+<body>
+    <header>
+        <img class="logo" alt="Sphynx Logo" src="./../assets/img/logo-branca.png">
+        <nav class="esconderMenu">
+            <ul>
+                <li> 
+                    <i class="fa-solid fa-house"></i> 
+                    <a class="botao-menu" href="./dashboard.html"> Início </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-user"></i> 
+                    <a class="botao-menu" href="./usuarios.html"> Usuários </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-location-dot"></i> 
+                    <a class="botao-menu" href="./locais.html"> Locais </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-right-from-bracket"></i> 
+                    <a class="botao-menu" href="./acessos.html"> Acessos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-users"></i> 
+                    <a class="botao-menu" href="./grupos.html"> Grupos </a> 
+                </li>
+                <li> 
+                    <i class="fa-solid fa-gear"></i> 
+                    <a class="botao-menu" href="./configuracoes.html"> Configurações </a>
+                 </li>
+            </ul>
+        </nav>
+        <i id="menu-mobile-botao" class="menu-icone fa-solid fa-bars"></i>
+    </header>
+    <main>
+        <div id="locais-container" class="locais-container">
+            <div class="locais-menu">
+                <div id="locais-menu-ver" class="locais-menu-opcao selecionado">
+                    <p> Ver tudo </p>
+                </div>
+                <div id="locais-menu-cadastrar" class="locais-menu-opcao">
+                    <p> Cadastrar </p>
+                </div>
+            </div>
+            <div id="locais-ver" class="locais-ver">
+                <div class="ajustar-tabela">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Permissão</th>
+                                <th>MAC</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="mensagem" class="mensagem"></div>
+    </main>
+    <footer></footer>
+</body>
+<script src="./../assets/js/utils/animacaoMobileMenu.js" type="module"></script>
+<script src="./../assets/js/locaisScript.js" type="module"></script>
+<script src="./../assets/js/finderFunctions/sphynxFinder.js" type="module"></script>
+<script src="./../assets/js/utils/changeFavicon.js" type="module"></script>
+</html>

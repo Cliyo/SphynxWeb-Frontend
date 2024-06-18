@@ -1,6 +1,7 @@
-import { api } from "../dashboardScript.js";
+import { api} from "../utils/testeConexao.js";
 import {request, testConnection} from "../utils/requestHttp.js";
-import {header, language} from "../dashboardScript.js"
+import {header, headerAuth} from "../utils/headers.js"
+import { mostrarMensagem } from "../utils/messages.js";
 
 var finderAPI = `${window.location.hostname}:57127`;
 const apiUrls = ['sphynx-finder.local:57127','localhost:57127', `${window.location.hostname}:57127`]
@@ -26,7 +27,7 @@ async function finderScan(){
     return response;
 }
 
-async function finder(type){
+async function findAllDevices(type){
     var response = null;
     if (type == "scan"){
         response = await finderScan();
@@ -34,10 +35,14 @@ async function finder(type){
         response = await finderServices();
     }
 
-    if (!response.ok) {
-        console.error("Não foi possível pegar os dispositivos")
+    try {
+        if (!response.ok) {
+            console.error("Não foi possível pegar os dispositivos")
+        }
+    } catch (error) {
+        return [];
     }
-
+    
     return response.json()
 }
 
@@ -46,7 +51,7 @@ async function inDatabase(){
     const sphynxs = [];
 
     // GET ALL THE MAC IN DATABASE //
-    const reqData = await request(api, `locals`, "GET", header, null);
+    const reqData = await request(api, `locals`, "GET", headerAuth, null);
 
     let array = Object.keys(reqData);
     
@@ -89,4 +94,48 @@ async function turnsEspInWebsocket(data) {
     return arrayEsp;
 }
 
-export {finder, inDatabase, turnsEspInWebsocket};
+async function findNewDevices(timeout){
+    const macsInDatabase = await inDatabase();
+
+    const newDevices = []
+
+    const types = ["services", "scan"];
+
+    for (let i = 0; i < types.length; i++) {
+        const found = await findAllDevices(types[i]);
+
+        found.forEach(device => {
+            let json = localStorage.getItem("Sphynxs");
+            let alreadyFound = json ? JSON.parse(json) : [];
+
+            if (alreadyFound.some(sphynx => sphynx.mac === device.mac)) {
+                return;
+            }
+
+            else if (macsInDatabase.length > 0) {
+                if (macsInDatabase.some(mac => mac === device.mac)) {
+                    return;
+                }
+            }
+            else{
+                mostrarMensagem("Novo dispositivo encontrado");
+                newDevices.push(device);
+            }
+            
+        });
+    }
+
+    if (newDevices.length > 0) {
+        let json = localStorage.getItem("Sphynxs");
+        let alreadyFound = json ? JSON.parse(json) : [];
+        alreadyFound.push(...newDevices);
+        localStorage.setItem("Sphynxs", JSON.stringify(alreadyFound));
+    }
+
+    if (timeout){
+        setTimeout(findNewDevices, 60000);
+    }
+
+}
+
+export {findAllDevices, findNewDevices, turnsEspInWebsocket};
