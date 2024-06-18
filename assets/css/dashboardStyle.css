@@ -18,6 +18,21 @@ main{
     padding: 15px;
     border-radius: 15px;
     background-color: var(--cor-fundo-escura);
+    overflow-x: scroll;
+}
+
+.dashboard-container::-webkit-scrollbar {
+    width: 12px;
+}
+  
+.dashboard-container::-webkit-scrollbar-track {
+    background: none;
+}
+  
+.dashboard-container::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 20px;
+    border: none;
 }
 
 .dashboard-relatorio-container{
@@ -25,12 +40,14 @@ main{
     display: flex;
     flex-direction: column;
     width: 32%;
+    min-width: 370px;
     height: 95%;
     background-color: var(--cor-clara);
     border-radius: 15px;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
+    margin: 0 10px;
 }
 
 /* ACESSOS */
