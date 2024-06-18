@@ -1,45 +1,15 @@
-/*import { fetchEspData } from "./localFunctions/localMenus.js";
+import { headerAuth } from "./utils/headers.js";
+import { request } from "./utils/requestHttp.js";
+import { api } from "./utils/testeConexao.js";
 
-const api = `${window.location.hostname}:57128`;
-const apiUrls = ['sphynx-api.local:57128','localhost:57128', `${window.location.hostname}:57128`]
+const quantidadeAcessos = document.querySelector("#quantidade-acessos");
 
-const urlParams = new URLSearchParams(window.location.search);
-const language = urlParams.get("language");
+const response = await request(api, `accessRegister?date=${montarData()}`, "GET", headerAuth, null);
 
-// api = await testConnection(apiUrls)
+quantidadeAcessos.innerHTML = `Acessos (Hoje): ${response.length}`;
 
+function montarData(){
+    let data = new Date();
 
-// VERIFY THE USER LOGIN //
-if(localStorage.getItem("token")){
-    fetch(`http://${api}/login/verify`,{
-        mode: 'cors',
-        method: "POST",
-        headers: {
-            'Access-Control-Allow-Origin': `http://${api}`,
-            'Access-Control-Allow-Credentials': 'true',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "token": localStorage.getItem("token")
-        })
-    })
-
-    .then(response => response.json())
-    .then(data => {
-        if(data["result"] == false){
-            window.location = "/";
-        }
-    })
-    .catch(err => {
-        window.location = "/";
-        console.log(err);
-    })
-} else{
-    window.location = "/";
+    return data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + (data.getDate());
 }
-*/
-
-
-//fetchEspData(true);
-
-//export {language, api};

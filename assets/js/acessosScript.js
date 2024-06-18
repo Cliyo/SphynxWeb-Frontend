@@ -94,7 +94,7 @@ function criarLinhaTabela(acesso){
 function gerarData(input){
     let data = new Date(input);
 
-    let dia = data.getDate() + 1;
+    let dia = data.getDate();
     let mes = data.getMonth() + 1;
     let ano = data.getFullYear();
     let dataCompleta = ano + "-" + mes + "-" + dia;
