@@ -117,10 +117,9 @@ async function findNewDevices(timeout){
                     return;
                 }
             }
-            else{
-                mostrarMensagem("Novo dispositivo encontrado");
-                newDevices.push(device);
-            }
+            
+            mostrarMensagem("Novo dispositivo encontrado");
+            newDevices.push(device);
             
         });
     }
