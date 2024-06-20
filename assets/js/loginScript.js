@@ -5,15 +5,15 @@ import { api } from "./utils/testeConexao.js";
 
 var form = document.querySelector("#form")
 
-request(api,`login/verify`,"POST",header,JSON.stringify({"token": localStorage.getItem("token")}))
-    .then(response =>{
-        if (response["result"]){
-            window.location = "pages/dashboard.html"
-        }
-    })
-    .catch(err =>{
-        console.log(err);
-    })
+// request(api,`login/verify`,"POST",header,JSON.stringify({"token": localStorage.getItem("token")}))
+//     .then(response =>{
+//         if (response["result"]){
+//             window.location = "pages/dashboard.html"
+//         }
+//     })
+//     .catch(err =>{
+//         console.log(err);
+//     })
 
 
 form.addEventListener("submit", async (event) => {
@@ -23,22 +23,24 @@ form.addEventListener("submit", async (event) => {
     var data = Object.fromEntries(formData);
     var jsonData = JSON.stringify(data);
 
-    request (api, `login`, "POST", header, jsonData, true)
-        .then(response => {
-            if(!response.ok){
-                mostrarMensagem("Usuario ou senha incorretos.");
+    // request (api, `login`, "POST", header, jsonData, true)
+    //     .then(response => {
+    //         if(!response.ok){
+    //             mostrarMensagem("Usuario ou senha incorretos.");
 
-                throw new Error("HTTP Status " + response.status);
-            }
+    //             throw new Error("HTTP Status " + response.status);
+    //         }
             
-            return response.json()
-        })
-        .then(data => {
-            mostrarMensagem("Entrando...");
-            localStorage.setItem("token", data["token"]);
-            window.location = "pages/dashboard.html";
-        })
-        .catch(err => {
-            mostrarMensagem("Erro interno.");
-        })
+    //         return response.json()
+    //     })
+    //     .then(data => {
+    //         mostrarMensagem("Entrando...");
+    //         localStorage.setItem("token", data["token"]);
+    //         window.location = "pages/dashboard.html";
+    //     })
+    //     .catch(err => {
+    //         mostrarMensagem("Erro interno.");
+    //     })
+        mostrarMensagem("Entrando...");
+        window.location = "pages/dashboard.html";
 })

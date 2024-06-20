@@ -13,15 +13,15 @@ const menuGeral = document.querySelector("#locais-ver");
 const tabela = document.querySelector("tbody");
 
 tabela.innerHTML = "";
-const response = await request(api, "locals", "GET", headerAuth, null);
+// const response = await request(api, "locals", "GET", headerAuth, null);
 
-response.forEach(local => {
-    let linha = criarLinhaTabelaMostrar(local);
+// response.forEach(local => {
+//     let linha = criarLinhaTabelaMostrar(local);
 
-    tabela.appendChild(linha);
-});
+//     tabela.appendChild(linha);
+// });
 
-findNewDevices(true);
+// findNewDevices(true);
 
 opcaoLocalVer.addEventListener("click", async () => {
     if(!opcaoLocalVer.classList.contains("selecionado")){
@@ -30,13 +30,13 @@ opcaoLocalVer.addEventListener("click", async () => {
 
         tabela.innerHTML = "";
 
-        const response = await request(api, "locals", "GET", headerAuth, null);
+        // const response = await request(api, "locals", "GET", headerAuth, null);
 
-        response.forEach(local => {
-            let linha = criarLinhaTabelaMostrar(local);
+        // response.forEach(local => {
+        //     let linha = criarLinhaTabelaMostrar(local);
 
-            tabela.appendChild(linha);
-        });
+        //     tabela.appendChild(linha);
+        // });
     }
     
 })
@@ -48,17 +48,17 @@ opcaoLocalCadastrar.addEventListener("click", () => {
 
         tabela.innerHTML = "";
         
-        let json = localStorage.getItem("Sphynxs");
-        let sphynxs = json ? JSON.parse(json) : [];
-        let index = 0;
+        // let json = localStorage.getItem("Sphynxs");
+        // let sphynxs = json ? JSON.parse(json) : [];
+        // let index = 0;
 
-        sphynxs.forEach(async sphynx => {
-            let linha = await criarLinhaTabelaCadastrar(sphynx, sphynxs, index);
+        // sphynxs.forEach(async sphynx => {
+        //     let linha = await criarLinhaTabelaCadastrar(sphynx, sphynxs, index);
 
-            tabela.appendChild(linha);
+        //     tabela.appendChild(linha);
 
-            index++;
-        })
+        //     index++;
+        // })
     }
 })
 
@@ -126,16 +126,11 @@ function criarLinhaTabelaMostrar(local){
     let botaoExcluir = document.createElement("button");
     botaoExcluir.innerHTML = "Excluir";
     botaoExcluir.addEventListener("click", async () => {
-        const response = await request(api, `locals/${local.name}`, "DELETE", headerAuth, null);
+        // const response = await request(api, `locals/${local.name}`, "DELETE", headerAuth, null);
 
-        try{
-            mostrarMensagem(response.message);
-        }
-        catch(erro){
-            mostrarMensagem("Local deletado com sucesso.");
+        mostrarMensagem("Local deletado com sucesso.");
 
-            tr.remove();
-        } 
+        tr.remove();
     })
 
     tdAcao.appendChild(botaoEditar);
@@ -166,8 +161,8 @@ async function criarLinhaTabelaCadastrar(local, listaJson, index){
 
     let selectPermissao = document.createElement("select");
 
-    const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
-    preencherSelectGrupo(selectPermissao, responseGrupo);
+    // const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
+    preencherSelectGrupo(selectPermissao, [{"level":0,"name":"ADM"},{"level":1,"name":"grupo1"},{"level":2,"name":"grupo2"}]);
 
     tdPermissao.appendChild(selectPermissao);
 
@@ -186,16 +181,14 @@ async function criarLinhaTabelaCadastrar(local, listaJson, index){
         }
         var jsonData = JSON.stringify(dados);
         
-        const response = await request(api, "locals", "POST", headerAuth, jsonData);
+        // const response = await request(api, "locals", "POST", headerAuth, jsonData);
 
-        mostrarMensagem(response.message);
-        if(response.status == 201){
-            tr.remove();
+        mostrarMensagem("Salvo com sucesso");
+        tr.remove();
 
-            listaJson.splice(index, 1);
+        listaJson.splice(index, 1);
 
-            localStorage.setItem("Sphynxs", JSON.stringify(listaJson));
-        }
+        localStorage.setItem("Sphynxs", JSON.stringify(listaJson));
     })
 
     tdAcao.appendChild(botaoSalvar);

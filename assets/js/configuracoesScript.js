@@ -27,4 +27,4 @@ opcaoAvancado.addEventListener("click", () => {
     }
 })
 
-findNewDevices(true);
+// findNewDevices(true);

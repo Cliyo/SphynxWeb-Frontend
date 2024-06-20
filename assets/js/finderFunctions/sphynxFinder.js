@@ -6,7 +6,7 @@ import { mostrarMensagem } from "../utils/messages.js";
 var finderAPI = `${window.location.hostname}:57127`;
 const apiUrls = ['sphynx-finder.local:57127','localhost:57127', `${window.location.hostname}:57127`]
 
-finderAPI = await testConnection(apiUrls)
+// finderAPI = await testConnection(apiUrls)
 
 
 const finderHeader = {

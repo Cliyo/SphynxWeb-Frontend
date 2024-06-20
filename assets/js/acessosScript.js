@@ -10,17 +10,17 @@ const filtros = document.querySelector(".ajustar-inputs").querySelectorAll("inpu
 const legendaQntAcessos = document.querySelector("#legenda-quantidade-acessos");
 let qntAcessos = 0;
 
-const response = await request(api, "accessRegisters", "GET", headerAuth, null);
+// const response = await request(api, "accessRegisters", "GET", headerAuth, null);
 
 tabela.innerHTML = "";
-response.forEach(acesso => {
-    tabela.appendChild(criarLinhaTabela(acesso))
-});
+// response.forEach(acesso => {
+//     tabela.appendChild(criarLinhaTabela(acesso))
+// });
 
-qntAcessos = response.length;
-legendaQntAcessos.innerHTML = `Total: ${qntAcessos} acesso(s)`;
+// qntAcessos = response.length;
+// legendaQntAcessos.innerHTML = `Total: ${qntAcessos} acesso(s)`;
 
-findNewDevices(true)
+// findNewDevices(true)
 
 filtros.forEach(filtro => {
     filtro.addEventListener("change", async () => {
@@ -28,34 +28,34 @@ filtros.forEach(filtro => {
         let data = document.querySelector("#data-input").value || null;
         let local = document.querySelector("#local-input").value || null;
 
-        let response;
+        let response = [];
 
-        if(ra != null && local == null && data == null){
-            response = await request(api, `accessRegisters?ra=${ra}`, "GET", headerAuth, null);
-        }
+        // if(ra != null && local == null && data == null){
+        //     response = await request(api, `accessRegisters?ra=${ra}`, "GET", headerAuth, null);
+        // }
 
-        else if(ra == null && local != null && data == null){
-            response = await request(api, `accessRegisters?local=${local}`, "GET", headerAuth, null);
-        }
+        // else if(ra == null && local != null && data == null){
+        //     response = await request(api, `accessRegisters?local=${local}`, "GET", headerAuth, null);
+        // }
 
-        else if(ra == null && local == null && data != null){
-            let dataCompleta = gerarData(data);
-            response = await request(api, `accessRegisters?date=${data}`, "GET", headerAuth, null);
-        }
+        // else if(ra == null && local == null && data != null){
+        //     let dataCompleta = gerarData(data);
+        //     response = await request(api, `accessRegisters?date=${data}`, "GET", headerAuth, null);
+        // }
 
-        else if(ra != null && local != null && data != null){
-            let dataCompleta = gerarData(data);
-            response = await request(api, `accessRegisters?ra=${ra}&date=${dataCompleta}&local=${local}`, "GET", headerAuth, null);
-        }
+        // else if(ra != null && local != null && data != null){
+        //     let dataCompleta = gerarData(data);
+        //     response = await request(api, `accessRegisters?ra=${ra}&date=${dataCompleta}&local=${local}`, "GET", headerAuth, null);
+        // }
 
-        else{
-            response = await request(api, `accessRegisters`, "GET", headerAuth, null);
-        }
+        // else{
+        //     response = await request(api, `accessRegisters`, "GET", headerAuth, null);
+        // }
 
         tabela.innerHTML = "";
-        response.forEach(acesso => {
-            tabela.appendChild(criarLinhaTabela(acesso))
-        });
+        // response.forEach(acesso => {
+        //     tabela.appendChild(criarLinhaTabela(acesso))
+        // });
 
         qntAcessos = response.length;
         legendaQntAcessos.innerHTML = `Total: ${qntAcessos} acesso(s)`;
