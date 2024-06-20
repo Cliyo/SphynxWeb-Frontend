@@ -4,7 +4,7 @@ import { api } from "./utils/testeConexao.js";
 
 // const response = await request(api, `accessRegisters?date=${montarData()}`, "GET", headerAuth, null);
 
-response = [{"local":"sala1"},{"local":"sala2"},{"local":"sala3"},{"local":"sala4"}]
+const response = [{"local":"sala1"},{"local":"sala2"},{"local":"sala3"},{"local":"sala4"}]
 
 const coresLocais = ["#558BB2", "#214FA7", "#56ADA3", "#46C3D3", "#5a99a1", "#464646"];
 
