@@ -3,8 +3,10 @@ import { request } from "./utils/requestHttp.js";
 import { api } from "./utils/testeConexao.js";
 
 const response = await request(api, `accessRegisters?date=${montarData()}`, "GET", headerAuth, null);
+console.log(response)
 
 const coresLocais = ["#558BB2", "#214FA7", "#56ADA3", "#46C3D3", "#5a99a1", "#464646"];
+const coresGrupos = ["#7421A7", "#A72151", "#A721A2", "#D3439A", "#5a99a1", "#464646"];
 
 const graficoAcessos = document.getElementById("grafico-acessos");
 const quantidadeAcessos = document.querySelector("#quantidade-acessos");
@@ -14,10 +16,14 @@ const grauAprovados = transformarPorcentagemEmRad(porcentagemAprovados);
 graficoAcessos.style.background = `conic-gradient(#8DB255 0deg ${grauAprovados}deg, #A72127 ${grauAprovados}deg 360deg)`;
 
 const graficoLocais = document.getElementById("grafico-locais");
-const melhoresLocais = pegarOsMelhoresCincoLocais(response);
-console.log(melhoresLocais)
+const melhoresLocais = pegarOsMelhoresLocais(response);
 const melhoresLocaisRadianos = melhoresLocais.map(([nome, contagem, porcentagem]) => [nome, contagem, porcentagem, transformarPorcentagemEmRad(porcentagem)])
 criarLegendaRelatorioLocais(melhoresLocaisRadianos);
+
+const graficoGrupos = document.getElementById("grafico-usuarios");
+const melhoresGrupos = pegarOsMelhoresGrupos(response);
+const melhoresGruposRadianos = melhoresGrupos.map(([nome, contagem, porcentagem]) => [nome, contagem, porcentagem, transformarPorcentagemEmRad(porcentagem)])
+criarLegendaRelatorioGrupos(melhoresGruposRadianos);
 
 function montarData(){
     let data = new Date();
@@ -28,6 +34,10 @@ function montarData(){
     return data.getFullYear() + "-" + mes + "-" + dia;
 }
 
+function transformarPorcentagemEmRad(porcentagem){
+    return (360 * porcentagem) / 100;
+}
+
 // FUNCOES ACESSOS //
 function pegarPorcentagemAprovados(response){
     let aprovados = response.filter(acesso => acesso.status === true);
@@ -35,11 +45,7 @@ function pegarPorcentagemAprovados(response){
 }
 
 // FUNCOES DE LOCAIS //
-function transformarPorcentagemEmRad(porcentagem){
-    return (360 * porcentagem) / 100;
-}
-
-function pegarOsMelhoresCincoLocais(response){
+function pegarOsMelhoresLocais(response){
     const contagem = {};
 
     response.forEach(objeto => {
@@ -84,4 +90,51 @@ function criarLegendaRelatorioLocais(lugares){
         return `${coresLocais[index]} ${inicio}deg ${acumulado}deg`;
     }).join(', ');
     graficoLocais.style.background = `conic-gradient(${gradientes})`;
+}
+
+// FUNCOES DE GRUPOS //
+function pegarOsMelhoresGrupos(response){
+    const contagem = {};
+
+    response.forEach(objeto => {
+        const nome = objeto.consumer.permission.name;
+        if (!contagem[nome]) {
+            contagem[nome] = 0;
+        }
+        contagem[nome]++;
+    });
+    
+    const listaDeContagem = Object.keys(contagem).map(nome => [nome, contagem[nome], (contagem[nome] / response.length) * 100]);
+    const listaDeContagemOrdenada = listaDeContagem.sort((a, b) => b[1] - a[1]).slice(0, 3);
+
+    let sobraPorcentagem = 100 - listaDeContagemOrdenada.reduce((acc, obj) => acc + obj[2], 0);
+    let sobraQuantidadeDeAcessos = (listaDeContagemOrdenada[0][1] * sobraPorcentagem) / listaDeContagemOrdenada[0][2];
+
+    listaDeContagemOrdenada.push(["Outros", sobraQuantidadeDeAcessos.toFixed(0), sobraPorcentagem, transformarPorcentagemEmRad(sobraPorcentagem)]);
+
+    return listaDeContagemOrdenada;
+}
+
+function criarLegendaRelatorioGrupos(usuarios){
+    let legendaContainer = document.querySelector("#legenda-grafico-usuarios");
+    usuarios.forEach((usuario, index) => {
+        legendaContainer.innerHTML += `
+            <div class="legenda-elemento-usuarios">
+                <i class="fa-solid fa-square" style="color: ${coresGrupos[index]};"></i>
+                <p> ${usuario[0]} - ${usuario[1]} </p>
+            </div>
+        `
+    });
+
+    let angulos = usuarios.map(usuario => usuario[3]);
+    let total = angulos.reduce((acc, angulo) => acc + angulo, 0);
+    angulos = angulos.map(angulo => (angulo / total) * 360);
+
+    let acumulado = 0;
+    const gradientes = angulos.map((angulo, index) => {
+        const inicio = acumulado;
+        acumulado += angulo;
+        return `${coresGrupos[index]} ${inicio}deg ${acumulado}deg`;
+    }).join(', ');
+    graficoGrupos.style.background = `conic-gradient(${gradientes})`;
 }
