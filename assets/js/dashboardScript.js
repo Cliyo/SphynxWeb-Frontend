@@ -20,7 +20,7 @@ const melhoresLocais = pegarOsMelhoresLocais(response);
 const melhoresLocaisRadianos = melhoresLocais.map(([nome, contagem, porcentagem]) => [nome, contagem, porcentagem, transformarPorcentagemEmRad(porcentagem)])
 criarLegendaRelatorioLocais(melhoresLocaisRadianos);
 
-const graficoGrupos = document.getElementById("grafico-usuarios");
+const graficoGrupos = document.getElementById("grafico-grupos");
 const melhoresGrupos = pegarOsMelhoresGrupos(response);
 const melhoresGruposRadianos = melhoresGrupos.map(([nome, contagem, porcentagem]) => [nome, contagem, porcentagem, transformarPorcentagemEmRad(porcentagem)])
 criarLegendaRelatorioGrupos(melhoresGruposRadianos);
@@ -115,18 +115,18 @@ function pegarOsMelhoresGrupos(response){
     return listaDeContagemOrdenada;
 }
 
-function criarLegendaRelatorioGrupos(usuarios){
-    let legendaContainer = document.querySelector("#legenda-grafico-usuarios");
-    usuarios.forEach((usuario, index) => {
+function criarLegendaRelatorioGrupos(grupos){
+    let legendaContainer = document.querySelector("#legenda-grafico-grupos");
+    grupos.forEach((grupo, index) => {
         legendaContainer.innerHTML += `
-            <div class="legenda-elemento-usuarios">
+            <div class="legenda-elemento-grupos">
                 <i class="fa-solid fa-square" style="color: ${coresGrupos[index]};"></i>
-                <p> ${usuario[0]} - ${usuario[1]} </p>
+                <p> ${grupo[0]} - ${grupo[1]} </p>
             </div>
         `
     });
 
-    let angulos = usuarios.map(usuario => usuario[3]);
+    let angulos = grupos.map(grupo => grupo[3]);
     let total = angulos.reduce((acc, angulo) => acc + angulo, 0);
     angulos = angulos.map(angulo => (angulo / total) * 360);
 

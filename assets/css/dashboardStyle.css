@@ -144,8 +144,8 @@ main{
     margin-left: 10px;
 }
 
-/* USUARIOS */
-.grafico-usuarios{
+/* GRUPOS */
+.grafico-grupos{
     position: relative;
     display: flex;
     align-items: center;
@@ -161,25 +161,25 @@ main{
     );
 }
 
-.legenda-grafico-usuarios{
+.legenda-grafico-grupos{
     position: relative;
     display: grid;
     gap: 5px 40px;
     grid-template-columns: 1fr 1fr;
 }
 
-.legenda-elemento-usuarios{
+.legenda-elemento-grupos{
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.legenda-elemento-usuarios i{
+.legenda-elemento-grupos i{
     font-size: 0.25rem;
 }
 
-.legenda-elemento-usuarios p{
+.legenda-elemento-grupos p{
     color: white;
     font-size: 0.25rem;
     margin-left: 10px;
