@@ -15,6 +15,7 @@ graficoAcessos.style.background = `conic-gradient(#8DB255 0deg ${grauAprovados}d
 
 const graficoLocais = document.getElementById("grafico-locais");
 const melhoresLocais = pegarOsMelhoresCincoLocais(response);
+console.log(melhoresLocais)
 const melhoresLocaisRadianos = melhoresLocais.map(([nome, contagem, porcentagem]) => [nome, contagem, porcentagem, transformarPorcentagemEmRad(porcentagem)])
 criarLegendaRelatorioLocais(melhoresLocaisRadianos);
 
@@ -50,9 +51,14 @@ function pegarOsMelhoresCincoLocais(response){
     });
     
     const listaDeContagem = Object.keys(contagem).map(nome => [nome, contagem[nome], (contagem[nome] / response.length) * 100]);
-    listaDeContagem.sort((a, b) => b[1] - a[1]);
+    const listaDeContagemOrdenada = listaDeContagem.sort((a, b) => b[1] - a[1]).slice(0, 3);
 
-    return listaDeContagem.slice(0, 5);
+    let sobraPorcentagem = 100 - listaDeContagemOrdenada.reduce((acc, obj) => acc + obj[2], 0);
+    let sobraQuantidadeDeAcessos = (listaDeContagemOrdenada[0][1] * sobraPorcentagem) / listaDeContagemOrdenada[0][2];
+
+    listaDeContagemOrdenada.push(["Outros", sobraQuantidadeDeAcessos.toFixed(0), sobraPorcentagem, transformarPorcentagemEmRad(sobraPorcentagem)]);
+
+    return listaDeContagemOrdenada;
 }
 
 function criarLegendaRelatorioLocais(lugares){
