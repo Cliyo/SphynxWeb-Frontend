@@ -166,7 +166,7 @@ async function criarLinhaTabelaCadastrar(local, listaJson, index){
 
     let selectPermissao = document.createElement("select");
 
-    const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
+    const responseGrupo = await request(api, "groups", "GET", headerAuth, null);
     preencherSelectGrupo(selectPermissao, responseGrupo);
 
     tdPermissao.appendChild(selectPermissao);

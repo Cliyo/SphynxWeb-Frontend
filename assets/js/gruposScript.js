@@ -18,7 +18,7 @@ const legendaQntGrupos = document.querySelector("#legenda-quantidade-grupos");
 let qntGrupos = 0;
 
 tabela.innerHTML = "";
-const response = await request(api, "permissions", "GET", headerAuth, null);
+const response = await request(api, "groups", "GET", headerAuth, null);
 
 response.forEach(grupo => {
     let linha = criarLinhaTabela(grupo);
@@ -42,14 +42,14 @@ botaoCadastrarGrupos.addEventListener("click", () => {
         var dados = Object.fromEntries(formData);
         var jsonData = JSON.stringify(dados);
         
-        const response = await request(api, "permissions", "POST", headerAuth, jsonData);
+        const response = await request(api, "groups", "POST", headerAuth, jsonData);
 
         mostrarMensagem(response.message);
         if(response.status == 201){
             tabela.appendChild(criarLinhaTabela(response.object));
             
             qntGrupos++;
-            legendaQntGrupos.innerHTML = `Total: ${qntGrupos} usuario(s)`;            
+            legendaQntGrupos.innerHTML = `Total: ${qntGrupos} grupo(s)`;            
     
             usuariosContainer.classList.remove("escurecer");
             divCadastrarGrupos.classList.remove("mostrar")
@@ -68,9 +68,6 @@ function criarLinhaTabela(grupo){
     let tdNome = document.createElement("td");
     tdNome.innerHTML = grupo.name;
 
-    let tdNivel = document.createElement("td");
-    tdNivel.innerHTML = grupo.level;
-
     let tdAcao = document.createElement("td");
 
     let editarBotao = document.createElement("button");
@@ -80,7 +77,7 @@ function criarLinhaTabela(grupo){
     excluirBotao.innerHTML = "Excluir";
     excluirBotao.addEventListener("click", async () => {
 
-        const response = await request(api, `permissions/${grupo.level}`, "DELETE", headerAuth, null);
+        const response = await request(api, `groups/${grupo.level}`, "DELETE", headerAuth, null);
 
         try{
             mostrarMensagem(response.message);
@@ -100,7 +97,6 @@ function criarLinhaTabela(grupo){
     tdAcao.appendChild(excluirBotao);
 
     tr.appendChild(tdNome);
-    tr.appendChild(tdNivel);
     tr.appendChild(tdAcao);
 
     return tr;

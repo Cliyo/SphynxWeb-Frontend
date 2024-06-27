@@ -64,11 +64,11 @@ opcaoUsuarioGrupo.addEventListener("click", async () => {
 
         inputGrupo.innerHTML = "";
 
-        const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
+        const responseGrupo = await request(api, "groups", "GET", headerAuth, null);
 
         preencherSelectGrupo(inputGrupo, responseGrupo);
 
-        const response = await request(api, `consumers?permission=${inputGrupo.value}`, "GET", headerAuth, null);
+        const response = await request(api, `consumers?group=${inputGrupo.value}`, "GET", headerAuth, null);
             
         qntUsuarios = response.length;
         legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;
@@ -82,7 +82,7 @@ opcaoUsuarioGrupo.addEventListener("click", async () => {
         });
 
         inputGrupo.addEventListener("change", async () => {
-            const response = await request(api, `consumers?permission=${inputGrupo.value}`, "GET", headerAuth, null);
+            const response = await request(api, `consumers?group=${inputGrupo.value}`, "GET", headerAuth, null);
             
             qntUsuarios = response.length;
             legendaQntUsuarios.innerHTML = `Total: ${qntUsuarios} usuario(s)`;
@@ -123,7 +123,7 @@ botaoCadastrarUsuario.addEventListener("click", async () => {
     let grupoInput = document.querySelector("#input-grupo-cadastrar");
     grupoInput.innerHTML = "";
 
-    const responseGrupo = await request(api, "permissions", "GET", headerAuth, null);
+    const responseGrupo = await request(api, "groups", "GET", headerAuth, null);
 
     preencherSelectGrupo(grupoInput, responseGrupo);
 
