@@ -106,13 +106,13 @@ function criarLinhaTabelaMostrar(local){
 
     let tdNome = document.createElement("td");
     tdNome.id = "campo-nome";
-    tdNome.innerHTML = local.name;
+    tdNome.innerHTML = local.local.name;
 
     let tdPermissao = document.createElement("td");
-    tdPermissao.innerHTML = local.permission.name;
+    tdPermissao.innerHTML = local.group.name;
     
     let tdMac = document.createElement("td");
-    tdMac.innerHTML = local.mac;
+    tdMac.innerHTML = local.local.mac;
 
     let tdAcao = document.createElement("td");
 
@@ -126,7 +126,7 @@ function criarLinhaTabelaMostrar(local){
     let botaoExcluir = document.createElement("button");
     botaoExcluir.innerHTML = "Excluir";
     botaoExcluir.addEventListener("click", async () => {
-        const response = await request(api, `locals/${local.name}`, "DELETE", headerAuth, null);
+        const response = await request(api, `locals/${local.local.name}`, "DELETE", headerAuth, null);
 
         try{
             mostrarMensagem(response.message);

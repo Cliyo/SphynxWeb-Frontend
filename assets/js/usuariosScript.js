@@ -161,16 +161,16 @@ function criarLinhaTabela(usuario){
     let tr = document.createElement("tr");
 
     let tdNome = document.createElement("td");
-    tdNome.innerHTML = usuario.name;
+    tdNome.innerHTML = usuario.consumer.name;
     
     let tdGrupo = document.createElement("td");
-    tdGrupo.innerHTML = usuario.permission.name;
+    tdGrupo.innerHTML = usuario.group.name;
 
     let tdRa = document.createElement("td");
-    tdRa.innerHTML = usuario.ra;
+    tdRa.innerHTML = usuario.consumer.ra;
 
     let tdTag = document.createElement("td");
-    tdTag.innerHTML = usuario.tag;
+    tdTag.innerHTML = usuario.consumer.tag;
 
     let tdAcao = document.createElement("td");
 
@@ -181,7 +181,7 @@ function criarLinhaTabela(usuario){
     excluirBotao.innerHTML = "Excluir";
     excluirBotao.addEventListener("click", async () => {
 
-        const response = await request(api, `consumers/${usuario.ra}`, "DELETE", headerAuth, null);
+        const response = await request(api, `consumers/${usuario.consumer.ra}`, "DELETE", headerAuth, null);
 
         try{
             mostrarMensagem(response.message);
