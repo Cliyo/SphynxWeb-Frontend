@@ -182,7 +182,7 @@ async function criarLinhaTabelaCadastrar(local, listaJson, index){
         var dados = {
             "name":  inputNome.value,
             "mac": tdMac.innerHTML,
-            "permission": selectPermissao.value
+            "group": selectPermissao.value
         }
         var jsonData = JSON.stringify(dados);
         

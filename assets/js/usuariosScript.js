@@ -133,7 +133,7 @@ botaoCadastrarUsuario.addEventListener("click", async () => {
 
         var formData =  new FormData(formCadastrar);
         var dados = Object.fromEntries(formData);
-        dados.permission = grupoInput.value;
+        dados.group = grupoInput.value;
         var jsonData = JSON.stringify(dados);
         
         const response = await request(api, "consumers", "POST", headerAuth, jsonData);
